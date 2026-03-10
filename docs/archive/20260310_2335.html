@@ -1,0 +1,137 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-03-10 23:35</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20260310_2335</div>
+    <div class="row"><div class="card">
+<div class="title">Reachability-based Temporal Logic Verification for Reliable LLM-guided Human-Autonomy Teaming</div>
+<div class="meta-line">Authors: Joonwon Choi, Kartik Anand Pant, Karthik Nune, Inseok Hwang</div>
+<div class="meta-line">First: 2026-03-09T17:10:09+00:00 · Latest: 2026-03-09T17:10:09+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.08633v1">Abs</a> · <a href="https://arxiv.org/pdf/2603.08633v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We propose a reachability-based framework for reliable LLM-guided human-autonomy teaming (HAT) using signal temporal logic (STL). In the proposed framework, LLM is leveraged as a translator that transfers natural language commands given by a human operator into corresponding STL specifications or vice versa. An STL feasibility filter (SFF) is proposed to check the feasibility of the generated STL. The SFF first decomposes the complex and nested LLM translation into a set of simpler subformulas for parallelization and informative feedback generation. The reachability analysis method is then applied to verify if each subformula is feasible for a target dynamical system: if feasible, perform mission planning, otherwise, reject it. The proposed SFF can identify infeasible subformulas, more than simply providing the boolean verification results for the whole STL, thereby facilitating the feedback generation of LLM to request modification of the command to the human. Consequently, the proposed framework can allow more reliable HAT by enabling safe and informative communication between the human operator and the autonomous agent. Our experiments demonstrate that the proposed framework can successfully filter out infeasible subformulas and generate informative feedback based on such information.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>基于可达性的时序逻辑验证方法：面向可靠LLM引导的人机协同系统</div>
+<div class="mono" style="margin-top:8px">本文提出一种基于可达性分析的框架，通过信号时序逻辑（STL）实现可靠的大型语言模型（LLM）引导人机协同（HAT）。该框架利用LLM作为翻译器，将人类操作员的自然语言指令转换为对应的STL规范（或反向转换）。我们设计了STL可行性过滤器（SFF）来验证生成STL的可行性：SFF首先将复杂嵌套的LLM翻译结果分解为可并行处理的简单子公式以生成信息反馈，随后运用可达性分析方法验证各子公式对目标动态系统的可行性——若可行则执行任务规划，否则予以拒绝。相较于仅提供整体STL布尔验证结果，SFF能精准识别不可行子公式，从而辅助LLM生成反馈以请求人类修改指令。该框架通过建立人机间安全且信息丰富的通信机制，显著提升HAT系统的可靠性。实验表明，所提框架能有效过滤不可行子公式，并基于此生成具有指导意义的反馈信息。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">To enhance the reliability of human-autonomy teaming (HAT) guided by large language models (LLMs), this research introduces a reachability-based verification framework using signal temporal logic (STL). The method employs an LLM as a translator to convert natural language commands into STL specifications and proposes an STL feasibility filter (SFF) that decomposes complex translations into simpler subformulas for parallel reachability analysis, checking each for feasibility against a dynamical system; infeasible subformulas are rejected, enabling informative feedback to the human operator for command modification. Experimental results show the framework successfully filters infeasible subformulas and generates useful feedback, thereby facilitating safer and more reliable communication in HAT.</div>
+<div class="mono" style="margin-top:8px">为提升大语言模型引导的人机协同团队的可靠性，本研究旨在验证由自然语言指令转换的规范对于自主系统动力学是否可行。该方法提出了一种信号时序逻辑可行性过滤器，将复杂的大语言模型生成的时序逻辑规范分解为更简单的子公式，然后使用可达性分析来验证每个子公式对于目标系统的可行性。实验结果表明，该框架能成功识别不可行的子公式，从而生成信息丰富的反馈以请求操作员修改指令，最终实现更安全可靠的人机通信。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Eigenvalue Patterns and Participation Analysis of Symmetric Renewable Energy Power Systems</div>
+<div class="meta-line">Authors: Yao Qin, Yitong Li, Wei Wang, Shaoze Zhou, Zheng Wei, Jinjun Liu</div>
+<div class="meta-line">First: 2026-03-09T13:16:17+00:00 · Latest: 2026-03-09T13:16:17+00:00</div>
+<div class="meta-line">Comments: 17 pages, 15 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.08351v1">Abs</a> · <a href="https://arxiv.org/pdf/2603.08351v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">State-space analysis is widely employed for examining power system dynamics but faces challenges in large-scale power systems integrated with numerous inverter-based resources (IBRs), where the significant increase of system states complicates modal analysis. Notably, renewable energy power systems often consist of multiple homogeneous generation units. This uniformity, termed symmetry in this paper, can facilitate the system stability analysis. Eigenvalue patterns and participation factors in three types of symmetric renewable energy power systems are investigated, including ideally-, quasi-, and group-symmetric systems. An ideally-symmetric (quasi-symmetric) system comprises a group of identical (similar) subsystems connected to an external grid. A system containing multiple such groups is termed group-symmetric. In these symmetric systems, two types of modes are defined to characterize different interactions: inner-group modes, which describe the interactions among subsystems within a single group, and group-grid modes, which describe the interactions between the groups and the external grid. A new concept termed group participation factor is also proposed to extend the use of conventional participation factors for repeated and close modes. In addition, the invariance properties of the inner-group modes and group-grid modes are discussed. The findings provide insights for stability analysis and targeted optimization in power systems. Theoretical advances are validated through numerical results and electromagnetic transient (EMT) simulations on example power systems of varied types and scales.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>对称可再生能源电力系统的特征值模式与参与度分析</div>
+<div class="mono" style="margin-top:8px">状态空间分析广泛应用于电力系统动态研究，但在大规模接入基于逆变器资源（IBR）的电力系统中面临挑战，系统状态量显著增加导致模态分析复杂化。值得注意的是，可再生能源电力系统常由多个同质发电单元构成，这种均匀性（本文称为对称性）有助于系统稳定性分析。本文研究了理想对称、准对称和群对称三类对称可再生能源电力系统的特征值模式与参与因子。理想对称（准对称）系统由一组相同（相似）的子系统连接至外部电网构成；包含多个此类群的系统称为群对称系统。在这些对称系统中，定义了两类模式以表征不同相互作用：群内模式描述单个群内子系统间的交互，群网模式描述群与外部电网间的交互。本文还提出了群参与因子的新概念，以扩展传统参与因子在重复和相近模态中的应用。此外，讨论了群内模式与群网模式的不变性特性。研究结果为电力系统稳定性分析与定向优化提供了新思路，理论进展通过不同类型和规模示例电力系统的数值结果与电磁暂态（EMT）仿真验证。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The research addresses the complexity of modal analysis in large-scale power systems with many inverter-based resources by leveraging the symmetry often present in renewable energy systems with homogeneous generation units. It investigates eigenvalue patterns and participation factors in three symmetric system types—ideally-, quasi-, and group-symmetric—defining inner-group and group-grid modes to characterize interactions, and introduces group participation factors to handle repeated or close modes. Experimental validation using numerical results and electromagnetic transient simulations on varied systems confirms the invariance properties of these modes, offering insights for stability analysis and targeted optimization.</div>
+<div class="mono" style="margin-top:8px">随着大量逆变型电源接入，大规模电力系统的状态空间分析因状态变量激增而变得复杂，但可再生能源发电单元的普遍同质性提供了可简化的对称性。本文研究了理想对称、准对称和群对称三类系统中的特征值模式与参与因子，定义了描述群内子系统相互作用的群内模式和描述群与外部电网相互作用的群网模式，并提出了群参与因子的概念以分析重根或接近的特征值。在不同类型和规模的示例系统上的数值仿真与电磁暂态仿真验证了这些模式具有不变性，为电力系统的稳定性分析和针对性优化提供了见解。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Model-Free DRL Control for Power Inverters: From Policy Learning to Real-Time Implementation via Knowledge Distillation</div>
+<div class="meta-line">Authors: Yang Yang, Chenggang Cui, Xitong Niu, Jiaming Liu, Chuanlin Zhang</div>
+<div class="meta-line">First: 2026-03-09T05:02:20+00:00 · Latest: 2026-03-09T05:02:20+00:00</div>
+<div class="meta-line">Comments: 10 pages, 6 figures, 8 tables, IEEE journal submission. This work proposes a model-free deep reinforcement learning control framework for voltage source inverters, integrating Lyapunov-based reward design and adaptive weighted policy distillation for lightweight real-time implementation, validated by simulation and kilowatt-level hardware experiments</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.07964v1">Abs</a> · <a href="https://arxiv.org/pdf/2603.07964v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In response to the trade-off between control performance and computational burden hindering the deployment of Deep Reinforcement Learning (DRL) in power inverters, this paper presents a novel model-free control framework leveraging policy distillation. To handle the convergence instability and steady-state errors inherent in model-free agents, an error energy-guided hybrid reward mechanism is established to theoretically constrain the exploration space. More specifically, an adaptive importance weighting mechanism is integrated into the distillation architecture to amplify the significance of fluctuation regions, ensuring high-quality transfer of transient control logic by mitigating the observational bias dominated by steady-state data. This approach efficiently compresses the heavy DRL policy into a lightweight neural network, retaining the desired control performance while overcoming the computational bottleneck during deployment. The proposed method is validated through a hardware-based kilowatt-level experimental platform. Experimental comparison results with traditional methods demonstrate that the proposed technique reduces inference time to the microsecond level and achieves superior transient response speed and parameter robustness.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>面向电力逆变器的无模型深度强化学习控制：从策略学习到基于知识蒸馏的实时实现</div>
+<div class="mono" style="margin-top:8px">针对深度强化学习在电力逆变器应用中控制性能与计算负担难以兼顾的问题，本文提出一种基于策略蒸馏的新型无模型控制框架。为克服无模型智能体固有的收敛不稳定与稳态误差，建立了误差能量引导的混合奖励机制以理论约束探索空间。具体而言，通过在蒸馏架构中集成自适应重要性加权机制，增强波动区域的学习权重，从而缓解稳态数据主导的观测偏差，确保暂态控制逻辑的高质量迁移。该方法将复杂的深度强化学习策略高效压缩为轻量神经网络，在保持理想控制性能的同时突破部署时的计算瓶颈。所提方法通过基于硬件的千瓦级实验平台验证，与传统方法的对比实验表明，该技术将推理时间压缩至微秒级，并实现了更优的暂态响应速度与参数鲁棒性。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">To address the trade-off between control performance and computational burden that hinders the deployment of Deep Reinforcement Learning (DRL) in power inverters, this paper proposes a model-free control framework using policy distillation. The method establishes an error energy-guided hybrid reward mechanism to constrain the exploration space and mitigate convergence instability and steady-state errors, and integrates an adaptive importance weighting mechanism into the distillation architecture to prioritize fluctuation regions for high-quality transfer of transient control logic. Experimental validation on a kilowatt-level hardware platform shows the technique compresses the DRL policy into a lightweight network, reducing inference time to microseconds while achieving superior transient response speed and parameter robustness compared to traditional methods.</div>
+<div class="mono" style="margin-top:8px">针对深度强化学习在电力逆变器部署中存在的控制性能与计算负担之间的权衡问题，本文提出了一种利用策略蒸馏的无模型控制框架。该方法建立了误差能量引导的混合奖励机制以约束探索空间并缓解收敛不稳定和稳态误差，同时在蒸馏架构中集成了自适应重要性加权机制，以放大波动区域的重要性，确保瞬态控制逻辑的高质量迁移。基于千瓦级硬件实验平台的验证结果表明，与传统方法相比，所提技术将推理时间缩短至微秒级，并实现了更优的瞬态响应速度和参数鲁棒性。</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

@@ -1,0 +1,251 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-03-10 23:43</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20260310_2343</div>
+    <div class="row"><div class="card">
+<div class="title">Utility Theory based Cognitive Modeling in the Application of Robotics: A Survey</div>
+<div class="meta-line">Authors: Qin Yang</div>
+<div class="meta-line">First: 2023-06-15T18:55:48+00:00 · Latest: 2026-03-09T03:06:26+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2306.09445v3">Abs</a> · <a href="https://arxiv.org/pdf/2306.09445v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Cognitive modeling, which explores the essence of cognition, including motivation, emotion, and perception, has been widely applied in the artificial intelligence (AI) agent domains, such as robotics. From the computational perspective, various cognitive functionalities have been developed through utility theory to provide a detailed and process-based understanding for specifying corresponding computational models of representations, mechanisms, and processes. Especially for decision-making and learning in multi-agent/robot systems (MAS/MRS), a suitable cognitive model can guide agents in choosing reasonable strategies to achieve their current needs and learning to cooperate and organize their behaviors, optimizing the system&#x27;s utility, building stable and reliable relationships, and guaranteeing each group member&#x27;s sustainable development, similar to the human society. This survey examines existing robotic systems for developmental cognitive models in the context of utility theory. We discuss the evolution of cognitive modeling in robotics from behavior-based robotics (BBR) and cognitive architectures to the properties of value systems in robots, such as the studies on motivations as artificial value systems, and the utility theory based cognitive modeling for generating and updating strategies in robotic interactions. Then, we examine the extent to which existing value systems support the application of robotics from an AI agent cognitive modeling perspective, including single-agent and multi-agent systems, trust among agents, and human-robot interaction. Finally, we survey the existing literature of current value systems in relevant fields and propose several promising research directions, along with some open problems that we deem necessary for further investigation.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>基于效用理论的机器人应用认知建模综述</div>
+<div class="mono" style="margin-top:8px">认知建模旨在探索认知的本质，包括动机、情感与感知，已在人工智能代理领域（如机器人学）得到广泛应用。从计算视角出发，基于效用理论发展的多种认知功能为表征、机制与过程的计算模型提供了细致且基于过程的理解。尤其在多代理/机器人系统的决策与学习中，合适的认知模型可引导代理选择合理策略以满足当前需求，学习协作与行为组织，优化系统效用，建立稳定可靠的关系，并保障各成员的可持续发展，类似人类社会。本文在效用理论框架下综述现有机器人系统中发展性认知模型的研究。我们探讨了机器人学认知建模从基于行为的机器人学到认知架构的演进，以及机器人价值系统的特性，如作为人工价值系统的动机研究、基于效用理论的交互策略生成与更新的认知建模。随后，我们从AI代理认知建模视角评估现有价值系统对机器人应用的支持程度，涵盖单代理与多代理系统、代理间信任及人机交互。最后，梳理相关领域现有价值系统的文献，提出若干具有前景的研究方向及有待深入探索的开放性问题。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This survey is motivated by the need to understand how utility theory can formalize cognitive models for artificial intelligence agents, particularly in robotics, to enhance decision-making and learning in both single-agent and multi-agent systems. The method involves a comprehensive review of existing robotic systems, tracing the evolution from behavior-based robotics and cognitive architectures to value systems that model motivations and strategies through utility-based frameworks. Key findings highlight that such cognitive models enable agents to optimize system utility, foster cooperation, and build stable relationships, while also identifying gaps in current value systems and proposing future research directions in trust and human-robot interaction.</div>
+<div class="mono" style="margin-top:8px">本综述的动机在于探讨如何利用效用理论形式化人工智能代理的认知模型，特别是在机器人领域，以提升多智能体系统中的决策与学习能力。方法上，通过对现有机器人系统进行全面回顾，追溯了从基于行为的机器人学到认知架构的演变，以及融入动机和基于效用的交互策略的价值系统。主要实验结果表明，基于效用的认知模型能有效指导代理进行策略选择和协作，优化系统效用并建立稳定关系，同时指出了当前价值系统的不足，并提出了未来的研究方向。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Event-Driven Safe and Resilient Control of Automated and Human-Driven Vehicles under EU-FDI Attacks</div>
+<div class="meta-line">Authors: Yi Zhang, Yichao Wang, Wei Xiao, Mohamadamin Rajabinezhad, Shan Zuo</div>
+<div class="meta-line">First: 2026-03-03T02:22:54+00:00 · Latest: 2026-03-09T01:52:29+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.02526v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.02526v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper studies the safe and resilient control of Connected and Automated Vehicles (CAVs) operating in mixed traffic environments where they must interact with Human-Driven Vehicles (HDVs) under uncertain dynamics and exponentially unbounded false data injection (EU-FDI) attacks. These attacks pose serious threats to safety-critical applications. While resilient control strategies can mitigate adversarial effects, they often overlook collision avoidance requirements. Conversely, safety-critical approaches tend to assume nominal operating conditions and lack resilience to adversarial inputs. To address these challenges, we propose an event-driven safe and resilient (EDSR) control framework that integrates event-driven Control Barrier Functions (CBFs) and Control Lyapunov Functions (CLFs) with adaptive attack-resilient control. The framework further incorporates data-driven estimation of HDV behaviors to ensure safety and resilience against EU-FDI attacks. Specifically, we focus on the lane-changing maneuver of CAVs in the presence of unpredictable HDVs and EU-FDI attacks on acceleration inputs. The event-driven approach reduces computational load while maintaining real-time safety guarantees. Simulation results, including comparisons with conventional safety-critical control methods that lack resilience, validate the effectiveness and robustness of the proposed EDSR framework in achieving collision-free maneuvers, stable velocity regulation, and resilient operation under adversarial conditions.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>欧盟虚假数据注入攻击下自动与人工驾驶车辆的事件驱动安全弹性控制研究</div>
+<div class="mono" style="margin-top:8px">本文研究了在混合交通环境中运行的网联自动驾驶车辆（CAV）的安全弹性控制问题，其中CAV需在动态不确定性及指数无界虚假数据注入（EU-FDI）攻击下与人工驾驶车辆（HDV）交互。此类攻击对安全关键应用构成严重威胁。现有弹性控制策略虽能缓解对抗性影响，却常忽略防碰撞要求；而安全关键方法多假设标称工况，缺乏对抗性输入的弹性。为此，本文提出一种事件驱动安全弹性（EDSR）控制框架，将事件驱动的控制屏障函数（CBF）与控制李雅普诺夫函数（CLF）与自适应攻击弹性控制相结合，并引入数据驱动的HDV行为估计，以保障针对EU-FDI攻击的安全性与弹性。研究聚焦于CAV在不可预测HDV及加速度输入遭受EU-FDI攻击下的换道场景，事件驱动方法在保证实时安全的同时降低了计算负荷。仿真结果表明，相较于缺乏弹性的传统安全关键控制方法，所提EDSR框架在实现无碰撞机动、稳定速度调节及对抗条件下的弹性运行方面具有显著有效性与鲁棒性。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This research addresses the safety and resilience challenges for Connected and Automated Vehicles (CAVs) interacting with Human-Driven Vehicles (HDVs) in mixed traffic, particularly under exponentially unbounded false data injection (EU-FDI) attacks that threaten safety-critical operations. The proposed method is an event-driven safe and resilient (EDSR) control framework that integrates event-driven Control Barrier Functions (CBFs) and Control Lyapunov Functions (CLFs) with adaptive attack-resilient control, and it incorporates data-driven estimation of HDV behaviors to handle uncertainties. Key experimental findings from simulations, including comparisons to non-resilient methods, demonstrate that the EDSR framework effectively ensures collision-free lane-changing maneuvers, stable velocity regulation, and robust operation under adversarial attacks while reducing computational load.</div>
+<div class="mono" style="margin-top:8px">本研究针对网联自动驾驶车辆（CAV）在混合交通中与人类驾驶车辆（HDV）交互时的安全性与弹性挑战，特别是在指数无界虚假数据注入（EU-FDI）攻击威胁安全关键系统的背景下。提出的解决方案是一个事件驱动的安全弹性（EDSR）控制框架，该框架将事件触发的控制屏障函数（CBF）和控制李雅普诺夫函数（CLF）与自适应攻击弹性控制相结合，并利用数据驱动的HDV行为估计来处理不确定性。仿真结果表明，该EDSR框架在EU-FDI攻击下有效确保了无碰撞的变道操作、稳定的速度调节和弹性运行，其性能优于缺乏弹性的传统安全关键控制方法。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">VB-NET: A physics-constrained gray-box deep learning framework for modeling air conditioning systems as virtual batteries</div>
+<div class="meta-line">Authors: Yuchen Qi, Ye Guo, Yinliang Xu</div>
+<div class="meta-line">First: 2026-03-08T12:13:13+00:00 · Latest: 2026-03-08T12:13:13+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.07601v1">Abs</a> · <a href="https://arxiv.org/pdf/2603.07601v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The increasing penetration of renewable energy necessitates unlocking demand-side flexibility. While air conditioning (AC) systems offer significant thermal inertia, existing physical and data-driven models struggle with parameter acquisition, interpretability, and data scarcity. This paper proposes VB-NET, a physics-constrained gray-box deep learning framework that transforms complex AC thermodynamics into a standardized Virtual Battery (VB) model. We first mathematically prove the isomorphic equivalence between the AC and VB models. Subsequently, VB-NET is designed to strictly enforces physical laws by decoupling shared meteorological drivers from private building thermal fingerprints and embedding a differentiable physics layer. Experimental results demonstrate that VB-NET significantly outperforms conventional black-box models in state of charge tracking while successfully recovering underlying thermodynamic laws to yield physically consistent parameters. Furthermore, utilizing multi-task learning and terminal sensitivity modulation, VB-NET overcomes the cold-start dilemma, achieving high-precision modeling for new AC units using only 2% to 6% of historical data. Ultimately, this study provides an interpretable and data-efficient pathway for aggregating decentralized AC resources for grid regulation.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>VB-NET：一种物理约束灰盒深度学习框架，用于将空调系统建模为虚拟电池</div>
+<div class="mono" style="margin-top:8px">可再生能源渗透率的提升亟需释放需求侧灵活性。空调系统虽具备显著热惯性，但现有物理与数据驱动模型在参数获取、可解释性和数据稀缺性方面存在局限。本文提出VB-NET——一种物理约束灰盒深度学习框架，将复杂空调热力学转化为标准化虚拟电池模型。我们首先数学证明了空调与虚拟电池模型的同构等价性，进而通过解耦共享气象驱动因子与建筑热特征指纹、嵌入可微分物理层，构建严格遵循物理定律的VB-NET框架。实验表明，VB-NET在荷电状态追踪方面显著优于传统黑盒模型，并能成功还原底层热力学规律以生成物理一致的参数。通过多任务学习与终端灵敏度调制，VB-NET克服冷启动困境，仅需2%至6%的历史数据即可实现新空调机组的高精度建模。本研究为聚合分散式空调资源参与电网调控提供了可解释且数据高效的解决方案。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">To address the challenges of modeling air conditioning (AC) systems for demand-side flexibility—where existing physical and data-driven models face issues with parameter acquisition, interpretability, and data scarcity—this study introduces VB-NET, a physics-constrained gray-box deep learning framework. The method mathematically proves the isomorphic equivalence between AC thermodynamics and a standardized Virtual Battery (VB) model, then enforces physical laws by decoupling shared meteorological drivers from private building thermal fingerprints and embedding a differentiable physics layer. Experiments show that VB-NET outperforms conventional black-box models in state of charge tracking, recovers underlying thermodynamic laws for physically consistent parameters, and, through multi-task learning and terminal sensitivity modulation, overcomes the cold-start problem to achieve high-precision modeling for new AC units using only 2% to 6% of historical data.</div>
+<div class="mono" style="margin-top:8px">为应对利用空调系统提供需求侧灵活性时面临的参数获取难、可解释性差和数据稀缺等挑战，本文提出了VB-NET，一个物理约束的灰盒深度学习框架。该方法首先从数学上证明了空调热力学模型与虚拟电池模型的同构等价性，随后设计的框架通过解耦共享气象驱动与私有建筑热指纹，并嵌入可微分物理层来严格约束物理定律。实验结果表明，VB-NET在荷电状态跟踪上显著优于传统黑盒模型，并能成功恢复底层热力学定律以得到物理一致的参数；此外，通过多任务学习和终端灵敏度调制，VB-NET克服了冷启动困境，仅需2%至6%的历史数据即可为新空调单元实现高精度建模。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Machine Learning for the Internet of Underwater Things: From Fundamentals to Implementation</div>
+<div class="meta-line">Authors: Kenechi Omeke, Attai Abubakar, Michael Mollel, Lei Zhang, Qammer H. Abbasi, Muhammad Ali Imran</div>
+<div class="meta-line">First: 2026-03-08T01:54:35+00:00 · Latest: 2026-03-08T01:54:35+00:00</div>
+<div class="meta-line">Comments: 78 pages, 14 figures,</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.07413v1">Abs</a> · <a href="https://arxiv.org/pdf/2603.07413v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The Internet of Underwater Things (IoUT) is becoming a critical infrastructure for ocean observation, marine resource management, and climate science. Its development is hindered by severe acoustic attenuation, propagation delays far exceeding those of terrestrial wireless systems, strict energy constraints, and dynamic topologies shaped by ocean currents. Machine learning (ML) has emerged as a key enabler for addressing these limitations, offering data driven mechanisms that enhance performance across all layers of underwater wireless sensor networks. This tutorial survey synthesises ML methodologies supervised, unsupervised, reinforcement, and deep learning specifically contextualised for underwater communication environments. It outlines the algorithmic principles of each paradigm and examines the conditions under which particular approaches deliver superior performance. A layer wise analysis highlights physical layer gains in localisation and channel estimation, MAC layer adaptations that improve channel utilisation, network layer routing strategies that extend operational lifetime, and transport layer mechanisms capable of reducing packet loss by up to 91 percent. At the application layer, ML enables substantial data compression and object detection accuracies reaching 92 percent. Drawing on 300 studies from 2012 to 2025, the survey documents energy efficiency gains of 7 to 29 times, throughput improvements over traditional protocols, and cross layer optimisation benefits of up to 42 percent. It also identifies persistent barriers, including limited datasets, computational constraints, and the gap between theoretical models and real world deployment. The survey concludes with emerging research directions and a technology roadmap supporting ML adoption in operational underwater networks.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>面向水下物联网的机器学习：从基础到实现</div>
+<div class="mono" style="margin-top:8px">水下物联网正成为海洋观测、海洋资源管理和气候科学的关键基础设施，但其发展受限于严重的水声衰减、远超陆地无线系统的传播延迟、严格的能量约束以及洋流形成的动态拓扑结构。机器学习已成为应对这些限制的关键赋能技术，通过数据驱动机制提升水下无线传感器网络各层性能。本综述系统梳理了专门针对水下通信环境设计的机器学习方法——监督学习、无监督学习、强化学习和深度学习，阐明各范式的算法原理，并分析特定方法取得更优性能的条件。分层分析表明：物理层在定位和信道估计方面获得增益；MAC层适配提升信道利用率；网络层路由策略延长运行寿命；传输层机制可降低高达91%的数据包丢失率。在应用层，机器学习实现显著数据压缩，物体检测准确率达92%。基于2012至2025年间300项研究，本综述记录了7至29倍的能效提升、超越传统协议的吞吐量改进，以及高达42%的跨层优化效益，同时指出持续存在的障碍，包括有限数据集、计算约束及理论模型与实际部署间的差距。最后提出新兴研究方向和支持机器学习在水下运营网络中应用的技术路线图。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The Internet of Underwater Things (IoUT) is crucial for ocean-related applications but faces challenges like severe acoustic attenuation, long delays, energy constraints, and dynamic topologies. This survey synthesizes machine learning methodologies—including supervised, unsupervised, reinforcement, and deep learning—contextualized for underwater networks, analyzing their algorithmic principles and performance conditions. Key experimental findings include transport layer mechanisms reducing packet loss by up to 91%, application-layer object detection accuracy reaching 92%, energy efficiency gains of 7 to 29 times, throughput improvements over traditional protocols, and cross-layer optimization benefits up to 42%, though barriers like limited datasets and computational constraints persist.</div>
+<div class="mono" style="margin-top:8px">水下物联网对于海洋观测、资源管理和气候科学至关重要，但其发展受到严重声学衰减、远超陆地系统的传播延迟、严格能量限制以及洋流导致的动态拓扑的阻碍。本教程综述综合了适用于水下通信环境的机器学习方法，包括监督学习、无监督学习、强化学习和深度学习，概述了各范式的算法原理并分析了特定方法发挥优势的条件。主要实验结果包括传输层机制将丢包率降低高达91%，应用层物体检测准确率达到92%，能效提升7至29倍，吞吐量优于传统协议，以及高达42%的跨层优化收益，同时也指出了数据集有限、计算约束等持续存在的障碍。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Online Tracking with Predictions for Nonlinear Systems with Koopman Linear Embedding</div>
+<div class="meta-line">Authors: Chih-Fan Pai, Xu Shang, Jiachen Qian, Yang Zheng</div>
+<div class="meta-line">First: 2026-03-08T00:54:56+00:00 · Latest: 2026-03-08T00:54:56+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.07395v1">Abs</a> · <a href="https://arxiv.org/pdf/2603.07395v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study the problem of online tracking in unknown nonlinear dynamical systems, where only short-horizon predictions of future target states are available. This setting arises in practical scenarios where full future information and exact system dynamics are unavailable. We focus on a class of nonlinear systems that admit a Koopman linear embedding, enabling the dynamics to evolve linearly in a lifted space. Exploiting this structure, we analyze a model-free predictive tracking algorithm based on Willems&#x27; fundamental lemma, which imposes dynamic constraints using only past data within a receding-horizon control framework. We show that, for Koopman-linearizable systems, the cumulative cost and dynamic regret of the nonlinear tracking problem coincide with those of the lifted linear counterpart. Moreover, we prove that the dynamic regret of our algorithm decays exponentially with the prediction horizon, as validated by numerical experiments.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>基于Koopman线性嵌入的非线性系统在线预测跟踪研究</div>
+<div class="mono" style="margin-top:8px">本文研究未知非线性动力系统中的在线跟踪问题，其中仅能获取未来目标状态的短时域预测。该设定适用于实际场景中未来完整信息与精确系统动力学均不可得的情况。聚焦于一类允许Koopman线性嵌入的非线性系统，其动力学可在提升空间中线性演化。利用此结构，我们分析了基于Willems基本引理的无模型预测跟踪算法，该算法在滚动时域控制框架下仅利用历史数据施加动态约束。研究表明，对于可Koopman线性化的系统，非线性跟踪问题的累积成本与动态遗憾度均与提升后的线性系统对应量一致。进一步证明，该算法的动态遗憾度随预测时域呈指数衰减，数值实验验证了该结论。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The research addresses online tracking in unknown nonlinear systems where only short-term predictions of target states are available, a practical challenge due to incomplete future information and unknown dynamics. The method leverages systems that admit a Koopman linear embedding, enabling linear dynamics in a lifted space, and employs a model-free predictive tracking algorithm based on Willems&#x27; fundamental lemma, using past data within a receding-horizon control framework. Experimental results demonstrate that the cumulative cost and dynamic regret for the nonlinear problem match those of the lifted linear system, with the dynamic regret proven to decay exponentially as the prediction horizon increases, as supported by numerical validation.</div>
+<div class="mono" style="margin-top:8px">本文研究未知非线性系统中的在线跟踪问题，其中仅能获得目标状态的短期预测，这在缺乏完整未来信息和精确系统动力学的实际场景中具有挑战性。方法利用可进行Koopman线性嵌入的系统类，在提升空间中实现线性动力学，并采用基于Willems基本引理的无模型预测跟踪算法，该算法在滚动时域控制框架中仅使用历史数据施加动态约束。实验结果表明，非线性跟踪问题的累积成本和动态遗憾与提升后的线性系统一致，且动态遗憾随预测时域的增加呈指数衰减，数值实验验证了这一点。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Transformers as Implicit State Estimators: In-Context Learning in Dynamical Systems</div>
+<div class="meta-line">Authors: Usman Akram, Haris Vikalo</div>
+<div class="meta-line">First: 2024-10-21T22:18:10+00:00 · Latest: 2026-03-07T08:10:03+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2410.16546v3">Abs</a> · <a href="https://arxiv.org/pdf/2410.16546v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Predicting the behavior of a dynamical system from noisy observations of its past outputs is a classical problem encountered across engineering and science. For linear systems with Gaussian inputs, the Kalman filter -- the best linear minimum mean-square error estimator of the state trajectory -- is optimal in the Bayesian sense. For nonlinear systems, Bayesian filtering is typically approached using suboptimal heuristics such as the Extended Kalman Filter (EKF), or numerical methods such as particle filtering (PF). In this work, we show that transformers, employed in an in-context learning (ICL) setting, can implicitly infer hidden states in order to predict the outputs of a wide family of dynamical systems, without test-time gradient updates or explicit knowledge of the system model. Specifically, when provided with a short context of past input-output pairs and, optionally, system parameters, a frozen transformer accurately predicts the current output. In linear-Gaussian regimes, its predictions closely match those of the Kalman filter; in nonlinear regimes, its performance approaches that of EKF and PF. Moreover, prediction accuracy degrades gracefully when key parameters, such as the state-transition matrix, are withheld from the context, demonstrating robustness and implicit parameter inference. These findings suggest that transformer in-context learning provides a flexible, non-parametric alternative for output prediction in dynamical systems, grounded in implicit latent-state estimation.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>Transformer作为隐式状态估计器：动态系统中的上下文学习</div>
+<div class="mono" style="margin-top:8px">从动态系统过去输出的噪声观测中预测其行为是工程与科学领域常见的经典问题。对于具有高斯输入的线性系统，卡尔曼滤波器——状态轨迹的最佳线性最小均方误差估计器——在贝叶斯意义下是最优的。对于非线性系统，贝叶斯滤波通常通过次优启发式方法（如扩展卡尔曼滤波器）或数值方法（如粒子滤波）实现。本研究表明，在上下文学习设置下使用的Transformer能够隐式推断隐藏状态，从而预测广泛动态系统的输出，无需测试时的梯度更新或显式的系统模型知识。具体而言，当提供过去输入-输出对的短上下文（可选包含系统参数）时，冻结的Transformer能准确预测当前输出。在线性高斯场景中，其预测与卡尔曼滤波器高度吻合；在非线性场景中，其性能接近扩展卡尔曼滤波器和粒子滤波。此外，当状态转移矩阵等关键参数从上下文中隐去时，预测精度仍能保持稳健下降，体现了模型的鲁棒性和隐式参数推断能力。这些发现表明，基于隐式潜在状态估计的Transformer上下文学习为动态系统输出预测提供了一种灵活的非参数化替代方案。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This work addresses the challenge of predicting dynamical system behavior from noisy observations, where traditional methods like the Kalman filter are optimal for linear-Gaussian systems but nonlinear cases rely on suboptimal heuristics. The authors demonstrate that transformers, operating via in-context learning without test-time updates or explicit system models, can implicitly infer hidden states to predict outputs. Experiments show that in linear-Gaussian regimes, the transformer&#x27;s predictions closely match the Kalman filter, while in nonlinear settings, performance approaches that of Extended Kalman and particle filters, with robustness even when key parameters are withheld.</div>
+<div class="mono" style="margin-top:8px">该研究旨在解决从噪声观测中预测动态系统行为的挑战，其中传统方法如卡尔曼滤波器在线性高斯系统中最优，但非线性情况需要次优启发式方法。该方法采用基于上下文学习的Transformer，利用冻结模型处理过去输入-输出对的短序列和可选系统参数来预测当前输出，无需测试时梯度更新或显式系统知识。实验结果表明，在线性高斯区域，Transformer的预测与卡尔曼滤波器高度一致；在非线性区域，其性能接近扩展卡尔曼滤波器和粒子滤波器，且在关键参数缺失时性能稳健下降，显示出隐式参数推断能力。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A SISA-based Machine Unlearning Framework for Power Transformer Inter-Turn Short-Circuit Fault Localization</div>
+<div class="meta-line">Authors: Nanhong Liu, Jingyi Yan, Mucun Sun, Jie Zhang</div>
+<div class="meta-line">First: 2026-03-07T00:49:21+00:00 · Latest: 2026-03-07T00:49:21+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.06962v1">Abs</a> · <a href="https://arxiv.org/pdf/2603.06962v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In practical data-driven applications on electrical equipment fault diagnosis, training data can be poisoned by sensor failures, which can severely degrade the performance of machine learning (ML) models. However, once the ML model has been trained, removing the influence of such harmful data is challenging, as full retraining is both computationally intensive and time-consuming. To address this challenge, this paper proposes a SISA (Sharded, Isolated, Sliced, and Aggregated)-based machine unlearning (MU) framework for power transformer inter-turn short-circuit fault (ITSCF) localization. The SISA method partitions the training data into shards and slices, ensuring that the influence of each data point is isolated within specific constituent models through independent training. When poisoned data are detected, only the affected shards are retrained, avoiding retraining the entire model from scratch. Experiments on simulated ITSCF conditions demonstrate that the proposed framework achieves almost identical diagnostic accuracy to full retraining, while reducing retraining time significantly.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>基于SISA的电力变压器匝间短路故障定位机器遗忘框架</div>
+<div class="mono" style="margin-top:8px">在电气设备故障诊断的实际数据驱动应用中，训练数据可能因传感器故障而受到污染，这会严重降低机器学习模型的性能。然而，一旦机器学习模型训练完成，消除此类有害数据的影响具有挑战性，因为完全重新训练既计算密集又耗时。为解决这一难题，本文提出了一种基于SISA（分片、隔离、切片与聚合）的机器遗忘框架，用于电力变压器匝间短路故障定位。SISA方法将训练数据划分为分片和切片，通过独立训练确保每个数据点的影响被隔离在特定的组成模型中。当检测到污染数据时，仅需重新训练受影响的分片，避免了从头开始重新训练整个模型。在模拟匝间短路故障条件下的实验表明，该框架能达到与完全重新训练几乎相同的诊断精度，同时显著缩短重新训练时间。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">To address the challenge of removing the influence of poisoned training data caused by sensor failures in electrical fault diagnosis without costly full model retraining, this paper proposes a machine unlearning framework based on the SISA (Sharded, Isolated, Sliced, and Aggregated) method for localizing power transformer inter-turn short-circuit faults. The method partitions the training dataset into shards and slices, trains constituent models independently to isolate data influence, and selectively retrains only the shards affected by detected poisoned data. Experimental results on simulated fault conditions show that the framework maintains diagnostic accuracy nearly identical to a fully retrained model while significantly reducing the required retraining time.</div>
+<div class="mono" style="margin-top:8px">针对电力设备故障诊断中因传感器故障导致训练数据被污染、而完全重新训练模型成本高昂的问题，本文提出了一种基于SISA（分片、隔离、切片与聚合）的机器遗忘框架，用于电力变压器匝间短路故障定位。该方法将训练数据集划分为分片和切片，通过独立训练组成模型以隔离数据影响，并在检测到污染数据时仅对受影响的分片进行重新训练。在模拟故障条件下的实验结果表明，该框架能达到与完全重新训练几乎相同的诊断精度，同时显著减少了重新训练所需的时间。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">PAD-TRO: Projection-Augmented Diffusion for Direct Trajectory Optimization</div>
+<div class="meta-line">Authors: Jushan Chen, Santiago Paternain</div>
+<div class="meta-line">First: 2025-10-06T02:06:58+00:00 · Latest: 2026-03-06T21:15:31+00:00</div>
+<div class="meta-line">Comments: Final manuscript. Accepted for publication at the 2026 American Control Conference</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2510.04436v3">Abs</a> · <a href="https://arxiv.org/pdf/2510.04436v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recently, diffusion models have gained popularity and attention in trajectory optimization due to their capability of modeling multi-modal probability distributions. However, addressing nonlinear equality constraints, i.e, dynamic feasibility, remains a great challenge in diffusion-based trajectory optimization. Recent diffusion-based trajectory optimization frameworks rely on a single-shooting style approach where the denoised control sequence is applied to forward propagate the dynamical system, which cannot explicitly enforce constraints on the states and frequently leads to sub-optimal solutions. In this work, we propose a novel direct trajectory optimization approach via model-based diffusion, which directly generates a sequence of states. To ensure dynamic feasibility, we propose a gradient-free projection mechanism that is incorporated into the reverse diffusion process. Our results show that, compared to a recent state-of-the-art baseline, our approach leads to zero dynamic feasibility error and approximately 4x higher success rate in a quadrotor waypoint navigation scenario involving dense static obstacles.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>PAD-TRO：基于投影增强扩散的直接轨迹优化方法</div>
+<div class="mono" style="margin-top:8px">近年来，扩散模型因其能够建模多模态概率分布而在轨迹优化领域受到广泛关注。然而，在基于扩散的轨迹优化中，处理非线性等式约束（即动态可行性）仍面临巨大挑战。现有扩散轨迹优化框架多采用单次射击式方法，通过对去噪后的控制序列进行动力学系统前向传播，无法显式施加状态约束，常导致次优解。本研究提出一种基于模型扩散的新型直接轨迹优化方法，直接生成状态序列。为确保动态可行性，我们设计了一种无需梯度的投影机制，并将其融入反向扩散过程。实验表明，在涉及密集静态障碍物的四旋翼航点导航场景中，相较于当前先进基线方法，本方法实现了零动态可行性误差，并将成功率提升约4倍。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This research addresses the challenge of enforcing dynamic feasibility constraints in diffusion-based trajectory optimization, where existing single-shooting methods often yield sub-optimal solutions. The proposed method, Projection-Augmented Diffusion for Direct Trajectory Optimization (PAD-TRO), introduces a model-based diffusion approach that directly generates state sequences and incorporates a gradient-free projection mechanism into the reverse diffusion process to explicitly satisfy constraints. Experimental evaluation in a quadrotor waypoint navigation task with dense static obstacles demonstrates that the approach achieves zero dynamic feasibility error and approximately a fourfold increase in success rate compared to a recent state-of-the-art baseline.</div>
+<div class="mono" style="margin-top:8px">本研究旨在解决基于扩散的轨迹优化中确保动态可行性（即非线性等式约束）的挑战，现有单次射击方法通常无法强制执行状态约束并导致次优解。所提出的方法——用于直接轨迹优化的投影增强扩散（PAD-TRO），引入了一种基于模型的扩散方法，直接生成状态序列，并在反向扩散过程中融入了一种无梯度投影机制，以明确保证约束满足。在涉及密集静态障碍物的四旋翼航点导航场景中的实验评估表明，与最新的先进基线相比，该方法实现了零动态可行性误差，并将成功率提高了约四倍。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Discovering and exploiting active sensing motifs for estimation</div>
+<div class="meta-line">Authors: Benjamin Cellini, Burak Boyacioglu, Austin Lopez, Floris van Breugel</div>
+<div class="meta-line">First: 2025-11-11T20:38:08+00:00 · Latest: 2026-03-06T19:36:25+00:00</div>
+<div class="meta-line">Comments: 24 pages, 11 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2511.08766v2">Abs</a> · <a href="https://arxiv.org/pdf/2511.08766v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">From organisms to machines, autonomous systems rely on measured sensory cues to estimate unknown information about themselves or their environment. For nonlinear systems, strategic sensor motion can be leveraged to extract otherwise inaccessible information. This principle, known as active sensing, is widespread in biology yet difficult to study, and remains underutilized in engineered systems due to the challenge of systematically designing active sensing motifs. Here, we introduce the method ``BOUNDS: Bounding Observability for Uncertain Nonlinear Dynamic Systems&quot;, and Python package pybounds, which can discover movement motifs that increase the information encoded in sensory cues. To exploit sporadic estimates from bouts of active sensing, we further introduce the Augmented Information Kalman Filter (AI-KF). The AI-KF uses insight from BOUNDS to dynamically fuse neural network and model-based estimation. We demonstrate BOUNDS and the AI-KF on a flying agent model and experimental GPS-denied data from a quadcopter, revealing how specific active movements improve estimates of ground speed, altitude, and wind direction. Altogether, our work will prove useful for designing sensor-minimal autonomous systems and investigating active sensing in living organisms.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>发现并利用主动感知基元进行估计</div>
+<div class="mono" style="margin-top:8px">从生物体到机器，自主系统依赖测量的感官线索来估计自身或环境的未知信息。对于非线性系统，可通过策略性传感器运动获取原本无法访问的信息。这一被称为主动感知的原理在生物学中广泛存在但难以研究，且由于系统化设计主动感知基元的挑战，在工程系统中仍未得到充分利用。本文提出方法“BOUNDS：不确定非线性动态系统的可观测性边界”及Python包pybounds，能够发现增强感官线索信息编码的运动基元。为利用主动感知间歇产生的稀疏估计，我们进一步提出增强信息卡尔曼滤波器（AI-KF）。AI-KF融合BOUNDS的洞见，动态集成神经网络与基于模型的估计。我们在飞行智能体模型和四旋翼无人机GPS拒止实验数据上验证了BOUNDS与AI-KF，揭示了特定主动运动如何提升地速、高度和风向的估计精度。整体而言，本研究将为设计传感器极简的自主系统及探索生物主动感知机制提供有效工具。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The research addresses the challenge of systematically designing active sensing strategies, which are crucial for extracting otherwise inaccessible information in nonlinear systems but remain difficult to study and underutilized in engineering. The method introduces BOUNDS, a technique for discovering movement motifs that enhance information in sensory cues, and the Augmented Information Kalman Filter (AI-KF) to fuse neural network and model-based estimates from these active sensing bouts. Experimental results on a flying agent model and a quadcopter with GPS-denied data demonstrate that specific active movements improve estimates of ground speed, altitude, and wind direction.</div>
+<div class="mono" style="margin-top:8px">本研究旨在解决主动感知策略系统化设计的难题，该策略在生物系统中常见但在工程系统中未充分利用，通过传感器运动在非线性系统中提取原本无法获取的信息。方法上提出了BOUNDS，用于发现增强信息编码的运动模式，以及增强信息卡尔曼滤波器（AI-KF）来融合来自这些主动感知时段的神经网络和基于模型的估计。在飞行代理模型和四旋翼无人机数据上的实验结果表明，特定的主动运动改善了地速、高度和风向的估计，证明了该方法在传感器最小化自主系统和生物研究中的实用性。</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Adaptive Data-Driven Min-Max MPC for Linear Time-Varying Systems</div>
+<div class="meta-line">Authors: Yifan Xie, Julian Berberich, Frank Allgöwer</div>
+<div class="meta-line">First: 2026-03-06T18:24:35+00:00 · Latest: 2026-03-06T18:24:35+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.06536v1">Abs</a> · <a href="https://arxiv.org/pdf/2603.06536v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In this paper, we propose an adaptive data-driven min-max model predictive control (MPC) scheme for discrete-time linear time-varying (LTV) systems. We assume that prior knowledge of the system dynamics and bounds on the variations are known, and that the states are measured online. Starting from an initial state-feedback gain derived from prior knowledge, the algorithm updates the state-feedback gain using online input-state data. To this end, a semidefinite program (SDP) is solved to minimize an upper bound on the infinite-horizon optimal cost and to derive a corresponding state-feedback gain. We prove that the resulting closed-loop system is exponentially stabilized and satisfies the constraints. Further, we extend the proposed scheme to LTV systems with process noise. The resulting closed-loop system is shown to be robustly stabilized to a robust positive invariant (RPI) set. Finally, the proposed methods are demonstrated by numerical simulations.</div></details>
+<details class="detail"><summary>中文标题/摘要</summary>
+<div class="mono"><b>标题：</b>线性时变系统的自适应数据驱动最小-最大模型预测控制</div>
+<div class="mono" style="margin-top:8px">本文针对离散时间线性时变系统，提出了一种自适应数据驱动的最小-最大模型预测控制方案。假设已知系统动态的先验知识及其变化范围，且状态可在线测量。算法从基于先验知识导出的初始状态反馈增益出发，利用在线输入-状态数据更新状态反馈增益。为此，通过求解半定规划来最小化无限时域最优成本的上界，并推导相应的状态反馈增益。我们证明所得闭环系统可实现指数稳定并满足约束条件。进一步，将所提方案扩展至存在过程噪声的线性时变系统，证明闭环系统可鲁棒稳定至一个鲁棒正不变集。最后通过数值仿真验证了所提方法的有效性。</div>
+</details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper addresses the challenge of controlling linear time-varying systems with uncertain dynamics by proposing an adaptive data-driven min-max model predictive control scheme. The method leverages prior knowledge of system dynamics and variation bounds, starting from an initial state-feedback gain and updating it online using input-state data via a semidefinite program to minimize an upper bound on the infinite-horizon cost. Experimental results demonstrate that the closed-loop system is exponentially stabilized while satisfying constraints, and the approach is extended to handle process noise, achieving robust stabilization to a robust positive invariant set.</div>
+<div class="mono" style="margin-top:8px">本研究针对具有不确定动态的线性时变系统控制问题，提出了一种自适应数据驱动的最小-最大模型预测控制方案。该方法利用系统动态和变化范围的先验知识，从初始状态反馈增益出发，通过求解最小化无限时域最优成本上界的半定规划，利用在线输入-状态数据持续更新反馈增益。实验结果表明，所提出的闭环系统能够实现指数稳定并满足约束条件，扩展到含过程噪声的系统时，能够鲁棒稳定至一个鲁棒正不变集。</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>

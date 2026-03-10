@@ -16,7 +16,6 @@ keywords:
   # ======================
   ## 3.1 通用AI术语
   - "artificial intelligence"
-  
   ## 3.2 具体算法模型
   - "physics informed neural network"  # 结合物理信息的神经网络
   ## 3.3 AI应用场景
@@ -24,7 +23,6 @@ keywords:
   # 4. 数据驱动方法 (Data-driven Methods) [新增]
   # ======================
   - "data-driven"
-  - "model-free"
   # ======================
   # 5. 现代电力系统场景 (Modern Scenarios)
   # ======================
@@ -35,8 +33,8 @@ keywords:
 #   - "Large Language Model"
 #   - "LLM"
   
-logic: "OR"                 # 组间逻辑：categories 与 keywords 间 AND/OR
-max_results: 3
+logic: "AND"                 # 组间逻辑：categories 与 keywords 间 AND/OR
+max_results: 10
 sort_by: "lastUpdatedDate"  # 还可以是submittedDate 建议改成lastUpdatedDate按更新时间排，能捞到v2/v3的“新增”
 sort_order: "descending"
 

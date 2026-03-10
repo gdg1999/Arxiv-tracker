@@ -1,0 +1,286 @@
+[
+  {
+    "id": "http://arxiv.org/abs/2306.09445v3",
+    "title": "Utility Theory based Cognitive Modeling in the Application of Robotics: A Survey",
+    "authors": [
+      "Qin Yang"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.RO",
+      "cs.AI",
+      "cs.MA",
+      "cs.NE",
+      "eess.SY"
+    ],
+    "published": "2023-06-15T18:55:48+00:00",
+    "updated": "2026-03-09T03:06:26+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Cognitive modeling, which explores the essence of cognition, including motivation, emotion, and perception, has been widely applied in the artificial intelligence (AI) agent domains, such as robotics. From the computational perspective, various cognitive functionalities have been developed through utility theory to provide a detailed and process-based understanding for specifying corresponding computational models of representations, mechanisms, and processes. Especially for decision-making and learning in multi-agent/robot systems (MAS/MRS), a suitable cognitive model can guide agents in choosing reasonable strategies to achieve their current needs and learning to cooperate and organize their behaviors, optimizing the system's utility, building stable and reliable relationships, and guaranteeing each group member's sustainable development, similar to the human society. This survey examines existing robotic systems for developmental cognitive models in the context of utility theory. We discuss the evolution of cognitive modeling in robotics from behavior-based robotics (BBR) and cognitive architectures to the properties of value systems in robots, such as the studies on motivations as artificial value systems, and the utility theory based cognitive modeling for generating and updating strategies in robotic interactions. Then, we examine the extent to which existing value systems support the application of robotics from an AI agent cognitive modeling perspective, including single-agent and multi-agent systems, trust among agents, and human-robot interaction. Finally, we survey the existing literature of current value systems in relevant fields and propose several promising research directions, along with some open problems that we deem necessary for further investigation.",
+    "html_url": "https://arxiv.org/abs/2306.09445v3",
+    "pdf_url": "https://arxiv.org/pdf/2306.09445v3",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.02526v2",
+    "title": "Event-Driven Safe and Resilient Control of Automated and Human-Driven Vehicles under EU-FDI Attacks",
+    "authors": [
+      "Yi Zhang",
+      "Yichao Wang",
+      "Wei Xiao",
+      "Mohamadamin Rajabinezhad",
+      "Shan Zuo"
+    ],
+    "primary_category": null,
+    "categories": [
+      "eess.SY"
+    ],
+    "published": "2026-03-03T02:22:54+00:00",
+    "updated": "2026-03-09T01:52:29+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "This paper studies the safe and resilient control of Connected and Automated Vehicles (CAVs) operating in mixed traffic environments where they must interact with Human-Driven Vehicles (HDVs) under uncertain dynamics and exponentially unbounded false data injection (EU-FDI) attacks. These attacks pose serious threats to safety-critical applications. While resilient control strategies can mitigate adversarial effects, they often overlook collision avoidance requirements. Conversely, safety-critical approaches tend to assume nominal operating conditions and lack resilience to adversarial inputs. To address these challenges, we propose an event-driven safe and resilient (EDSR) control framework that integrates event-driven Control Barrier Functions (CBFs) and Control Lyapunov Functions (CLFs) with adaptive attack-resilient control. The framework further incorporates data-driven estimation of HDV behaviors to ensure safety and resilience against EU-FDI attacks. Specifically, we focus on the lane-changing maneuver of CAVs in the presence of unpredictable HDVs and EU-FDI attacks on acceleration inputs. The event-driven approach reduces computational load while maintaining real-time safety guarantees. Simulation results, including comparisons with conventional safety-critical control methods that lack resilience, validate the effectiveness and robustness of the proposed EDSR framework in achieving collision-free maneuvers, stable velocity regulation, and resilient operation under adversarial conditions.",
+    "html_url": "https://arxiv.org/abs/2603.02526v2",
+    "pdf_url": "https://arxiv.org/pdf/2603.02526v2",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.07601v1",
+    "title": "VB-NET: A physics-constrained gray-box deep learning framework for modeling air conditioning systems as virtual batteries",
+    "authors": [
+      "Yuchen Qi",
+      "Ye Guo",
+      "Yinliang Xu"
+    ],
+    "primary_category": null,
+    "categories": [
+      "eess.SY"
+    ],
+    "published": "2026-03-08T12:13:13+00:00",
+    "updated": "2026-03-08T12:13:13+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "The increasing penetration of renewable energy necessitates unlocking demand-side flexibility. While air conditioning (AC) systems offer significant thermal inertia, existing physical and data-driven models struggle with parameter acquisition, interpretability, and data scarcity. This paper proposes VB-NET, a physics-constrained gray-box deep learning framework that transforms complex AC thermodynamics into a standardized Virtual Battery (VB) model. We first mathematically prove the isomorphic equivalence between the AC and VB models. Subsequently, VB-NET is designed to strictly enforces physical laws by decoupling shared meteorological drivers from private building thermal fingerprints and embedding a differentiable physics layer. Experimental results demonstrate that VB-NET significantly outperforms conventional black-box models in state of charge tracking while successfully recovering underlying thermodynamic laws to yield physically consistent parameters. Furthermore, utilizing multi-task learning and terminal sensitivity modulation, VB-NET overcomes the cold-start dilemma, achieving high-precision modeling for new AC units using only 2% to 6% of historical data. Ultimately, this study provides an interpretable and data-efficient pathway for aggregating decentralized AC resources for grid regulation.",
+    "html_url": "https://arxiv.org/abs/2603.07601v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.07601v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.07413v1",
+    "title": "Machine Learning for the Internet of Underwater Things: From Fundamentals to Implementation",
+    "authors": [
+      "Kenechi Omeke",
+      "Attai Abubakar",
+      "Michael Mollel",
+      "Lei Zhang",
+      "Qammer H. Abbasi",
+      "Muhammad Ali Imran"
+    ],
+    "primary_category": null,
+    "categories": [
+      "eess.SY",
+      "cs.AI"
+    ],
+    "published": "2026-03-08T01:54:35+00:00",
+    "updated": "2026-03-08T01:54:35+00:00",
+    "comments": "78 pages, 14 figures,",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "The Internet of Underwater Things (IoUT) is becoming a critical infrastructure for ocean observation, marine resource management, and climate science. Its development is hindered by severe acoustic attenuation, propagation delays far exceeding those of terrestrial wireless systems, strict energy constraints, and dynamic topologies shaped by ocean currents. Machine learning (ML) has emerged as a key enabler for addressing these limitations, offering data driven mechanisms that enhance performance across all layers of underwater wireless sensor networks. This tutorial survey synthesises ML methodologies supervised, unsupervised, reinforcement, and deep learning specifically contextualised for underwater communication environments. It outlines the algorithmic principles of each paradigm and examines the conditions under which particular approaches deliver superior performance. A layer wise analysis highlights physical layer gains in localisation and channel estimation, MAC layer adaptations that improve channel utilisation, network layer routing strategies that extend operational lifetime, and transport layer mechanisms capable of reducing packet loss by up to 91 percent. At the application layer, ML enables substantial data compression and object detection accuracies reaching 92 percent. Drawing on 300 studies from 2012 to 2025, the survey documents energy efficiency gains of 7 to 29 times, throughput improvements over traditional protocols, and cross layer optimisation benefits of up to 42 percent. It also identifies persistent barriers, including limited datasets, computational constraints, and the gap between theoretical models and real world deployment. The survey concludes with emerging research directions and a technology roadmap supporting ML adoption in operational underwater networks.",
+    "html_url": "https://arxiv.org/abs/2603.07413v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.07413v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.07395v1",
+    "title": "Online Tracking with Predictions for Nonlinear Systems with Koopman Linear Embedding",
+    "authors": [
+      "Chih-Fan Pai",
+      "Xu Shang",
+      "Jiachen Qian",
+      "Yang Zheng"
+    ],
+    "primary_category": null,
+    "categories": [
+      "math.OC",
+      "eess.SY"
+    ],
+    "published": "2026-03-08T00:54:56+00:00",
+    "updated": "2026-03-08T00:54:56+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "We study the problem of online tracking in unknown nonlinear dynamical systems, where only short-horizon predictions of future target states are available. This setting arises in practical scenarios where full future information and exact system dynamics are unavailable. We focus on a class of nonlinear systems that admit a Koopman linear embedding, enabling the dynamics to evolve linearly in a lifted space. Exploiting this structure, we analyze a model-free predictive tracking algorithm based on Willems' fundamental lemma, which imposes dynamic constraints using only past data within a receding-horizon control framework. We show that, for Koopman-linearizable systems, the cumulative cost and dynamic regret of the nonlinear tracking problem coincide with those of the lifted linear counterpart. Moreover, we prove that the dynamic regret of our algorithm decays exponentially with the prediction horizon, as validated by numerical experiments.",
+    "html_url": "https://arxiv.org/abs/2603.07395v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.07395v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2410.16546v3",
+    "title": "Transformers as Implicit State Estimators: In-Context Learning in Dynamical Systems",
+    "authors": [
+      "Usman Akram",
+      "Haris Vikalo"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.LG",
+      "eess.SY"
+    ],
+    "published": "2024-10-21T22:18:10+00:00",
+    "updated": "2026-03-07T08:10:03+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Predicting the behavior of a dynamical system from noisy observations of its past outputs is a classical problem encountered across engineering and science. For linear systems with Gaussian inputs, the Kalman filter -- the best linear minimum mean-square error estimator of the state trajectory -- is optimal in the Bayesian sense. For nonlinear systems, Bayesian filtering is typically approached using suboptimal heuristics such as the Extended Kalman Filter (EKF), or numerical methods such as particle filtering (PF). In this work, we show that transformers, employed in an in-context learning (ICL) setting, can implicitly infer hidden states in order to predict the outputs of a wide family of dynamical systems, without test-time gradient updates or explicit knowledge of the system model. Specifically, when provided with a short context of past input-output pairs and, optionally, system parameters, a frozen transformer accurately predicts the current output. In linear-Gaussian regimes, its predictions closely match those of the Kalman filter; in nonlinear regimes, its performance approaches that of EKF and PF. Moreover, prediction accuracy degrades gracefully when key parameters, such as the state-transition matrix, are withheld from the context, demonstrating robustness and implicit parameter inference. These findings suggest that transformer in-context learning provides a flexible, non-parametric alternative for output prediction in dynamical systems, grounded in implicit latent-state estimation.",
+    "html_url": "https://arxiv.org/abs/2410.16546v3",
+    "pdf_url": "https://arxiv.org/pdf/2410.16546v3",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.06962v1",
+    "title": "A SISA-based Machine Unlearning Framework for Power Transformer Inter-Turn Short-Circuit Fault Localization",
+    "authors": [
+      "Nanhong Liu",
+      "Jingyi Yan",
+      "Mucun Sun",
+      "Jie Zhang"
+    ],
+    "primary_category": null,
+    "categories": [
+      "eess.SY",
+      "cs.LG"
+    ],
+    "published": "2026-03-07T00:49:21+00:00",
+    "updated": "2026-03-07T00:49:21+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "In practical data-driven applications on electrical equipment fault diagnosis, training data can be poisoned by sensor failures, which can severely degrade the performance of machine learning (ML) models. However, once the ML model has been trained, removing the influence of such harmful data is challenging, as full retraining is both computationally intensive and time-consuming. To address this challenge, this paper proposes a SISA (Sharded, Isolated, Sliced, and Aggregated)-based machine unlearning (MU) framework for power transformer inter-turn short-circuit fault (ITSCF) localization. The SISA method partitions the training data into shards and slices, ensuring that the influence of each data point is isolated within specific constituent models through independent training. When poisoned data are detected, only the affected shards are retrained, avoiding retraining the entire model from scratch. Experiments on simulated ITSCF conditions demonstrate that the proposed framework achieves almost identical diagnostic accuracy to full retraining, while reducing retraining time significantly.",
+    "html_url": "https://arxiv.org/abs/2603.06962v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.06962v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2510.04436v3",
+    "title": "PAD-TRO: Projection-Augmented Diffusion for Direct Trajectory Optimization",
+    "authors": [
+      "Jushan Chen",
+      "Santiago Paternain"
+    ],
+    "primary_category": null,
+    "categories": [
+      "cs.RO",
+      "eess.SY"
+    ],
+    "published": "2025-10-06T02:06:58+00:00",
+    "updated": "2026-03-06T21:15:31+00:00",
+    "comments": "Final manuscript. Accepted for publication at the 2026 American Control Conference",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "Recently, diffusion models have gained popularity and attention in trajectory optimization due to their capability of modeling multi-modal probability distributions. However, addressing nonlinear equality constraints, i.e, dynamic feasibility, remains a great challenge in diffusion-based trajectory optimization. Recent diffusion-based trajectory optimization frameworks rely on a single-shooting style approach where the denoised control sequence is applied to forward propagate the dynamical system, which cannot explicitly enforce constraints on the states and frequently leads to sub-optimal solutions. In this work, we propose a novel direct trajectory optimization approach via model-based diffusion, which directly generates a sequence of states. To ensure dynamic feasibility, we propose a gradient-free projection mechanism that is incorporated into the reverse diffusion process. Our results show that, compared to a recent state-of-the-art baseline, our approach leads to zero dynamic feasibility error and approximately 4x higher success rate in a quadrotor waypoint navigation scenario involving dense static obstacles.",
+    "html_url": "https://arxiv.org/abs/2510.04436v3",
+    "pdf_url": "https://arxiv.org/pdf/2510.04436v3",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2511.08766v2",
+    "title": "Discovering and exploiting active sensing motifs for estimation",
+    "authors": [
+      "Benjamin Cellini",
+      "Burak Boyacioglu",
+      "Austin Lopez",
+      "Floris van Breugel"
+    ],
+    "primary_category": null,
+    "categories": [
+      "eess.SY",
+      "math.DS"
+    ],
+    "published": "2025-11-11T20:38:08+00:00",
+    "updated": "2026-03-06T19:36:25+00:00",
+    "comments": "24 pages, 11 figures",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "From organisms to machines, autonomous systems rely on measured sensory cues to estimate unknown information about themselves or their environment. For nonlinear systems, strategic sensor motion can be leveraged to extract otherwise inaccessible information. This principle, known as active sensing, is widespread in biology yet difficult to study, and remains underutilized in engineered systems due to the challenge of systematically designing active sensing motifs. Here, we introduce the method ``BOUNDS: Bounding Observability for Uncertain Nonlinear Dynamic Systems\", and Python package pybounds, which can discover movement motifs that increase the information encoded in sensory cues. To exploit sporadic estimates from bouts of active sensing, we further introduce the Augmented Information Kalman Filter (AI-KF). The AI-KF uses insight from BOUNDS to dynamically fuse neural network and model-based estimation. We demonstrate BOUNDS and the AI-KF on a flying agent model and experimental GPS-denied data from a quadcopter, revealing how specific active movements improve estimates of ground speed, altitude, and wind direction. Altogether, our work will prove useful for designing sensor-minimal autonomous systems and investigating active sensing in living organisms.",
+    "html_url": "https://arxiv.org/abs/2511.08766v2",
+    "pdf_url": "https://arxiv.org/pdf/2511.08766v2",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  },
+  {
+    "id": "http://arxiv.org/abs/2603.06536v1",
+    "title": "Adaptive Data-Driven Min-Max MPC for Linear Time-Varying Systems",
+    "authors": [
+      "Yifan Xie",
+      "Julian Berberich",
+      "Frank Allgöwer"
+    ],
+    "primary_category": null,
+    "categories": [
+      "eess.SY"
+    ],
+    "published": "2026-03-06T18:24:35+00:00",
+    "updated": "2026-03-06T18:24:35+00:00",
+    "comments": "",
+    "journal_ref": null,
+    "venue_inferred": null,
+    "summary": "In this paper, we propose an adaptive data-driven min-max model predictive control (MPC) scheme for discrete-time linear time-varying (LTV) systems. We assume that prior knowledge of the system dynamics and bounds on the variations are known, and that the states are measured online. Starting from an initial state-feedback gain derived from prior knowledge, the algorithm updates the state-feedback gain using online input-state data. To this end, a semidefinite program (SDP) is solved to minimize an upper bound on the infinite-horizon optimal cost and to derive a corresponding state-feedback gain. We prove that the resulting closed-loop system is exponentially stabilized and satisfies the constraints. Further, we extend the proposed scheme to LTV systems with process noise. The resulting closed-loop system is shown to be robustly stabilized to a robust positive invariant (RPI) set. Finally, the proposed methods are demonstrated by numerical simulations.",
+    "html_url": "https://arxiv.org/abs/2603.06536v1",
+    "pdf_url": "https://arxiv.org/pdf/2603.06536v1",
+    "code_urls": [
+      "https://huggingface.co/huggingface",
+      "https://huggingface.co/docs/hub/spaces"
+    ],
+    "project_urls": [],
+    "other_urls": []
+  }
+]
