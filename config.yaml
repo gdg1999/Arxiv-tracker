@@ -1,19 +1,42 @@
-categories: ["cs.CV", "cs.LG", "cs.AI"]
+categories: ["eess.SY"]  # 主要类别：Systems and Control
+
 keywords:
-  - "open vocabulary"
-  - "open-vocabulary"
-  - "open vocabulary segmentation"
-  - "open-vocabulary segmentation"
-  - "vision language model"
-  - "training-free"
-  - "training free"
+  # ======================
+  # 1. 核心稳定性问题 (Core Stability Issues)
+  # ======================
+  - "transient stability"
+  - "frequency stability"
+  - "small-signal stability"
+  # ======================
+  # 2. 微分方程方法 (Differential Equation Methods) [新增]
+  # ======================
+  - "dynamical systems"
+  # ======================
+  # 3. 人工智能方法 (AI Methods) [新增]
+  # ======================
+  ## 3.1 通用AI术语
+  - "artificial intelligence"
+  
+  ## 3.2 具体算法模型
+  - "physics informed neural network"  # 结合物理信息的神经网络
+  ## 3.3 AI应用场景
+  # ======================
+  # 4. 数据驱动方法 (Data-driven Methods) [新增]
+  # ======================
+  - "data-driven"
+  - "model-free"
+  # ======================
+  # 5. 现代电力系统场景 (Modern Scenarios)
+  # ======================
+  - "inverter-based resources"
+
 
 # exclude_keywords: # 选择排除的关键词
 #   - "Large Language Model"
 #   - "LLM"
   
-logic: "AND"                 # 组间逻辑：categories 与 keywords 间 AND/OR
-max_results: 30
+logic: "OR"                 # 组间逻辑：categories 与 keywords 间 AND/OR
+max_results: 3
 sort_by: "lastUpdatedDate"  # 还可以是submittedDate 建议改成lastUpdatedDate按更新时间排，能捞到v2/v3的“新增”
 sort_order: "descending"
 
@@ -31,7 +54,7 @@ summary:
 email:
   enabled: true
   subject: "[arXiv] Daily Digest"
-  smtp_server: "smtp.qq.com"
+  smtp_server: "EMAIL_SENDER"
   smtp_port: 465
   smtp_pass_env: "SMTP_PASS"
   tls: "ssl"  # auto / ssl / starttls
@@ -45,13 +68,13 @@ email:
 llm:
   provider: "openai-compatible"     # 兼容 OpenAI SDK 的服务
   # 硅基流动的版本
-  base_url: "https://api.siliconflow.cn"
-  model: "Qwen/Qwen2.5-7B-Instruct"
-  api_key_env: "OPENAI_COMPAT_API_KEY"
+  # base_url: "https://api.siliconflow.cn"
+  # model: "Qwen/Qwen2.5-7B-Instruct"
+  # api_key_env: "OPENAI_COMPAT_API_KEY"
   # Deepseek的版本
-  # base_url: "https://api.deepseek.com"
-  # model: "deepseek-chat"
-  # api_key_env: "DS_API_KEY"
+  base_url: "https://api.deepseek.com"
+  model: "deepseek-chat"
+  api_key_env: "arxiv_api"
   
 
   system_prompt_en: |
