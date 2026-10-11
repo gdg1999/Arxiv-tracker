@@ -1,0 +1,410 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-12 06:35</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261012_0635</div>
+    <div class="row"><div class="card">
+<div class="title">Predefined-Time Integral Reinforcement Learning for Unknown Nonlinear Systems via Inverse-Optimal Design</div>
+<div class="meta-line">Authors: Tien Dat Vu</div>
+<div class="meta-line">First: 2026-10-08T15:03:38+00:00 · Latest: 2026-10-08T15:03:38+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.12103v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.12103v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper develops a new predefined-time integral reinforcement learning framework for optimal control of unknown nonlinear systems. The unknown drift is first approximated by a radial basis function (RBF) neural network, together with a data-driven online identification law for updating the corresponding neural weights. After the identifier converges to a sufficiently small neighborhood of the true dynamics, the learned model is incorporated into the integral reinforcement learning (IRL) problem. Unlike conventional reinforcement-learning-based optimal control, the desired convergence time is introduced directly into the control objective: a Lyapunov function and its prescribed decay behavior are specified by the designer, and inverse-optimal control is then used to construct a compatible running cost whose optimal policy inherits the predefined-time stabilization property. The value function is approximated by a second RBF neural network, and a new critic update law is developed to impose predefined-time convergence on the critic weights. Finite informative learning data are stored in a replay buffer and reused during the critic update, thereby avoiding the need for persistent excitation throughout the closed-loop operation. Theoretical analysis proves that the critic-weight error enters a prescribed residual set within the allocated learning horizon, while the closed-loop state reaches a small neighborhood of the origin within the overall designer-specified deadline. Numerical simulations on an unknown nonlinear system verify accurate drift reconstruction, predefined-time critic learning, and closed-loop convergence.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper develops a new predefined-time integral reinforcement learning framework for optimal control of unknown nonlinear systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">RobustLDS: Learning linear dynamical systems under adversarial corruptions</div>
+<div class="meta-line">Authors: Aravinda Kanchana Ruwanpathirana, Hemant Tyagi</div>
+<div class="meta-line">First: 2026-10-08T13:08:25+00:00 · Latest: 2026-10-08T13:08:25+00:00</div>
+<div class="meta-line">Comments: 40 pages, 8 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.11906v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.11906v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We consider the problem of learning linear dynamical systems under adversarial contamination from a single trajectory of length $T$. While identification of linear dynamical systems itself is well-studied, the problem of robust system identification under adversarial contamination is relatively less explored. In this work, we study the setting where a fraction of the $T$ observations are contaminated by adversarial outliers. We propose different estimators based on relaxations of least-trimmed squares along with an alternating minimization algorithm. Furthermore, we also propose two estimators which exploit the group-sparsity (through penalization/hard-constraints) of the outliers. For the estimator with group-sparse penalty, we derive non-asymptotic error bounds which establish its robustness to outliers. We also show empirically that the proposed estimators work well in practice.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We consider the problem of learning linear dynamical systems under adversarial contamination from a single trajectory of length $T$.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning structured linear dynamical systems from missing observations</div>
+<div class="meta-line">Authors: Aravinda Kanchana Ruwanpathirana, Hemant Tyagi, Sunny G. W. Wang</div>
+<div class="meta-line">First: 2026-10-08T12:44:53+00:00 · Latest: 2026-10-08T12:44:53+00:00</div>
+<div class="meta-line">Comments: 62 pages, 3 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.11869v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.11869v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We consider the problem of learning structured linear dynamical systems over convex sets $\mathcal{K}$, where only a small subset of the observations are available at each time point. An estimator which minimizes a bias-corrected, potentially non-convex objective function is proposed. Non-asymptotic bounds are obtained for the statistical error, which depend on the local complexity of $\mathcal{K}$, the trajectory length $T$, and the sub-sampling probability $p$. Convergence of the projected gradient descent algorithm is also established. The general theory is applied to settings where (i) $\mathcal{K}$ is a subspace, (ii) $\mathcal{K}$ is the set of bi-isotonic matrices, and (iii) $\mathcal{K}$ is the set of matrices whose rows are formed by sampling Lipschitz functions. We show meaningful recovery of the transition matrix is possible for values of $T$ much smaller than what is required in the unconstrained case, and for $p = o(1)$.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We consider the problem of learning structured linear dynamical systems over convex sets $\mathcal{K}$, where only a small subset of the observations are available at each time point.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">An Information Theory of Finite Abstractions and their Fundamental Scalability Limits</div>
+<div class="meta-line">Authors: Giannis Delimpaltadakis, Gabriel Gleizer</div>
+<div class="meta-line">First: 2025-12-03T17:06:54+00:00 · Latest: 2026-10-08T11:25:27+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.03977v5">Abs</a> · <a href="https://arxiv.org/pdf/2512.03977v5">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Finite abstractions are discrete models of dynamical systems, such that the set of abstraction trajectories contains all system trajectories. There is a consensus that abstractions suffer from a scalability bottleneck: to obtain a sufficient ``accuracy&quot; (how closely the abstraction models the system), the required abstraction size often becomes very large, rendering computation infeasible. This is accentuated for complex, high-dimensional systems, due to the curse of dimensionality. Yet, after decades of research, there are no formal results on the size-accuracy tradeoff of abstractions. Here, we derive a statistical, quantitative theory of the size-accuracy tradeoff of abstractions of autonomous deterministic systems and uncover fundamental limits on their scalability, through rate-distortion theory---the information theory of lossy compression. Abstractions are viewed as encoder-decoder pairs, encoding trajectories of dynamical systems. Rate measures abstraction size, while distortion describes accuracy, defined as the spatial average deviation between abstract trajectories and system ones. We obtain a fundamental lower bound on the minimum achievable abstraction distortion, given the system dynamics and the abstraction size; and vice-versa a lower bound on the minimum required size, for given distortion. The bound depends on the complexity of the dynamics, through trajectory entropy and a constant depending on the trajectory manifold&#x27;s geometry. We demonstrate its tightness on some dynamical systems. Finally, we showcase how this new theory enables constructing minimal abstractions, optimizing the size-accuracy tradeoff, through an example on a chaotic system.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Finite abstractions are discrete models of dynamical systems, such that the set of abstraction trajectories contains all system trajectories.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Virtual Smart Metering in District Heating Networks via Heterogeneous Spatial-Temporal Graph Neural Networks</div>
+<div class="meta-line">Authors: Keivan Faghih Niresi, Christian Møller Jensen, Carsten Skovmose Kallesøe, Rafael Wisniewski, Olga Fink</div>
+<div class="meta-line">First: 2026-04-11T11:27:06+00:00 · Latest: 2026-10-08T11:23:49+00:00</div>
+<div class="meta-line">Comments: Accepted to Energy and Buildings</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.10166v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.10166v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Intelligent operation of thermal energy networks aims to improve energy efficiency, reliability, and operational flexibility through data-driven control, predictive optimization, and early fault detection. Achieving these goals relies on sufficient observability, requiring continuous and well-distributed monitoring of thermal and hydraulic states. However, district heating systems are typically sparsely instrumented and frequently affected by sensor faults, limiting monitoring. Virtual sensing offers a cost-effective means to enhance observability, yet its development and validation remain limited in practice. Existing data-driven methods generally assume dense synchronized data, while analytical models rely on simplified hydraulic and thermal assumptions that may not adequately capture the behavior of heterogeneous network topologies. Consequently, modeling the coupled nonlinear dependencies between pressure, flow, and temperature under realistic operating conditions remains challenging. In addition, the lack of publicly available benchmark datasets hinders systematic comparison of virtual sensing approaches. To address these challenges, we propose a heterogeneous spatial-temporal graph neural network (HSTGNN) for constructing virtual smart heat meters. The model incorporates the functional relationships inherent in district heating networks and employs dedicated branches to learn graph structures and temporal dynamics for flow, temperature, and pressure measurements, thereby enabling the joint modeling of cross-variable and spatial correlations. To support further research, we introduce a controlled laboratory dataset collected at the Aalborg Smart Water Infrastructure Laboratory, providing synchronized high-resolution measurements representative of real operating conditions. Extensive experiments demonstrate that the proposed approach significantly outperforms existing baselines.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Intelligent operation of thermal energy networks aims to improve energy efficiency, reliability, and operational flexibility through data-driven control, predictive optimization, and early fault detection.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Causal-fate dynamics of unrealized influence</div>
+<div class="meta-line">Authors: Yiwei Liu, Luwei Yang, Shunbo Lei</div>
+<div class="meta-line">First: 2026-10-08T07:48:53+00:00 · Latest: 2026-10-08T07:48:53+00:00</div>
+<div class="meta-line">Comments: 39 pages (20-page main text and 19-page Supplementary Information), 6 figures, 14 supplementary tables. Code: https://github.com/Hotaru366/causal-fate-code</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.11422v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.11422v1">PDF</a> · <a href="https://github.com/Hotaru366/causal-fate-code">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Many dynamical systems generate influences whose consequences are not fully exhausted in the realized trajectory at the moment they arise. Such consequences are often treated as absent, delayed or statically stored, leaving unclear how unrealized influence retains future relevance as the system evolves. Here we formulate causal-fate dynamics, in which generated influence may be realized, remain latent, or be transformed by subsequent dynamics, and give an exact finite-transport representation when the relevant maps are specified. A connectome-constrained Caenorhabditis elegans model first motivates the biological hypothesis that unresolved inter-neuronal influence may persist and contribute to later propagation; it does not establish such a mechanism in living animals. We next examine operational Internet routing, where a dynamically updated cross-observer history retains predictive information beyond the current local route state. We then use the representation to construct a Transformer architecture that explicitly transports and selectively realizes latent contextual influence while retaining language-modeling function. The three studies distinguish a model-motivated scientific hypothesis, an observational phenomenon compatible with future-relevant history and an executable construction for carrying unrealized influence through subsequent computation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Many dynamical systems generate influences whose consequences are not fully exhausted in the realized trajectory at the moment they arise.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Koopman operator theory: fundamentals, control, and applications</div>
+<div class="meta-line">Authors: Igor Mezić, Jorge Cortés, Karl Worthmann, Mircea Lazar, Armin Lederer</div>
+<div class="meta-line">First: 2026-07-02T07:31:47+00:00 · Latest: 2026-10-08T07:30:38+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.01819v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.01819v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The Koopman operator has gained considerable attention due to its ability to provide a global linear representation of highly complex dynamical systems. The operator describes nonlinear dynamics in a linear way through the lens of real- or complex-valued observable functions. Data-driven techniques, like extended dynamic mode decomposition (EDMD), kernel EDMD, and machine-learning methods, can be used to generate finite-dimensional approximations accompanied by finite-data error bounds. In this tutorial paper, we provide a concise introduction into Koopman operator theory and its use in systems and control. A particular focus is put on data-driven surrogate models, their extension to systems with inputs, and controller design using Koopman operator theory. Moreover, we demonstrate the key techniques, i.e., EDMD and Koopman MPC. To this end, we provide simulation studies including source code on GitHub to enable the interested reader to experience the Koopman operator in systems and control step by step.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The Koopman operator has gained considerable attention due to its ability to provide a global linear representation of highly complex dynamical systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Moving Horizon Estimation of Hybrid Systems Using Hybrid Zonotopes and Mixed-Integer Quadratic Programs</div>
+<div class="meta-line">Authors: Jonah J. Glunt, Herschel C. Pangborn</div>
+<div class="meta-line">First: 2026-10-07T20:33:39+00:00 · Latest: 2026-10-07T20:33:39+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.10883v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.10883v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Moving horizon estimation (MHE) is an estimation technique that formulates an optimization problem over a past horizon to find the states that require the minimum disturbances and noise to be feasible with the dynamics and measurements. For hybrid systems with both continuous and discrete states, this yields a mixed-integer program for the MHE, which can be difficult both to formulate and solve online under computational limitations. This paper shows how the hybrid zonotope representation for mixed-integer sets can be used to efficiently construct the feasible space for the program using reachability-based calculations for piecewise affine systems, without requiring conversion to a mixed logical dynamical system. A method for lifting the state space to explicitly estimate the dynamic mode is also presented. The proposed approach is evaluated in two numerical examples. Comparison against a standard mixed logical dynamical systems approach shows the proposed method can be solved orders of magnitude faster for one of the example problems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Moving horizon estimation (MHE) is an estimation technique that formulates an optimization problem over a past horizon to find the states that require the minimum disturbances and noise to be feasible with the dynamics and measurements.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Dynamic Mode Decomposition Approach to Parameter Identification</div>
+<div class="meta-line">Authors: Moad Abudia, Opeyemi Owolabi, Rushikesh Kamalapurkar</div>
+<div class="meta-line">First: 2026-04-20T19:47:10+00:00 · Latest: 2026-10-07T18:40:07+00:00</div>
+<div class="meta-line">Comments: 8 pages, 5 figures. Submitted to the 2027 IEEE American Control Conference</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.18783v3">Abs</a> · <a href="https://arxiv.org/pdf/2604.18783v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper develops a data-driven algorithm for simultaneous system and parameter identification in control-affine nonlinear systems. Parameter identification is achieved by training a data-driven predictive model using measurements collected across a prescribed set of known parameter values. The predictive model is then used to estimate unknown parameter values from measured trajectories by minimizing the trajectory prediction error using multi-start Nelder-Mead. Numerical experiments on the controlled Duffing oscillator with unknown damping, stiffness, and nonlinearity coefficients demonstrate accurate recovery of both the system trajectories and the unknown parameter values from data collected under open-loop excitation. Additional studies evaluate parameter recovery across randomly selected parameter values and the effects of training-set size, query-horizon length, measurement noise, and process noise.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper develops a data-driven algorithm for simultaneous system and parameter identification in control-affine nonlinear systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Anytime-Feasible First-Order Optimization via Safe Sequential QCQP</div>
+<div class="meta-line">Authors: Jiarui Wang, Mahyar Fazlyab</div>
+<div class="meta-line">First: 2025-11-24T20:17:50+00:00 · Latest: 2026-10-07T16:20:30+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2511.19675v2">Abs</a> · <a href="https://arxiv.org/pdf/2511.19675v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper presents the Safe Sequential Quadratically Constrained Quadratic Programming (SS-QCQP) algorithm, a first-order method for smooth inequality-constrained nonconvex optimization that guarantees feasibility at every iteration. The method is derived from a continuous-time dynamical system whose vector field is obtained by solving a convex QCQP that enforces monotonic descent of the objective and forward invariance of the feasible set. The resulting continuous-time dynamics achieve an $O(1/t)$ ergodic convergence rate for the stationarity measure under standard constraint qualification conditions. We then propose a safeguarded Euler discretization with adaptive step-size selection that preserves this convergence rate while maintaining both descent and feasibility in discrete time. To enhance scalability, we develop an active-set variant (SS-QCQP-AS) that selectively enforces constraints near the boundary, substantially reducing computational cost without compromising theoretical guarantees. Numerical experiments on a multi-agent nonlinear optimal control problem demonstrate that SS-QCQP and SS-QCQP-AS maintain feasibility, exhibit the predicted convergence behavior, and deliver solution quality comparable to second-order solvers such as SQP and IPOPT.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper presents the Safe Sequential Quadratically Constrained Quadratic Programming (SS-QCQP) algorithm, a first-order method for smooth inequality-constrained nonconvex optimization that guarantees feasibility at every iteration.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
