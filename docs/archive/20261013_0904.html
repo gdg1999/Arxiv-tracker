@@ -1,0 +1,415 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-13 09:04</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261013_0904</div>
+    <div class="row"><div class="card">
+<div class="title">Staggered Integral Online Conformal Prediction for Safe Dynamics Adaptation with Multi-Step Coverage Guarantees</div>
+<div class="meta-line">Authors: Daniel M. Cherenson, Dimitra Panagou</div>
+<div class="meta-line">First: 2026-04-07T16:44:06+00:00 · Latest: 2026-10-09T16:53:06+00:00</div>
+<div class="meta-line">Comments: Accepted to CDC 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.06058v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.06058v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Safety-critical control of uncertain, adaptive systems often relies on conservative, worst-case uncertainty bounds that limit closed-loop performance. Online conformal prediction is a powerful data-driven method for quantifying uncertainty when truth values of predicted outputs are revealed online; however, for systems that adapt the dynamics without measurements of the state derivatives, standard online conformal prediction is insufficient to quantify the model uncertainty. We propose Staggered Integral Online Conformal Prediction (SI-OCP), an algorithm utilizing an integral score function to quantify the lumped effect of disturbance and learning error. This approach provides long-run coverage guarantees, resulting in long-run safety when synthesized with safety-critical controllers, including robust tube model predictive control. Finally, we validate the proposed approach through a numerical simulation of an all-layer deep neural network (DNN) adaptive quadcopter using robust tube (MPC), highlighting the applicability of our method to complex learning parameterizations and control strategies.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Safety-critical control of uncertain, adaptive systems often relies on conservative, worst-case uncertainty bounds that limit closed-loop performance.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Fully Analog Implementation of Model Predictive Control with Application to Buck Converters</div>
+<div class="meta-line">Authors: Simone Pirrera, Lorenzo Calogero, Francesco Gabriele, Diego Regruto, Alessandro Rizzo, Gianluca Setti</div>
+<div class="meta-line">First: 2025-09-05T19:35:30+00:00 · Latest: 2026-10-09T16:30:49+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2509.05463v3">Abs</a> · <a href="https://arxiv.org/pdf/2509.05463v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper proposes a novel approach to design analog electronic circuits that implement Model Predictive Control (MPC) policies for dynamical systems described by affine models. Effective approaches to define a reduced-complexity explicit MPC are combined and applied to realize an analog circuit comprising a limited set of low-latency, commercially available components. The practical feasibility and effectiveness of the proposed approach are demonstrated through its application in the design of a novel controller for DC-DC Buck converters. We formally analyze the stability of the resulting system and conduct extensive numerical simulations to demonstrate the control system&#x27;s performance in rejecting line and load disturbances.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper proposes a novel approach to design analog electronic circuits that implement Model Predictive Control (MPC) policies for dynamical systems described by affine models.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning-Based Power Flow Estimation with Sparse PMU Deployment in Power Systems</div>
+<div class="meta-line">Authors: Van-Hai Bui, Quang Manh Hoang, Akhtar Hussain, Wencong Su</div>
+<div class="meta-line">First: 2026-10-09T14:48:38+00:00 · Latest: 2026-10-09T14:48:38+00:00</div>
+<div class="meta-line">Comments: 14</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.13683v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.13683v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Accurate monitoring of power flow is fundamental to the secure and reliable operation of modern power systems. Existing data-driven power flow estimation methods typically assume that synchronized measurements are available at every bus, requiring extensive deployment of phasor measurement units (PMUs). Such dense sensing infrastructures substantially increase installation, communication, and maintenance costs. This paper proposes a learning-based framework that minimizes the number of installed PMUs while maintaining high-accuracy systemwide power flow estimation. Instead of relying on measurements from all buses, the proposed method identifies an informative subset of buses whose synchronized measurements are sufficient to accurately reconstruct branch power flow across the network. To this end, a neural network is developed to learn the nonlinear relationship between PMU measurements and system-wide power flows, and multiple PMU deployment scenarios are evaluated to quantify the trade-off between measurement availability and estimation accuracy. The results enable utilities to identify cost-effective PMU placement strategies that balance deployment cost and prediction performance. Case studies on the IEEE 30-bus test system demonstrate that the proposed framework significantly reduces the number of required PMUs while maintaining accurate power flow estimation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Accurate monitoring of power flow is fundamental to the secure and reliable operation of modern power systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Asymptotic Analysis of Discrete-Time Self-Attention Dynamics in Transformers</div>
+<div class="meta-line">Authors: Claudio Altafini</div>
+<div class="meta-line">First: 2026-10-09T12:39:42+00:00 · Latest: 2026-10-09T12:39:42+00:00</div>
+<div class="meta-line">Comments: 16 pages, 3 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.13518v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.13518v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In machine learning, a self-attention dynamics describes the attention mechanism of transformers, and is obtained treating the layer index of a transformer as time index. Even though naturally discrete-time, this dynamical system is most often studied in continuous-time. Scope of this paper is to provide a thorough investigation of the discrete-time version of the self-attention dynamics: a complete classification of its equilibria is given, and their stability properties are studied, in both the single-head and the multihead case. We show that in both cases the main attractor of the dynamics is a consensus equilibrium aligned with the principal eigenvector of the value matrix (in the single-head case, a corresponding matrix of weights in the multihead case), even though other locally asymptotically stable bipartite equilibria can be show to exist at least in the single-head situation. The behavior is confirmed by looking at the learned weight matrices of a real transformer.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In machine learning, a self-attention dynamics describes the attention mechanism of transformers, and is obtained treating the layer index of a transformer as time index.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Hierarchical Graph Neural Network for Probabilistic Power Flow with Grid Topology Contingencies</div>
+<div class="meta-line">Authors: Jinbao Wang, Jun Liu, Shiliang Zhang, Xuehui Ma, Lin Yan, Haolin Liu, Sabita Maharjan</div>
+<div class="meta-line">Venue: IEEE Transactions on Industrial Informatics, 2026</div>
+<div class="meta-line">First: 2026-10-09T12:27:41+00:00 · Latest: 2026-10-09T12:27:41+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.13495v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.13495v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Data-driven surrogates reduce the nonlinear solves required for probabilistic power flow (PPF), but models tied to a fixed bus--branch graph often generalize poorly when outages change electrical coupling. This paper proposes a topology-decomposition-driven hierarchical bidirectional graph neural network (TDD--HBGNN) for PPF under unseen topologies. For each realized topology, the network is decomposed into fundamental topological units (FTUs), dynamically homogeneous voltage clusters (DHVCs), and a core backbone sub-grid (CBSG), with equivalent-admittance representations preserving electrical ports between units. A sensitivity-based linear prior captures the first-order voltage-magnitude and phase-angle response, while the HBGNN learns topology-dependent nonlinear residuals. Impedance- and uncertainty-aware bottom-up aggregation condenses local perturbations, while mode-modulated top-down broadcasting restores system context at buses. We evaluate our approach on the IEEE 118-bus and Polish 2746-bus systems under unseen N--1 and N--2 contingencies against six baseline methods. Compared with these methods, TDD--HBGNN achieves 2.47--4.20-fold lower all-bus phase-angle errors and lower phase-angle errors in every held-out event. Its voltage-magnitude advantage is concentrated near the outaged branches, where paired error ratios reach 1.75--2.58 on the IEEE system and 1.87--1.97 in Polish N--2 events. All system--contingency--baseline comparisons favor TDD--HBGNN in joint voltage--angle error. Moreover, shared hierarchical operators keep the model size at 0.658 million parameters across both grids and yield 0.161--1.793~ms forward latency per probabilistic case. These results demonstrate system-wide angular accuracy, outage-local voltage accuracy, and parameter-efficient scaling across unseen topologies.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Data-driven surrogates reduce the nonlinear solves required for probabilistic power flow (PPF), but models tied to a fixed bus--branch graph often generalize poorly when outages change electrical coupling.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-Driven Stochastic Optimal Control in Reproducing Kernel Hilbert Spaces</div>
+<div class="meta-line">Authors: Nicolas Hoischen, Petar Bevanda, Stefan Sosnowski, Sandra Hirche, Boris Houska</div>
+<div class="meta-line">Venue: Engineering Applications of Artificial Intelligence, 1 October 2026, Volume 181, Part 6, Article 115698</div>
+<div class="meta-line">First: 2024-07-23T11:53:03+00:00 · Latest: 2026-10-09T09:21:22+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2407.16407v3">Abs</a> · <a href="https://arxiv.org/pdf/2407.16407v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper proposes a fully data-driven approach for optimal control of nonlinear control-affine systems represented by a stochastic diffusion. The focus is on the scenario where both the nonlinear dynamics and stage cost functions are unknown, while only a control penalty function and constraints are provided. To this end, we embed state probability densities into a reproducing kernel Hilbert space (RKHS) to leverage recent advances in operator regression, thereby identifying Markov transition operators associated with controlled diffusion processes. This operator learning approach integrates naturally with convex operator-theoretic Hamilton-Jacobi-Bellman recursions that scale linearly with state dimensionality, effectively solving a wide range of nonlinear optimal control problems. Numerical results demonstrate its ability to address diverse nonlinear control tasks, including the depth regulation of an autonomous underwater vehicle.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper proposes a fully data-driven approach for optimal control of nonlinear control-affine systems represented by a stochastic diffusion.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Learning event-triggered controllers for linear parameter-varying systems from data</div>
+<div class="meta-line">Authors: Renjie Ma, Su Zhang, Wenjie Liu, Zhijian Hu, Peng Shi</div>
+<div class="meta-line">First: 2025-06-10T02:26:31+00:00 · Latest: 2026-10-09T06:10:38+00:00</div>
+<div class="meta-line">Comments: 15 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2506.08366v2">Abs</a> · <a href="https://arxiv.org/pdf/2506.08366v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Nonlinear dynamical behaviors in engineering applications can be approximated by linear-parameter varying (LPV) representations, but obtaining precise model knowledge to develop a control algorithm is difficult in practice. In this paper, we develop data-driven control strategies for event-triggered linear parameter-varying (LPV) systems with stability verifications. First, we theoretically analyze the $θ$-persistence of excitation condition for LPV systems, which leads to feasible data-based representations. Then, in terms of the available perturbed data, we establish the stability certificates for event-triggered LPV systems with the aid of Petersen&#x27;s lemma, in the sense of robust control, resulting in computationally tractable semidefinite programs whose feasible solutions yield the gain-scheduling controllers. Besides, we generalize the data-driven event-triggered LPV stabilization methods to the case of trajectory tracking, and discuss robust tracking stability accordingly. Finally, we verify the effectiveness of our theoretical derivations through numerical examples.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Nonlinear dynamical behaviors in engineering applications can be approximated by linear-parameter varying (LPV) representations, but obtaining precise model knowledge to develop a control algorithm is difficult in practice.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Fast-DeePC: Fast Data-Enabled Predictive Control using Soft-constrained Scheme</div>
+<div class="meta-line">Authors: Terry Zhang, Jan Drgona, Malika Sader, Di Liu, Liang Wu</div>
+<div class="meta-line">First: 2026-10-09T02:48:50+00:00 · Latest: 2026-10-09T02:48:50+00:00</div>
+<div class="meta-line">Comments: 8 pages, submission to ACC 2027</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.12902v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.12902v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Data-enabled predictive control (DeePC) replaces the explicit system model of model predictive control with a data-driven predictor built directly from recorded input-output trajectories, but the original hard-equality formulation keeps its coordinate vector as an online decision variable whose size grows with the offline data length, so the online problem grows more expensive as more data is used to enrich the behavioral representation. This article proposes Fast-DeePC, a framework which relaxes this consistency relation into the control objective with a quadratic ridge on the coordinate vector in place of the customary sparsity-promoting penalty, admitting a closed-form, offline elimination of the coordinate vector and reducing the online problem to a fixed-size box-constrained quadratic program solved by a structure-exploiting interior-point method. On identical soft quadratically regularized problems, the result matches a general-purpose solver&#x27;s solution and is up to two orders of magnitude faster.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Data-enabled predictive control (DeePC) replaces the explicit system model of model predictive control with a data-driven predictor built directly from recorded input-output trajectories, but the original hard-equality formulation keeps its coordinate vector as an online decision variable whose size grows with the offline data length, so the online problem grows more expensive as more data is used to enrich the behavioral representation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Symbolic-Permutation-Based Direct Sparse Jacobian Assembly for Accelerated Power-Flow Analysis</div>
+<div class="meta-line">Authors: Tianshi Cheng, Venkata Dinavahi</div>
+<div class="meta-line">First: 2026-10-08T19:21:39+00:00 · Latest: 2026-10-08T19:21:39+00:00</div>
+<div class="meta-line">Comments: 9 pages, 3 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.12654v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.12654v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The repeated assembly of the sparse Jacobian matrix constitutes a primary computational bottleneck in the Newton-Raphson power-flow analysis. Through an algebraic equivariance analysis of the Jacobian matrix, this paper proposes a direct sparse Jacobian assembly method based on symbolic permutation. By pre-applying the permutation to the admittance matrix during a one-time symbolic phase, the runtime bus-type projection overhead is entirely eliminated. Consequently, complex Jacobian differentiation and global matrix assembly fuse into a single operation, yielding a single-pass, branchless algorithm that streams values directly into contiguous memory. The framework is realized in the open-source RustPower solver. Benchmarks on IEEE test systems and PEGASE 9241 demonstrate that the proposed assembly is 24.4-30.1x faster than the MATPOWER- style baseline and 6.0-7.8x faster than the Schafer-Braun optimized assembly. End-to-end, the grid-level solve time is 11.7x-154.3x faster than pandapower 3.5.4 with Numba, while leaving numerical results and convergence behavior unchanged. Compared with the native C++ LightSim2Grid 1.0.0, grid-level performance is comparable on IEEE 39 and 1.3x-1.8x faster on IEEE 118 and the PEGASE systems. The method extends directly to general problems where a sparse Jacobian inherits its structure from a static network operator, including transient stability analysis, EMT simulation, and OPF Hessian assembly.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The repeated assembly of the sparse Jacobian matrix constitutes a primary computational bottleneck in the Newton-Raphson power-flow analysis.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-Driven Network LQG Mean Field Games with Heterogeneous Populations via Integral Reinforcement Learning</div>
+<div class="meta-line">Authors: Jean Zhu, Shuang Gao</div>
+<div class="meta-line">First: 2026-02-15T23:14:36+00:00 · Latest: 2026-10-08T18:09:07+00:00</div>
+<div class="meta-line">Comments: 8 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2602.14339v2">Abs</a> · <a href="https://arxiv.org/pdf/2602.14339v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper establishes a data-driven solution for infinite horizon linear quadratic Gaussian Mean Field Games with network-coupled heterogeneous agent populations where the dynamics of the agents are unknown. The solution technique relies on Integral Reinforcement Learning and Kleinman&#x27;s iteration for solving algebraic Riccati equations (ARE). The resulting algorithm uses trajectory data to generate network-coupled MFG strategies for agents and does not require parameters of agents&#x27; dynamics. Under technical conditions on the persistency of excitation and on the existence of unique stabilizing solution to the corresponding AREs, the learned network-coupled MFG strategies are shown to converge to their true values.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper establishes a data-driven solution for infinite horizon linear quadratic Gaussian Mean Field Games with network-coupled heterogeneous agent populations where the dynamics of the agents are unknown.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
