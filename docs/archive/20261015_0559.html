@@ -1,0 +1,413 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-15 05:59</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261015_0559</div>
+    <div class="row"><div class="card">
+<div class="title">Dynamic Attack Surfaces: A Queue of Branching Processes</div>
+<div class="meta-line">Authors: Ismail Cosandal, Abdullah Y. Etcibasi, C. Emre Koksal, Sennur Ulukus</div>
+<div class="meta-line">First: 2026-10-13T17:02:46+00:00 · Latest: 2026-10-13T17:02:46+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18721v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18721v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Modern attack surfaces are inherently dynamic. Vulnerabilities emerge over time and they remain exposed to exploit until defenders discover and patch them. Artificial intelligence (AI) amplifies these dynamics by accelerating both offensive and defensive processes, making modern cybersecurity increasingly a competition among interacting time scales and resources. We capture this competition using a queue of branching processes that couples vulnerability discovery and resource-constrained patching with the evolving attacker population targeting each vulnerability. Our primary risk metric is the cumulative number of exploits a vulnerability experiences before it is patched. We derive the expected cumulative number of exploits under birth-death-immigration (BDI) and rise-decay (RD) models of attacker activity. Under a BDI model of attacker activity, we identify a phase transition: the expected cumulative number of exploits is finite only when attacker growth remains below both the vulnerability discovery rate and the effective patching rate. Across both attacker models, increasing the exploit rate does not necessarily increase the expected number of exploits because faster attacker departure can sufficiently limit the active attacker population. Finally, we show that equal proportional AI amplification of offensive and defensive capabilities need not preserve security: accelerating both sides can shift the defensive bottleneck and move the system into an unbounded-risk regime.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Modern attack surfaces are inherently dynamic.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">High-Order Matrix Control Barrier Functions: Well-Posedness and Feasibility via Matrix Relative Degree</div>
+<div class="meta-line">Authors: Samuel G. Gessow, Pio Ong, Aaron D. Ames, Brett T. Lopez</div>
+<div class="meta-line">First: 2026-04-03T20:50:35+00:00 · Latest: 2026-10-13T16:42:58+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.03450v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.03450v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Control barrier functions (CBFs) provide an effective framework for enforcing safety in dynamical systems with scalar constraints. However, many safety constraints are more naturally expressed as matrix-valued conditions, such as positive definiteness or eigenvalue bounds - scalar formulations introduce potential nonsmoothness that complicates analysis. Matrix control barrier functions (MCBFs) address this limitation by directly enforcing matrix-valued safety constraints. Yet for constraints where the control input does not appear in the first derivative, high-order formulations are required. While such extensions are well understood in the scalar case, they remain largely unexplored in the matrix case. This paper develops high-order matrix control barrier functions (HOMCBFs) and establishes conditions ensuring well-posedness and feasibility of the associated constraints, enabling enforcement of matrix-valued safety constraints for systems with high-order dynamics. We further show that, using an optimal-decay HOMCBF formulation, forward invariance can be ensured while requiring control only over the minimum eigenspace. The framework is demonstrated on a double-integrator localization problem by enforcing positive definiteness of the information matrix.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Control barrier functions (CBFs) provide an effective framework for enforcing safety in dynamical systems with scalar constraints.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">AgentStripes: An Evidence-Graded Maturity Model for AI Agents</div>
+<div class="meta-line">Authors: Nutan Kumar Naik, Vijay Prasad Poudel, Aditya Kumar Saroj, Saurav Samantray, Abhishek Patel</div>
+<div class="meta-line">First: 2026-10-13T15:57:28+00:00 · Latest: 2026-10-13T15:57:28+00:00</div>
+<div class="meta-line">Comments: 32 pages, 7 figures, 4 tables, 116 references; supplementary information (15 pages, 8 figures, 21 tables) included in the same PDF. Code and data available on request</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18603v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18603v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Benchmarks report what an Artificial Intelligence (AI) agent can do on a task suite, but not whether one released version has been engineered with the controls that make it reliable, safe and observable, or how strongly that is shown. This paper proposes AgentStripes, an evidence-graded maturity model for AI agents. It defines levels (0 to 7 stripes), process areas (12 areas holding 40 capabilities), three gates (basic, safety, proof) that hold an agent at a level however high its score, and evidence grades E0 to E5. Each applicable capability receives a rating from 0 to 3 and a separate evidence level; these are combined into a credit, aggregated into a severity-weighted score and converted into stripes that the gates limit. Instruments gather evidence, language-model judges interpret it under explicit criteria, and the arithmetic is deterministic. The model is compared with standards at topic level without a claim of conformance, and an unexecuted validation protocol is specified. An empirical evaluation (exploratory, non-confirmatory) of 30 public Python agent repositories, with static evidence only, is a demonstration and not a validation: static evidence caps every final stripe at 2, 26 repositories end at one stripe and 4 at two, and this distinction is unreliable, since re-judging changed the final stripe of 4 of 22 repositories (engine, dossier and panel changed), whereas none of 8 panel-only repeats, all at stripe 1, changed. The parameters are expert conventions without outcome based calibration, and the stripes have not been shown to predict reliability or safety.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Benchmarks report what an Artificial Intelligence (AI) agent can do on a task suite, but not whether one released version has been engineered with the controls that make it reliable, safe and observable, or how strongly that is shown.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Shadow Pricing in Transient Stability-Constrained Optimal Power Flow</div>
+<div class="meta-line">Authors: Alex Coelho, Araceli Hernandez, Luis Badesa</div>
+<div class="meta-line">First: 2026-10-13T15:33:00+00:00 · Latest: 2026-10-13T15:33:00+00:00</div>
+<div class="meta-line">Comments: 10 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18563v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18563v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Transient stability constraints alter the economic dispatch of power systems, while the resulting price signals and their implications for market settlement remain insufficiently characterized. Existing approaches identify stability-related components in locational marginal prices, without deriving shadow prices for individual assets, such as generators and loads, or analyzing the resulting settlement. To address this gap, this paper derives shadow prices from a transient stability-constrained optimal power flow in which the differential-algebraic equations governing the system dynamics are embedded through direct discretization. Each shadow price decomposes into a nodal energy component and a stability component, the latter formed by the dual variables of the dynamic equations in which the power of the asset appears. Shadow prices are therefore asset-specific: co-located generators and loads are assigned the same nodal energy component, but can be subject to different stability components when their transient behaviors differ. Case studies on the WECC 9-bus system and a modified IEEE 39-bus system show that settlement at the proposed shadow prices allocates the cost of the stability constraints among the assets without any side payment. An asset that reduces the stability margin is charged its stability component, whereas an asset that improves it is paid, and no generator is dispatched at a loss.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Transient stability constraints alter the economic dispatch of power systems, while the resulting price signals and their implications for market settlement remain insufficiently characterized.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-Driven Surrogate-Model for Real-Time Loads Prediction in Floating Wind Farms</div>
+<div class="meta-line">Authors: Federico Bellini, Majid Ebrahimi, Alessandro Fontanella, Marcus Becker, Jan-Willem Van Wingerden, Sara Muggiasca, Marco Belloli</div>
+<div class="meta-line">First: 2026-10-13T12:26:18+00:00 · Latest: 2026-10-13T12:26:18+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18264v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18264v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This work presents a data-driven load-surrogate modelling framework for real-time control of floating offshore wind farms. The proposed methodology uses mid-fidelity simulations performed with OpenFAST and FAST.Farm together with MLife fatigue analysis to generate Damage Equivalent Load (DEL) datasets of floating wind turbines under wake steering conditions. A two-stage surrogate modelling approach is adopted: first, a Feed-Forward Neural Network (FFNN) is trained using data from simulations of a single floating wind turbine, while a second stage corrects the residual error between the FFNN predictions and FAST.Farm simulations using either Gaussian Process Regression (GPR) or an additional FFNN. The results show that the proposed framework can estimate DELs with errors generally below 15% for tower base bending moment, blade root bending moment, yaw bearing moment, and fairlead tension, while maintaining computational times compatible with real-time applications. The study also highlights the challenges related to generalization of the load-surrogate model under varying environmental and control conditions, especially for large floating wind farms. Overall, the proposed methodology demonstrates the potential of surrogate-based DEL estimation for load-aware floating wind farm control applications.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This work presents a data-driven load-surrogate modelling framework for real-time control of floating offshore wind farms.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Estimating Closed-Loop Multiple-Input Single-Output Dynamic Systems using Gaussian Processes</div>
+<div class="meta-line">Authors: Erik-Anant Stedjan Narayan, Sigurd Hofsmo Jakobsen, Kjetil Obstfelder Uhlen</div>
+<div class="meta-line">First: 2026-10-06T07:59:54+00:00 · Latest: 2026-10-13T11:21:56+00:00</div>
+<div class="meta-line">Comments: Corrected formatting of Appendix C</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.07919v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.07919v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper extends complex Gaussian process regression-based transfer function (TF) estimation from the single-input single-output setting to closed-loop multiple-input single-output (MISO) systems. Accurate estimation of individual TFs in closed-loop MISO systems is challenging as feedback and correlation between measured signals can obscure the contributions of each input. We formulate a Gaussian process-based estimator for MISO systems, provide analytical conditions under which each system module can be separately identified, and show that the estimator converges to the true TFs in the zero noise limit. Moreover, we demonstrate how conventional closed-loop bias handling techniques relying on external excitation can be employed to construct appropriate regressors. Monte Carlo simulations support the analytical identifiability results and highlight the trade-off between closed-loop bias and error introduced by constructing exogenous regressors partly from endogenous signals. The presented work offers an expressive, nonparametric alternative to existing estimation approaches for MISO systems, while providing a probabilistic characterization of the estimation uncertainty.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper extends complex Gaussian process regression-based transfer function (TF) estimation from the single-input single-output setting to closed-loop multiple-input single-output (MISO) systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Preliminary Exploration of Large Models Based on Self-Supervised Learning for Health Monitoring of Power Electronic Converters</div>
+<div class="meta-line">Authors: Xinyuan Liao, Xiangtian Deng, Yang Liu, Zhaobing Cai, Haoran Wang, Yi Zhang</div>
+<div class="meta-line">First: 2026-10-13T10:47:01+00:00 · Latest: 2026-10-13T10:47:01+00:00</div>
+<div class="meta-line">Comments: Accepted by Proceedings of the 2nd Electrical Artificial Intelligence Conference, EAIC 2025</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.18138v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.18138v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Current artificial intelligence (AI) methods for power electronics converters make limited use of the abundant unlabeled data generated during real-world operation. This underexplored resource holds significant potential for advancing model performance. To address this gap, this paper presents PE-TSFM, a time-series foundation model tailored for power module health monitoring. The model adopts the PatchTST architecture combined with self-supervised learning and is trained on more than 143 million timestamps, where over 98\% of this training data is unlabeled and collected directly from an operating traction converter. In degradation classification tasks, PE-TSFM achieves an accuracy of 87\%, considerably surpassing five conventional time-series AI models whose performance ranges from 27\% to 45\%. These results demonstrate the model&#x27;s strong few-shot learning capability and generalization across different operating conditions. This work promotes a shift from narrowly focused models in power electronics toward unified, scalable foundation models that can unlock value from large-scale unlabeled operational data.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Current artificial intelligence (AI) methods for power electronics converters make limited use of the abundant unlabeled data generated during real-world operation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Filtering for Liveness: Recurrence via Backup Reachability Control Barrier Functions</div>
+<div class="meta-line">Authors: David E. J. van Wijk, Pio Ong, Aaron D. Ames, Joel W. Burdick</div>
+<div class="meta-line">First: 2026-10-12T19:44:55+00:00 · Latest: 2026-10-12T19:44:55+00:00</div>
+<div class="meta-line">Comments: 6 pages, 3 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.17337v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.17337v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Liveness requires a dynamical system to repeatedly accomplish a desired objective over time. In this work, we consider a particular form of liveness known as recurrence, which requires the closed-loop trajectory to regularly revisit a prescribed set, with no more than a specified amount of time between visits. Inspired by the control barrier function (CBF) safety-filter paradigm, we develop a controller-filtering framework that makes adjustments to a nominal controller only when necessary to guarantee recurrence. Unlike conventional CBF methods, which enforce set forward invariance, our framework allows the trajectory to leave the set while guaranteeing its timely return. To achieve this, our framework combines two components: a backup reachability CBF that preserves the ability to return to the prescribed set within the allowable time, and a timing-based mechanism that invokes a reaching controller only when the nominal behavior would otherwise fail to meet the return-time requirement. The resulting framework guarantees recurrence while preserving the nominal behavior when possible, enabling control objectives that require temporary excursions from the set, such as traversal between disjoint regions. Our method is successfully utilized in a drone racing example with a recurrence constraint on beacon visibility.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Liveness requires a dynamical system to repeatedly accomplish a desired objective over time.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Wing Rock Modeling and Control for Flight-Critical Systems</div>
+<div class="meta-line">Authors: Eugene Lavretsky, Miroslav Krstic</div>
+<div class="meta-line">First: 2026-10-12T15:53:12+00:00 · Latest: 2026-10-12T15:53:12+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.17011v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.17011v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Aircraft equipped with delta wings are designed to be aerodynamically efficient in high-speed flight. However, at low-speed flight conditions with sufficiently high angle of attack, these vehicles often have lightly damped, close to unstable lateral-directional dynamics, such as the dutch roll mode. As a result, a delta wing aircraft often exhibits the so-called wing rock (WR) phenomenon, with a back and forth rocking motion, while the aircraft sideslip angle, the roll and the yaw angular rates remain small. In this paper, the WR dynamics are defined as a lightly damped dutch roll mode excited by airmass vortical external input, acting at or near the dutch roll natural frequency. The vortical signal comes from Fourier-Galerkin approximation of the Navier-Stokes equation, with no-penetration boundary conditions and the resulting airmass velocities are calculated by the Lorenz dynamical system of three coupled bilinear ordinary differential equations. In that context, the Lorenz bilinear dynamics become the disturbance-generator exosystem, acting on the lightly damped lateral-directional aircraft mode at or near its natural frequency, and thus exciting it to produce near oscillatory wing rocking motion. Using the proposed model, a flight control design trade study is conducted to mitigate and suppress the WR phenomenon.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Aircraft equipped with delta wings are designed to be aerodynamically efficient in high-speed flight.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Decision-Making in Digital Twins: Optimization, Control, and Learning</div>
+<div class="meta-line">Authors: Enlu Zhou</div>
+<div class="meta-line">First: 2026-10-12T15:10:25+00:00 · Latest: 2026-10-12T15:10:25+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.16929v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.16929v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">A digital twin is a virtual representation of a physical system, continuously updated with data from the physical system, enabling dynamic information exchange and decision-making. This bidirectional interaction, which distinguishes digital twins from conventional simulation models, introduces new challenges to simulation-based optimization, control, and learning. This paper reviews recent developments in decision-making methodologies motivated by digital twins. We focus on three interconnected areas: simulation optimization, sequential decision making, and risk-aware decision making. For simulation optimization, we discuss data-driven simulation optimization under input uncertainty, streaming input data, decision-dependent observations, and limited computational and data-collection resources. For sequential decision making, we review the connections among digital twins, stochastic optimal control, and reinforcement learning, with emphasis on Bayesian approaches that update models and policies as new information becomes available. For risk-aware decision making, we discuss distributionally robust and Bayesian risk formulations as alternative approaches for addressing model uncertainty. Throughout the paper, we emphasize the common problem of making decisions while the underlying model is being updated. We conclude by identifying research challenges and opportunities.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">A digital twin is a virtual representation of a physical system, continuously updated with data from the physical system, enabling dynamic information exchange and decision-making.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
