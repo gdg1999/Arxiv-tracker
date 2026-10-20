@@ -1,0 +1,420 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-21 06:00</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261021_0600</div>
+    <div class="row"><div class="card">
+<div class="title">Mobile Embodied Agent Network (MEAN): Integrated Framework, Enabling Technologies, and Task-Driven Deployment</div>
+<div class="meta-line">Authors: Zhaoyang Zhang, Lingxiao Sun, Weijie Zhou, Chunhui Feng, Zhaohui Yang, Xuan Cheng, Tianyi Qin, Zhixian Kong, Baoping Cheng, Zijian Wu, Jingze Che</div>
+<div class="meta-line">First: 2026-10-19T12:47:25+00:00 · Latest: 2026-10-19T12:47:25+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.26297v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.26297v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Mobile networks are evolving from human-centered, data-oriented communication infrastructures toward machine- and/or agent-dominant, task-oriented platforms that are to serve the rapidly increasing networked machines and embodied agents. In order to fulfill the newly arose complex task objectives, the framework of future mobile network is to be innovated to reflect and facilitate the intrinsic interplay and integration of the underlying processes of perception, communication, computation, decision, action, and feedback, etc. This survey establishes the mobile embodied agent network (MEAN) as a task-oriented networking paradigm in which networking and distributed intelligence are jointly organized around closed-loop embodied task execution. We first establish a unified MEAN framework that explains how network resources and intelligent functions jointly support embodied task execution, and extend its performance indicators from conventional communication metrics to embodied task outcomes and cross-layer system effects. With this framework, we analyze three complementary enabling mechanisms that form a cognition-interaction-adaption loop. Large artificial intelligence (AI) models provide high-level cognition, token communication connects this cognition with distributed agents through shared semantic representations, and reinforcement learning closes the loop by adapting system operation to network, task, and physical feedback. We further investigate the bidirectional interplay between MEAN and emerging technologies, showing how they mutually extend system capabilities and reshape task-oriented network design. Finally, we discuss open challenges and future research directions toward the practical realization of MEAN over real joint communication and computation platform.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Mobile networks are evolving from human-centered, data-oriented communication infrastructures toward machine- and/or agent-dominant, task-oriented platforms that are to serve the rapidly increasing networked machines and embodied agents.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Repeated Binary Direct Collinear Impacts Under Incremental Contact Laws With Residual Indentation: A Hybrid Systems Formulation</div>
+<div class="meta-line">Authors: Mihails Milehins, Dan B. Marghitu</div>
+<div class="meta-line">First: 2026-09-05T15:21:46+00:00 · Latest: 2026-10-19T08:28:45+00:00</div>
+<div class="meta-line">Comments: 29 pages, 6 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.06138v5">Abs</a> · <a href="https://arxiv.org/pdf/2609.06138v5">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Incremental contact laws specify the normal contact force through a differential relation, possibly carrying an internal state, driven by the indentation and its rate. In some, the force is extinguished at a nonzero indentation, whether by plastic deformation or by an elastic aftereffect, so that a residual deformation remains at separation. Such laws sit uneasily within rigid body dynamics, which admits no deformation. The tension is tolerable when the indentation is small relative to the bodies, so that it may be carried constitutively rather than geometrically. Even then, the contact law alone does not determine the interaction of the bodies. Because force and indentation no longer vanish together, conditions for the commencement and termination of contact must be supplied separately. So must the fate of the deformation and internal state at separation, neither of which the equations of motion contain. This article formulates the repeated direct collinear impact of two convex bodies under external forces as a hybrid dynamical system. The contact interface is modeled as a massless element carrying the contact law and its state, coupled to the bodies through relative velocity and an interaction force dictated by the contact state. Consequently, all switching and resets are confined to the interface, leaving the geometry and the equations of motion of the bodies unaltered. The principal analytical properties of the resulting formulations are established, among them passivity and completeness; the branching of solutions at the onset and termination of contact is also examined. The framework is demonstrated through numerical simulations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Incremental contact laws specify the normal contact force through a differential relation, possibly carrying an internal state, driven by the indentation and its rate.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Forward/Inverse Duality of Controlled Emergence:A Computational Design Program from Explanation to Engineering</div>
+<div class="meta-line">Authors: Hao Li, Minghui Ren, Shaowen Lu</div>
+<div class="meta-line">First: 2026-10-19T01:12:20+00:00 · Latest: 2026-10-19T01:12:20+00:00</div>
+<div class="meta-line">Comments: 38 pages, 7 figures, 13 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.25630v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.25630v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The macroscopic capabilities of intelligent systems arise from the local interactions of many simple units. When such systems are deployed in the real world, their behaviour must nevertheless be constrained, leaving designers caught between releasing adaptability and preventing loss of control, yet without formal tools to resolve the dilemma. This paper proposes a unified research program for controlled emergence that restates this tension as a pair of dual problems: the forward problem explains macroscopic behaviour from local rules, and the inverse problem solves for controllable rules and readout mechanisms from a desired target. We take an augmented quintuple as the formal object shared by both ends, and decompose ``engineering&#x27;&#x27; into three independently measurable coordinates: controllability, reproducibility, and degree of formalizability. On this basis we give three testable working hypotheses (critical scale; the cooperation and trade-off between constraint and adaptability; minimal constraint) and one feasibility criterion, which reduce inverse design from unconstrained optimization to interval checking. The program takes explicit failure boundaries as its premise, does not pursue complete control, and always preserves the system&#x27;s room for self-organization. The reduced pilot experiment attached to this paper serves only to verify the executability of the research protocol and does not constitute a statistical test of the working hypotheses. This design language generalizes to multi-agent artificial intelligence, the industrial internet, and emergency response systems, all of which must confront emergence and controllability at once.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The macroscopic capabilities of intelligent systems arise from the local interactions of many simple units.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Stability and Stabilization of Kronecker-Sum-Coupled Multilinear Systems</div>
+<div class="meta-line">Authors: Ziqin He, Ruoying Wang, Shenghan Mei, Yidan Mei, Xin Mao, Can Chen</div>
+<div class="meta-line">First: 2026-10-18T20:58:49+00:00 · Latest: 2026-10-18T20:58:49+00:00</div>
+<div class="meta-line">Comments: 6 pages, 4 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.25529v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.25529v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coupled dynamical systems with multi-dimensional state structures arise in many applications such as spatiotemporal processes and large-scale interconnected systems. However, existing studies primarily focus on matrix-based coupled systems or tensor-based dynamical systems without couplings. The properties of coupled tensor-based systems remain largely unexplored. In this article, we study Kronecker-sum-coupled multilinear systems under the transform-based tensor product framework. We establish fundamental tensor spectral properties showing that stability can be characterized through lower-dimensional subsystem dynamics together with slice-wise matrix stability in the transform domain. We further develop optimization conditions for state-feedback stabilization and show that the stabilization problem can be decomposed into independent subsystem problems. Finally, we analyze the computational complexity of the proposed framework and demonstrate its substantial computational advantages over unfolding-based approaches using both synthetic systems and multi-inertia motor systems.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Coupled dynamical systems with multi-dimensional state structures arise in many applications such as spatiotemporal processes and large-scale interconnected systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Identifiability-Guided Composite Load Modeling of AI Data Centers</div>
+<div class="meta-line">Authors: Ding Lin, Jianhui Wang, Meng Yue, Tianqiao Zhao</div>
+<div class="meta-line">First: 2026-10-14T04:28:41+00:00 · Latest: 2026-10-17T22:57:50+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19565v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.19565v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The rapid growth of AI data centers introduces large, workload-dependent loads whose protection and reconnection behavior can affect power-system transient stability. Calibrating dynamic models of such loads is challenging because treating all associated elements as freely estimable may lead to weakly identified or physically confounded parameterizations. This paper proposes an identifiability-guided calibration framework for a composite load model with separate IT, cooling, and auxiliary branches. A nuisance-projected Fisher-information criterion characterizes the local identifiability of the cooling-motor composition, while a workload non-equivalence result shows that voltage-only recalibration cannot reproduce workload-dependent responses. Guided by these results, a grey-box estimator trained with branch-level supervision learns the workload-to-power relation and the cooling composition, while retaining a prescribed UPS protection law and an externally anchored reconnect-ramp duration. The learned workload relation is then distilled into a closed form for transient-stability simulation. Evaluation using 300,000 MIT Supercloud GPU power-utilization samples and 12,600 IEEE 39-bus fault scenarios yields an aggregate active-power $R^2$ of 0.948, compared with 0.856 for an LSTM baseline. Removing branch-level supervision preserves relatively high aggregate accuracy but substantially degrades cooling-component recovery. Under unseen deep voltage sags, the proposed model achieves a transient $R^2$ of 0.750, compared with 0.033 for the LSTM. Closed-loop simulations further show that cooling composition and protection behavior can affect retained-load states and voltage responses near protection thresholds.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The rapid growth of AI data centers introduces large, workload-dependent loads whose protection and reconnection behavior can affect power-system transient stability.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">AgentSoV: Virtual Sensing for LLM Multi-Agent Systems via Stream of Variation</div>
+<div class="meta-line">Authors: Congjing Zhang, Siyuan Xu, Yunfei Bai, Ke Ren, Xiaoning Qian, Shuai Huang</div>
+<div class="meta-line">First: 2026-10-17T19:48:14+00:00 · Latest: 2026-10-17T19:48:14+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.24845v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.24845v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large language model (LLM) multi-agent systems (MASs) solve complex tasks through interacting agents, yet their reliability is difficult to analyze because failures depend on both individual agents and how information and errors propagate across the system. Existing approaches largely treat this as post-hoc failure attribution, but do not provide a common model across heterogeneous MAS architectures or support broader analysis of information influence and observability. We introduce AgentSoV, a virtual-sensing framework that models MAS execution as a stochastic dynamic system through Stream of Variation (SoV). AgentSoV maps heterogeneous trajectories into diagnostic stages, constructs virtual measurements from observable outputs, and learns cross-stage variation propagation with a state-space model. Its representation is architecture-aware in stage dependencies yet architecture-agnostic in analytical language, supporting chain-structured, orchestration-based, and directed acyclic graph (DAG)-structured MASs. Without re-executing the MAS, AgentSoV supports three system-level analyses: failure attribution identifies where abnormal variation enters; stage-input influence quantifies how strongly intermediate inputs affect downstream outcomes; and virtual-sensor placement selects complementary observations under a monitoring budget. Experiments across multiple MAS architectures demonstrate a unified approach to fault localization, information influence, and observability. AgentSoV reframes agentic execution as a dynamic system to model rather than merely text to inspect, providing insights for MAS structure and component design.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large language model (LLM) multi-agent systems (MASs) solve complex tasks through interacting agents, yet their reliability is difficult to analyze because failures depend on both individual agents and how information and errors propagate across the system.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">An integrated interpretable control effectiveness learning and nonlinear control allocation methodology for overactuated aircraft</div>
+<div class="meta-line">Authors: Umut Demir, Aamir Ahmad, Torbjørn Cunis, Walter Fichter</div>
+<div class="meta-line">First: 2026-06-11T18:04:43+00:00 · Latest: 2026-10-17T14:51:43+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.13794v3">Abs</a> · <a href="https://arxiv.org/pdf/2606.13794v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Nonlinear dynamics and the strong couplings that arise between multiple effectors undermine the assumptions behind conventional, linear control allocation techniques. When flight enters regimes where nonlinear effects dominate, linear allocators exhibit reduced accuracy due to increased model mismatch, which subsequently degrades performance and robustness of the flight control system. High fidelity onboard models and black box data driven approaches can recover accuracy across the flight envelope, but respectively impose computational burdens prohibitive for real time allocation and sacrifice the interpretability required for verification and fault diagnosis. This paper addresses these limitations by learning an explicit, physics constrained analytical model of the control effectiveness mapping from representative flight data using Sparse Identification of Nonlinear Dynamics. The resulting mapping is compact, interpretable, and admits analytical derivatives, enabling efficient computation within nonlinear solvers that additionally incorporate actuator dynamics, without requiring an onboard model. An online adaptation mechanism monitors prediction residuals and refreshes the model when significant plant changes are detected, providing graceful reconfiguration under actuator failures and varying operating conditions. The methodology is evaluated on a high fidelity nonlinear benchmark aircraft across a range of aggressive maneuvers, achieving accuracy comparable to a full nonlinear onboard model while substantially reducing computational cost relative to established baselines.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Nonlinear dynamics and the strong couplings that arise between multiple effectors undermine the assumptions behind conventional, linear control allocation techniques.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Comparison of Current-Limiting Strategies for Grid-Forming Converters Under Grid Faults</div>
+<div class="meta-line">Authors: Maitraya Avadhut Desai, Ramona Stoll, Xiuqiang He, Florian Dörfler, Gabriela Hug</div>
+<div class="meta-line">Venue: 2025 IEEE Kiel PowerTech, Kiel, Germany, 2025, pp. 1-6</div>
+<div class="meta-line">First: 2026-10-17T14:36:37+00:00 · Latest: 2026-10-17T14:36:37+00:00</div>
+<div class="meta-line">Comments: Presented at the 16th IEEE PowerTech Conference (Kiel 2025). 6 pages, 12 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.24725v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.24725v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper investigates the performance of three state-of-the-art current-limiting strategies for grid-forming (GFM) converters under grid faults. These highly effective strategies include virtual admittance control, virtual admittance control enhanced with virtual power feedback, and the recently developed cross-forming control. The performance comparison addresses two crucial requirements for GFM converters under grid faults, namely transient stability and reactive current injection. The comparison indicates that the virtual admittance control enhanced with virtual power feedback shows the most promising transient stability performance, while the cross-forming control exhibits superior reactive current injection performance. Thus, individual benefits of each strategy can be obtained by properly combining them.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper investigates the performance of three state-of-the-art current-limiting strategies for grid-forming (GFM) converters under grid faults.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Safe Driving in Occluded Environments</div>
+<div class="meta-line">Authors: Zhuoyuan Wang, Tongyao Jia, Pharuj Rajborirug, Neeraj Ramesh, Hiroyuki Okuda, Tatsuya Suzuki, Soummya Kar, Yorie Nakahira</div>
+<div class="meta-line">First: 2025-10-15T03:20:03+00:00 · Latest: 2026-10-16T22:39:43+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2510.13114v2">Abs</a> · <a href="https://arxiv.org/pdf/2510.13114v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Ensuring safe autonomous driving in the presence of occlusions poses a significant challenge in its policy design. While existing model-driven control techniques based on set invariance can handle visible risks, occlusions create latent risks in which safety-critical states are not observable. Data-driven techniques also struggle to handle latent risks because direct mappings from risk-critical objects in sensor inputs to safe actions cannot be learned without visible risk-critical objects. Motivated by these challenges, in this paper, we propose a probabilistic safety certificate for latent risk. Our key technical enabler is the application of probabilistic invariance: It relaxes the strict observability requirements imposed by set-invariance methods that demand the knowledge of risk-critical states. The proposed techniques provide linear action constraints that confine the latent risk probability within tolerance. Such constraints can be integrated into model predictive controllers or embedded in data-driven policies to mitigate latent risks. The proposed method is tested using the CARLA simulator and compared with a few existing techniques. The theoretical and empirical analysis jointly demonstrate that the proposed methods assure long-term safety in real-time control in occluded environments without being overly conservative and with transparency to exposed risks.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Ensuring safe autonomous driving in the presence of occlusions poses a significant challenge in its policy design.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Koopman--Polynomial Chaos Framework for SMPC of Nonlinear Stochastic Processes</div>
+<div class="meta-line">Authors: Wallace Gian Yion Tan, Efstathios Iliakis, Liang Wu, Jan Drgona, Richard D. Braatz</div>
+<div class="meta-line">First: 2026-10-16T18:34:42+00:00 · Latest: 2026-10-16T18:34:42+00:00</div>
+<div class="meta-line">Comments: A preliminary version of this work will be presented at the 2026 IEEE Conference on Decision and Control (CDC)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.24105v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.24105v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper develops a polynomial parametric Koopman operator (PPKO) framework for stochastic model predictive control (SMPC) of nonlinear systems with parametric uncertainty and time-varying stochastic disturbances. The Koopman operator is parameterized by polynomial chaos expansions (PCEs), enabling data-driven nonlinear dynamics to be integrated with PCE-based uncertainty propagation and control. We show that the polynomial parameterization introduces no irreducible approximation gap beyond PCE truncation. We then derive a condensed deterministic SMPC reformulation that handles both time-invariant parametric uncertainty and time-varying disturbances while retaining an online optimization dimension that depends only on the control horizon and input dimension, independent of the lifted-state and PCE dimensions. The resulting formulation yields convex programs with expectation and second-moment constraints that can be solved using standard optimization methods. Numerical studies on the Duffing oscillator and the electrothermal cooling system demonstrate the accuracy, scalability, and closed-loop performance of the proposed framework.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper develops a polynomial parametric Koopman operator (PPKO) framework for stochastic model predictive control (SMPC) of nonlinear systems with parametric uncertainty and time-varying stochastic disturbances.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0511.html">20261019_0511</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0550.html">20261017_0550</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
