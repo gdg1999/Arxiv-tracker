@@ -74,12 +74,106 @@ summary{cursor:pointer;color:var(--acc)}
   <button class="btn" onclick="__expandAll(false)">Collapse All</button>
 </div>
 
-        <span class="badge">2026-10-23 06:00</span>
+        <span class="badge">2026-10-24 05:52</span>
       </div>
     </div>
     <div class="hr"></div>
     <div>Latest digest</div>
     <div class="row"><div class="card">
+<div class="title">Model Predictive Control of Wind Turbines: A Model-Oriented Review of Prediction Models, Control Objectives, and Nonlinear Aerodynamic Formulations</div>
+<div class="meta-line">Authors: Roya Khalili-Amirabadi, Mohsen Jalaeian-Farimani, Mahdi Ghane</div>
+<div class="meta-line">First: 2026-10-22T13:58:04+00:00 · Latest: 2026-10-22T13:58:04+00:00</div>
+<div class="meta-line">Comments: Khalili-Amirabadi, R., Jalaeian-Farimani, M., &amp; Ghane, M. (2026). Model Predictive Control of Wind Turbines: A Model-Oriented Review of Prediction Models, Control Objectives, and Nonlinear Aerodynamic Formulations. Journal of Intelligent Monitoring and Control Systems, 1(1): 35-41. https://doi.org/10.65098/jimcs.01.2026.35.41</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31295v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31295v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Model predictive control (MPC) has been applied to wind-turbine regulation with markedly different internal prediction models, ranging from linearized low-order turbine models to nonlinear, aeroelastic, floating, and data-driven predictors. This review organizes the literature primarily by the model propagated by the controller and treats model order, predictor representation, MPC formulation, control objective, and validation plant as separate descriptors. Primary studies show that low-order linear or piecewise-affine predictors are attractive for constrained power and speed regulation, whereas flexible drivetrain, structural, and floating models are needed when drivetrain twist, tower motion, blade loads, or platform dynamics are explicit control quantities. Nonlinear and economic MPC studies further demonstrate coordinated pitch/torque control across broad operating regions, while preview, repetitive, and data-driven formulations address wind prediction, periodic loads, and model mismatch. Particular attention is given to aerodynamic pitch dependence: variable-pitch turbine dynamics can be non-affine with respect to applied pitch, and the term NMPC alone does not prove that the original nonlinear pitch map is retained inside the optimizer. The review therefore adopts a conservative, equation-based classification for direct nonlinear applied-pitch propagation. Here, direct nonlinear applied-pitch propagation means that the applied pitch at each prediction step is evaluated inside the original nonlinear aerodynamic map, rather than replacing that dependence by a linearized, scheduled, piecewise-affine, or learned surrogate. The literature supports a remaining integration challenge at the intersection of flexible drivetrain prediction, nonlinear aerodynamic pitch treatment, explicit constraints and load objectives, and validated adaptive or learned model correction.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Model predictive control (MPC) has been applied to wind-turbine regulation with markedly different internal prediction models, ranging from linearized low-order turbine models to nonlinear, aeroelastic, floating, and data-driven predictors.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Large Language Models Meet Bayesian Optimization: Towards Self-evolving Wireless Digital Twins</div>
+<div class="meta-line">Authors: Yingzhuo Sun, Haoyun Li, Ming Xiao, Francisco J. Ferrao, Berna Ozbek</div>
+<div class="meta-line">First: 2026-10-22T12:40:49+00:00 · Latest: 2026-10-22T12:40:49+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31192v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31192v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Wireless digital twins (DTs) are increasingly integrated with artificial intelligence to support online modeling, prediction, and network optimization. However, most existing approaches perform adaptation within predefined learning or optimization structures, which may become unsuitable when wireless tasks and operating conditions change. In this article, we investigate the integration of large language models (LLMs) and Bayesian optimization (BO) to extend wireless DTs from online adaptation towards algorithm-level self-evolution. We introduce an LLM-assisted BO framework in which BO provides a stable and sample-efficient optimization backbone, while the LLM determines whether selected BO components should be retained or adapted based on the current task and accumulated optimization experience. In simulations, we apply the framework to Gaussian process (GP) kernel discovery for a multi-user wireless beam-selection problem. Simulation results show that the LLM-discovered kernel improves the final BO performance by 19.7% on the training tasks compared with the strongest standard kernel baseline. The results demonstrate the potential of combining LLM flexibility with structured BO for self-evolving wireless DTs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Wireless digital twins (DTs) are increasingly integrated with artificial intelligence to support online modeling, prediction, and network optimization.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">PriMa-Causa: Causal Prescriptive Maintenance</div>
+<div class="meta-line">Authors: Felix Saretzky</div>
+<div class="meta-line">First: 2026-10-22T12:06:59+00:00 · Latest: 2026-10-22T12:06:59+00:00</div>
+<div class="meta-line">Comments: PhD thesis, University of Luxembourg, 2026. 203 pages. Also available at https://hdl.handle.net/10993/69383</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31147v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31147v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Automated manufacturing requires data-driven decisions under uncertainty and sparse observational records, and unplanned downtime is a dominant cost of getting them wrong. Prescriptive maintenance recommends a maintenance action against an impending failure rather than merely predicting it. Established reference architectures couple predictive models with rule- or optimisation-based recommendation logic. Selecting a corrective action, however, requires an interventional quantity: how the line behaviour would change if the action were set. Manufacturing data is observational, so a model fitted to predict the outcome estimates an associational quantity and may misdirect the choice of action without the prediction error revealing it. Causal estimators target the interventional quantity but require an expert-led causal study per case, for which the bounded decision window of operation leaves no room. This dissertation analyses how causal reasoning can be embedded into prescriptive maintenance so that actions are ranked by their estimated interventional effect. The result is PriMa-Causa, built from three components: a causal reasoning layer that integrates the estimate into the PriMa reference model, a parametric simulator that supplies the interventional ground truth absent from manufacturing data, and a graph-conditioned tabular causal foundation model that, pre-trained once on this synthetic production-line prior, answers interventional queries in a single forward pass. PriMa-Causa attains a lower prescription error than associational baselines, with the largest margin under weak overlap and sparse context, and a partially disclosed causal graph reduces this error further. The causal inductive bias of the synthetic prior and the graph conditioning can thus replace per-case estimator fitting, a step toward automating causal inference for autonomous and self-healing maintenance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Automated manufacturing requires data-driven decisions under uncertainty and sparse observational records, and unplanned downtime is a dominant cost of getting them wrong.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Stability-Preserving Reinforcement Learning for Heterogeneity-Aware Composite Max-Pressure Traffic Signal Control</div>
+<div class="meta-line">Authors: Jichen Zhu, Chaopeng Tan</div>
+<div class="meta-line">First: 2026-10-22T10:16:16+00:00 · Latest: 2026-10-22T10:16:16+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31037v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31037v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Reinforcement learning (RL) provides a flexible mechanism for adapting traffic signal control to heterogeneous traffic and sensing conditions, but directly learned signal actions do not automatically inherit the analytical properties of structured traffic-control methods. This paper proposes Com-MP, a theory-guided RL framework that learns a context-dependent composition of multiple max-pressure (MP) control preferences while retaining decentralized MP phase selection. The learned policy adapts the relative influence of constituent MP formulations according to local traffic and sensing conditions, allowing data-driven adaptation to operate within a structured traffic-control framework. We show that such intersection-specific and time-varying composition preserves strong queue stability for every demand in the strictly stabilizable region under any admissible non-anticipative composition policy, thereby separating the performance-adaptation role of learning from the stability property of the underlying controller. In a representative implementation combining detector-supported queue-based MP and connected-vehicle-supported travel-time MP, experiments on a real-world 45-intersection network show that Com-MP reduces average delay by 15.6\% and 8.6\% relative to the two constituent controllers, respectively, and by about 7.0\% relative to the best fixed composition. The learned composition responds systematically to local traffic and sensing conditions, remains effective under heterogeneous and degraded sensing, and can be transferred without retraining to an unseen network with an average delay only 2.4\% higher than that of a policy trained directly on the target network. These results show how learning-based adaptation can be introduced within a stability-preserving traffic-control structure, providing a theory-guided pathway toward trustworthy learning-enabled traffic signal control.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Reinforcement learning (RL) provides a flexible mechanism for adapting traffic signal control to heterogeneous traffic and sensing conditions, but directly learned signal actions do not automatically inherit the analytical properties of structured traffic-control methods.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Archive coverage constrains abstaining retrieval for transient stability screening more than conditional accuracy</div>
+<div class="meta-line">Authors: Gregor Cerar, Denis Sodin, Matjaž Škrlec, Urban Rudež, Mihael Mohorčič, Miha Smolnikar</div>
+<div class="meta-line">First: 2026-10-22T09:38:43+00:00 · Latest: 2026-10-22T09:38:43+00:00</div>
+<div class="meta-line">Comments: 34 pages, 4 figures, 9 tables, including Supplementary Information. Submitted to Scientific Reports. Code and BUS39 data: https://github.com/sensorlab/AI-ASSIST</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30996v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30996v1">PDF</a> · <a href="https://github.com/sensorlab/AI-ASSIST">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Power-grid transient stability is assessed by simulating credible faults, but repeating simulations as operating conditions change is costly, motivating faster critical clearing time estimators. Within the AI-ASSIST project, we developed a retrieval-based estimator around three adopted requirements: estimates retain their supporting states, retrieval abstains without compatible support, and support statistics are tested against observed error. Abstention turns estimator uncertainty into a demand on the archive. Exact switching-configuration equality is used. The dense synthetic BUS39 archive covers 99.9996% of 1,044,797 records; the operational ELES archive covers 73.47% of 322,823 records. At query time, 59.37% of ELES states have an earlier same-topology candidate. Under causal availability, retrieval covers 56.34% of records; on records covered under both protocols, mean absolute error increases by 10.0%. No tested support diagnostic ranks first on both grids. Most tested supervised regressors have lower error than retrieval on BUS39, all higher on the matched retrieval-covered ELES population. On ELES, gradient boosting becomes more accurate than retrieval when temporally adjacent states are excluded, so the accuracy trade depends on the archive. Under the adopted compatibility key, archive availability constrains deployment more than conditional accuracy on ELES. Compatible coverage and chronological availability are auditable before an estimator is fitted.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Power-grid transient stability is assessed by simulating credible faults, but repeating simulations as operating conditions change is costly, motivating faster critical clearing time estimators.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Robustness Verification of an Autonomous Underwater Vehicle-based Plankton Classifier</div>
+<div class="meta-line">Authors: Abdelrahman Sayed Sayed, Pierre-Jean Meyer, Asgeir J. Sørensen, Mohamed Ghazel</div>
+<div class="meta-line">First: 2026-07-05T18:32:59+00:00 · Latest: 2026-10-22T07:52:44+00:00</div>
+<div class="meta-line">Comments: 6 pages, 2 figures, Accepted in IEEE OES AUV Symposium 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.04453v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.04453v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The assessment of planktonic standing stocks and microorganism structures is critical for understanding upper ocean biological processes. Currently, autonomous underwater vehicles (AUVs) equipped with in-situ optical imaging and artificial intelligence (AI) methods offer a promising solution for persistent surveillance, mapping and monitoring of planktonic life. However, current AI methods often lack robustness in dynamic, unstructured environments, where environmental noise and non-biological artifacts lead to frequent misclassifications. Standard convolutional neural network (CNN) classifiers often struggle with such conditions, leading to misclassifications that require time-consuming manual validation by marine biologists. To address this issue, we propose a novel robustness verification framework for in-situ plankton classifiers based on reachability analysis. We also introduce a continuous-time neural ordinary differential equation (neural ODE) classification model leveraging the high-resolution imaging capabilities of the SilCam particle imager. In this paper, we demonstrate the effectiveness of the proposed framework by formally verifying the robustness of the neural ODE model against environmental perturbations. We demonstrate that our verification framework acts as an automated filter providing formal guarantees of model stability against ambiguous data, thereby improving the reliability of autonomous sampling and reducing the post-processing workload.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The assessment of planktonic standing stocks and microorganism structures is critical for understanding upper ocean biological processes.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Anomaly Score Preserving Data Poisoning Attacks on Data-Driven Controller Design</div>
+<div class="meta-line">Authors: Motoharu Tsuboi, Hampei Sasahara, Iori Takaki, Hideaki Ishii</div>
+<div class="meta-line">First: 2026-10-22T06:02:54+00:00 · Latest: 2026-10-22T06:02:54+00:00</div>
+<div class="meta-line">Comments: 8 pages, 3 figures, 2 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30782v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30782v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper investigates stealthy data poisoning attacks against data-driven controller synthesis and develops an attack generation method. During data collection, an attacker can sequentially manipulate state measurements, while the defender attempts to detect such manipulation using a residual-based anomaly score based on the Mahalanobis distance. Under suitable assumptions on the defender&#x27;s prior knowledge, we characterize the class of time-varying affine transformations that preserve the anomaly score for arbitrary data and parameterize this class by the orthogonal group. Based on this characterization, we formulate attack design under the stealthiness condition as an optimization problem over the orthogonal group and propose a Riemannian gradient method. Numerical experiments demonstrate that the proposed attack can degrade closed-loop performance while remaining stealthy.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper investigates stealthy data poisoning attacks against data-driven controller synthesis and develops an attack generation method.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Incentive Mechanisms for Welfare Maximization Under Individual Rationality in Noncooperative Dynamical Systems</div>
+<div class="meta-line">Authors: Yuyue Yan, Maojiao Ye, Hideaki Ishii, Tomohisa Hayakawa</div>
+<div class="meta-line">First: 2026-10-22T04:35:34+00:00 · Latest: 2026-10-22T04:35:34+00:00</div>
+<div class="meta-line">Comments: 16 pages, 10 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30718v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30718v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Human societies are shaped by strategic interactions among self-interested decision-makers, where conflicts between individual and social interests naturally arise. This paper investigates the design of incentive mechanism for multi-agent game systems to reconcile social welfare maximization with individual benefits under economic constraints. We develop a linear-quadratic incentive framework to reshape Nash equilibria while reconciling the constraints of Pareto efficiency, individual rationality, and budget balance. The optimal target state is identified as the solution of a constrained optimization problem associated with the social welfare and aggregated payoff functions. Our theoretical analysis characterizes the conditions of incentive functions that steer self-interested agents towards the optimal target state as a Pareto-efficient Nash equilibrium for achieving the maximum attainable social welfare. We further characterize how the choice of social welfare function constrains achievable individual outcomes, revealing a structural paradox associated with priority weighting under individual rationality. Several numerical examples are presented to demonstrate the efficacy of our results.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Human societies are shaped by strategic interactions among self-interested decision-makers, where conflicts between individual and social interests naturally arise.</div>
+</details>
+</div>
+<div class="card">
 <div class="title">Machine Learning-Enabled Wireless Power Transfer: A Task-Oriented Review of Structural Optimization, State and Parameter Estimation, and Adaptive Control</div>
 <div class="meta-line">Authors: Denghao Luo, Yiheng Jiang, Jiaqi Zhao, Yuan Gao, Changsong Cai, Weiyi Huang, Yun Zhang</div>
 <div class="meta-line">First: 2026-10-21T17:48:23+00:00 · Latest: 2026-10-21T17:48:23+00:00</div>
@@ -102,101 +196,10 @@ summary{cursor:pointer;color:var(--acc)}
 <details class="detail"><summary>Summary / 总结</summary>
 <div class="mono">Evangelou, Stanković, Kevrekidis and Transtrum compared analytic and data-driven assessments of parameter identifiability for the infinite-bus synchronous generator.</div>
 </details>
-</div>
-<div class="card">
-<div class="title">Region of Attraction Estimation for Linear Quadratic Regulator, Linear and Robust Model Predictive Control on a Two-Wheeled Inverted Pendulum</div>
-<div class="meta-line">Authors: Lorenzo Fici, Dalim Wahby, Alvaro Detailleur, Matthieu Barreau, Guillaume Ducard</div>
-<div class="meta-line">Venue: 2026 10th International Conference on Control, Automation and Diagnosis (ICCAD), pp. 1-6, 2026</div>
-<div class="meta-line">First: 2026-04-06T06:03:18+00:00 · Latest: 2026-10-21T17:18:26+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.04455v3">Abs</a> · <a href="https://arxiv.org/pdf/2604.04455v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Nonlinear underactuated systems such as two-wheeled inverted pendulums (TWIPs) exhibit a limited region of attraction (RoA), which defines the set of initial conditions from which the closed-loop system converges to the equilibrium. The RoA of nonlinear and constrained systems is generally nonconvex and analytically intractable, requiring numerical or approximate estimation methods. This work investigates the estimation of the RoA for a TWIP stabilized under three model-based control strategies: saturated linear quadratic regulator (LQR), linear model predictive control (MPC), and constraint tightening MPC (CTMPC). We first derive a Lyapunov-based invariant set that provides a certified inner approximation of the RoA. Since this analytical bound is highly conservative, a Monte Carlo-based estimation procedure is then employed to obtain a more representative approximation of the RoA, capturing how the controllers behave beyond the analytically guaranteed region. The proposed methodology combines analytical guarantees with data-driven estimation, providing both a formally certified inner bound and an empirical characterization of the RoA, offering a practical way to evaluate controller performance without relying solely on conservative analytical bounds or purely empirical simulation.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Nonlinear underactuated systems such as two-wheeled inverted pendulums (TWIPs) exhibit a limited region of attraction (RoA), which defines the set of initial conditions from which the closed-loop system converges to the equilibrium.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Constrained Koopman Control Parametrization: Convex Controller Synthesis for Tracking under Input Constraints</div>
-<div class="meta-line">Authors: Taha Ondogan, Ran Jing, Andrew P. Sabelhaus, Roberto Tron</div>
-<div class="meta-line">First: 2026-10-21T16:27:42+00:00 · Latest: 2026-10-21T16:27:42+00:00</div>
-<div class="meta-line">Comments: 16 pages, 8 figures</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.29984v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.29984v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Koopman operator theory represents nonlinear systems with linear and bilinear terms in the state and input observables, greatly simplifying control design. However, incorporating input constraints into Koopman-based controller synthesis remains challenging, limiting their applicability to constrained control tasks such as tracking. This paper develops a constrained Koopman Control Parametrization (cKoCoP) framework for synthesizing state-feedback controllers that satisfy prescribed input constraints with Lyapunov-certified stability of the identified lifted closed loop. The cKoCoP offers nonlinear state-feedback via linear-in-observables feedback, enabling linear controller design. The proposed controller is obtained through convex optimization: we incorporate ellipsoidal or polytopic input constraints with the S-procedure or Farkas-lemma-based conditions. We also introduce a Control Lyapunov Function (CLF) for trajectory tracking which incorporates input constraints. The approach is validated on two canonical nonlinear systems, a double pendulum and a unicycle, demonstrating data-driven tracking while respecting input constraints. Experiments validate the method&#x27;s robustness to measurement noise, and runtime improvements over Koopman Model Predictive Control (KMPC) baselines. The results demonstrate that cKoCoP achieves competitive tracking performance with substantially reduced online computational cost, supporting its potential for real-time constrained tracking applications.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Koopman operator theory represents nonlinear systems with linear and bilinear terms in the state and input observables, greatly simplifying control design.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">A Plantwide Simulation Library for Control-Oriented Design: Analytical and Data-driven Use Cases</div>
-<div class="meta-line">Authors: Kyle Territo, Luis A. Briceno-Mena, Jose A. Romagnoli</div>
-<div class="meta-line">First: 2026-10-21T16:14:05+00:00 · Latest: 2026-10-21T16:14:05+00:00</div>
-<div class="meta-line">Comments: 6 pages, 3 figures, Submitted to the American Control Conference (ACC) 2027</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.29953v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.29953v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Control structures and operability indices for plantwide processes are developed and compared on fixed simulated flowsheets, and the configuration of a study is rarely reported in a form that another group can reproduce. In this contribution, plantbench, a library of plantwide process simulations in which the design, the controller tuning and the instrumentation of a plant are declared as hashed plain-data configurations, is presented. On a heat-integrated reactor--separator--recycle plant with an open-loop unstable reactor, a heuristic plantwide control design prices four heat-exchanger networks (HENs) by the least damping ratio of the linearized closed loop, and 2016 closed-loop runs over networks, tuning, analyzer deadtime and upsets test that ranking. Results show that the damping ratio orders the networks as the runs do with the network that recovers the most heat reaching 0.013 against 0.157 for the selected one and cycling under a throughput increase, but that it is a weak detector of which operation will oscillate. At the recall of a random forest on the first 100 min after an upset, 60 of 82 limit cycles, a damping-ratio threshold raises 173 false alarms against 5. The integral time of the temperature loop, to which the damping ratio is nearly insensitive, decides in part whether the plant holds an operating point.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Control structures and operability indices for plantwide processes are developed and compared on fixed simulated flowsheets, and the configuration of a study is rarely reported in a form that another group can reproduce.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Worst-Case Finite-Horizon Analysis of Perturbed LQR via Performance Estimation Problem</div>
-<div class="meta-line">Authors: Anthony Couthures, Gianluca Bianchin, Julien M. Hendrickx</div>
-<div class="meta-line">First: 2026-10-21T15:49:58+00:00 · Latest: 2026-10-21T15:49:58+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.29910v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.29910v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">We propose an exact formulation to quantify the finite-horizon robustness of a Linear Quadratic Regulator (LQR) subject to norm-bounded Linear Time-Invariant (LTI) parametric uncertainties, using the Performance Estimation Problem (PEP) framework. Originally developed for optimization, this method allows us to reformulate the worst-case performance search as a rank-constrained Semidefinite Program (SDP). By applying operator interpolation, this formulation retains the sequence variables, allowing the worst-case to be explicitly reconstructed when a rank-one solution is found. This approach also opens new possibilities for the finite-horizon certification of broader system classes, such as data-driven models or nonlinear components. Using this framework, we observe that finite-horizon LTI perturbations do not simply follow asymptotic strategies. Instead, they align slowly decaying invariant manifolds with specific initial conditions to drive transient growth, causing a bifurcation in the worst-case behavior as the horizon length changes. Finally, we show numerically that our performance bounds sit between the upper bounds of Integral Quadratic Constraint (IQC) relaxations and a lower bound derived from a pseudospectral heuristic.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">We propose an exact formulation to quantify the finite-horizon robustness of a Linear Quadratic Regulator (LQR) subject to norm-bounded Linear Time-Invariant (LTI) parametric uncertainties, using the Performance Estimation Problem (PEP) framework.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">A Novel Schur Decomposition-Based Weight Projection Method for Stable State-Space Neural-Network Architectures</div>
-<div class="meta-line">Authors: Sergio Vanegas, Lasse Lensu, Fredy Ruiz</div>
-<div class="meta-line">First: 2026-05-14T07:28:11+00:00 · Latest: 2026-10-21T11:17:20+00:00</div>
-<div class="meta-line">Comments: 32 pages, 13 figures. Source code at https://codeberg.org/sergiovaneg/SchurSS</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.14489v3">Abs</a> · <a href="https://arxiv.org/pdf/2605.14489v3">PDF</a> · <a href="https://codeberg.org/sergiovaneg/SchurSS">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Building black-box models for dynamical systems from data is a challenging problem in machine learning, especially when asymptotic stability guarantees are required. In this paper, we introduce a novel stability-ensuring and backpropagation-compatible projection scheme based on the Schur decomposition for the state matrix of linear discrete-time state-space layers, as well as an alternative pre-factorized formulation of the methodology. The proposed methods dynamically project the quasi-triangular factor of the state matrix&#x27;s real Schur decomposition onto its nearest stable peer, ensuring stable dynamics with minimal overparameterization. Experiments on synthetic linear systems demonstrate that, despite a marginal increase in computational complexity, the method achieves accuracy and convergence rates comparable to those of state-of-the-art stable-system identification techniques. Furthermore, the lower weight count facilitates convergence during training without sacrificing accuracy in stacked neural-network architectures with static nonlinearities targeting real-world datasets. These results suggest that the Schur-based projection provides a numerically robust framework for identifying complex dynamics on par with the state of the art while satisfying strict asymptotic-stability requirements.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Building black-box models for dynamical systems from data is a challenging problem in machine learning, especially when asymptotic stability guarantees are required.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Integrating Flow Matching and Model Predictive Control for Safe Robot Navigation</div>
-<div class="meta-line">Authors: Philipp Holzmann, Maik Pfefferkorn, Joao Carvalho, Ali Younes, An Thai Le, Georgia Chalvatzaki, Jan Peters, Rolf Findeisen</div>
-<div class="meta-line">First: 2026-10-21T08:03:15+00:00 · Latest: 2026-10-21T08:03:15+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.29377v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.29377v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Learning-based path planners based on diffusion and flow matching can generate diverse trajectories from demonstrations but typically lack mechanisms for constraint satisfaction and collision avoidance during deployment. This work proposes a framework that combines flow-matching-based path planning with model predictive path-following control to integrate data-driven path generation with real-time, constraint-aware execution. The flow-matching model captures multimodal path distributions, while the predictive controller adapts motion online to satisfy state and input constraints and avoid obstacles using updated local sensor information. An event-triggered re-planning scheme incorporates predictive control solutions into subsequent path generation, promoting collision-free navigation in environments with previously unseen obstacles. Simulation results for mobile robot navigation demonstrate robust performance across cluttered environments. The framework provides a systematic approach to combining flow matching with predictive control for adaptive, data-driven navigation.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Learning-based path planners based on diffusion and flow matching can generate diverse trajectories from demonstrations but typically lack mechanisms for constraint satisfaction and collision avoidance during deployment.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">A Decade of Learning-Based Control: From Theoretic Foundations to Practical Deployment</div>
-<div class="meta-line">Authors: Angela P. Schoellig, Matthias A. Müller, Sebastian Trimpe, Melanie N. Zeilinger, Mahathi Anand, Andrea Carron, Oliver Hausdörfer, Victor G. Lopez, Friedrich Solowjow, Haocheng Zhao, Siqi Zhou</div>
-<div class="meta-line">First: 2026-10-21T04:18:47+00:00 · Latest: 2026-10-21T04:18:47+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.29187v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.29187v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a> · <a href="https://learning-based-control.github.io/tutorial/">Project1</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">Motivated by ten years of Learning-Based Control Invited Sessions at the IEEE Conference on Decision and Control (CDC), this tutorial paper reviews key advances at the intersection of machine learning and control. We focus on methods that combine the flexibility of machine learning techniques with the structure and theoretical foundations of control to design autonomous systems that are capable, reliable, and safe. We first introduce core notions for establishing stability and safety guarantees, then review approaches that learn dynamics models to improve control under uncertainty, and finally discuss data-driven methods that directly synthesize or learn policies, including reinforcement learning, imitation learning, and Bayesian optimization. We further discuss representative applications and open challenges. The goal is to provide an accessible entry point to the field and to support continued progress toward reliable learning-based control in real-world systems. To support learning and practical exploration, we share implementations and illustrative examples along with our discussion, together with additional resources on our website: https://learning-based-control.github.io/tutorial/.</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">Motivated by ten years of Learning-Based Control Invited Sessions at the IEEE Conference on Decision and Control (CDC), this tutorial paper reviews key advances at the intersection of machine learning and control.</div>
-</details>
-</div>
-<div class="card">
-<div class="title">Traffic State Prediction and Control Using a Koopman Operator Framework with Polynomial Observables</div>
-<div class="meta-line">Authors: Shakib Mustavee, Arvind Singh, Shaurya Agarwal</div>
-<div class="meta-line">First: 2026-10-14T02:32:34+00:00 · Latest: 2026-10-21T03:12:36+00:00</div>
-<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19442v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.19442v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
-<details class="detail"><summary>Abstract</summary>
-<div class="mono">In this paper, we develop a Koopman operator framework for modeling and control of traffic flow governed by the Lighthill--Whitham--Richards (LWR) conservation law. We show that the nonlinear dynamics induced by the Greenshields flow--density relation naturally motivate a dictionary of polynomial observables, while the controlled dynamics become bilinear in the lifted Koopman coordinates. A reduced-order Koopman model is identified from spatio-temporal traffic-density snapshots and used as the prediction model in a model predictive control (MPC) framework for ramp metering. The resulting Koopman-MPC is compared with two predictive control baselines that use, respectively, a fixed linearized LWR model and the nonlinear finite-volume LWR model. In a one-hour freeway experiment, the Koopman-based controller maintains the traffic density below the critical Greenshields value and closely reproduces the behavior of the nonlinear PDE-based MPC, with a maximum-density difference below 1%. The Koopman predictor also reduces the mean online model-evaluation cost by approximately one order of magnitude relative to the nonlinear PDE predictor. In contrast, the linearized LWR predictor is computationally cheaper but exhibits substantially larger prediction errors and yields a more conservative metering policy. These results demonstrate that the analytical structure of the nonlinear traffic conservation law can be exploited to construct an interpretable data-driven surrogate for efficient traffic prediction and control</div></details>
-<details class="detail"><summary>Summary / 总结</summary>
-<div class="mono">In this paper, we develop a Koopman operator framework for modeling and control of traffic flow governed by the Lighthill--Whitham--Richards (LWR) conservation law.</div>
-</details>
 </div></div>
     <details style="margin-top:16px" class="detail"><summary>History</summary>
-      <div class="history-list"><a href="archive/20261022_0602.html">20261022_0602</a>
+      <div class="history-list"><a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
 <a href="archive/20261021_0600.html">20261021_0600</a>
 <a href="archive/20261020_0641.html">20261020_0641</a>
 <a href="archive/20261019_0511.html">20261019_0511</a>
