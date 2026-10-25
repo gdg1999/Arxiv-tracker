@@ -1,0 +1,427 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-26 05:19</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261026_0519</div>
+    <div class="row"><div class="card">
+<div class="title">Model Predictive Control of Wind Turbines: A Model-Oriented Review of Prediction Models, Control Objectives, and Nonlinear Aerodynamic Formulations</div>
+<div class="meta-line">Authors: Roya Khalili-Amirabadi, Mohsen Jalaeian-Farimani, Mahdi Ghane</div>
+<div class="meta-line">First: 2026-10-22T13:58:04+00:00 · Latest: 2026-10-22T13:58:04+00:00</div>
+<div class="meta-line">Comments: Khalili-Amirabadi, R., Jalaeian-Farimani, M., &amp; Ghane, M. (2026). Model Predictive Control of Wind Turbines: A Model-Oriented Review of Prediction Models, Control Objectives, and Nonlinear Aerodynamic Formulations. Journal of Intelligent Monitoring and Control Systems, 1(1): 35-41. https://doi.org/10.65098/jimcs.01.2026.35.41</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31295v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31295v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Model predictive control (MPC) has been applied to wind-turbine regulation with markedly different internal prediction models, ranging from linearized low-order turbine models to nonlinear, aeroelastic, floating, and data-driven predictors. This review organizes the literature primarily by the model propagated by the controller and treats model order, predictor representation, MPC formulation, control objective, and validation plant as separate descriptors. Primary studies show that low-order linear or piecewise-affine predictors are attractive for constrained power and speed regulation, whereas flexible drivetrain, structural, and floating models are needed when drivetrain twist, tower motion, blade loads, or platform dynamics are explicit control quantities. Nonlinear and economic MPC studies further demonstrate coordinated pitch/torque control across broad operating regions, while preview, repetitive, and data-driven formulations address wind prediction, periodic loads, and model mismatch. Particular attention is given to aerodynamic pitch dependence: variable-pitch turbine dynamics can be non-affine with respect to applied pitch, and the term NMPC alone does not prove that the original nonlinear pitch map is retained inside the optimizer. The review therefore adopts a conservative, equation-based classification for direct nonlinear applied-pitch propagation. Here, direct nonlinear applied-pitch propagation means that the applied pitch at each prediction step is evaluated inside the original nonlinear aerodynamic map, rather than replacing that dependence by a linearized, scheduled, piecewise-affine, or learned surrogate. The literature supports a remaining integration challenge at the intersection of flexible drivetrain prediction, nonlinear aerodynamic pitch treatment, explicit constraints and load objectives, and validated adaptive or learned model correction.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Model predictive control (MPC) has been applied to wind-turbine regulation with markedly different internal prediction models, ranging from linearized low-order turbine models to nonlinear, aeroelastic, floating, and data-driven predictors.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Large Language Models Meet Bayesian Optimization: Towards Self-evolving Wireless Digital Twins</div>
+<div class="meta-line">Authors: Yingzhuo Sun, Haoyun Li, Ming Xiao, Francisco J. Ferrao, Berna Ozbek</div>
+<div class="meta-line">First: 2026-10-22T12:40:49+00:00 · Latest: 2026-10-22T12:40:49+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31192v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31192v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Wireless digital twins (DTs) are increasingly integrated with artificial intelligence to support online modeling, prediction, and network optimization. However, most existing approaches perform adaptation within predefined learning or optimization structures, which may become unsuitable when wireless tasks and operating conditions change. In this article, we investigate the integration of large language models (LLMs) and Bayesian optimization (BO) to extend wireless DTs from online adaptation towards algorithm-level self-evolution. We introduce an LLM-assisted BO framework in which BO provides a stable and sample-efficient optimization backbone, while the LLM determines whether selected BO components should be retained or adapted based on the current task and accumulated optimization experience. In simulations, we apply the framework to Gaussian process (GP) kernel discovery for a multi-user wireless beam-selection problem. Simulation results show that the LLM-discovered kernel improves the final BO performance by 19.7% on the training tasks compared with the strongest standard kernel baseline. The results demonstrate the potential of combining LLM flexibility with structured BO for self-evolving wireless DTs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Wireless digital twins (DTs) are increasingly integrated with artificial intelligence to support online modeling, prediction, and network optimization.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">PriMa-Causa: Causal Prescriptive Maintenance</div>
+<div class="meta-line">Authors: Felix Saretzky</div>
+<div class="meta-line">First: 2026-10-22T12:06:59+00:00 · Latest: 2026-10-22T12:06:59+00:00</div>
+<div class="meta-line">Comments: PhD thesis, University of Luxembourg, 2026. 203 pages. Also available at https://hdl.handle.net/10993/69383</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31147v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31147v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Automated manufacturing requires data-driven decisions under uncertainty and sparse observational records, and unplanned downtime is a dominant cost of getting them wrong. Prescriptive maintenance recommends a maintenance action against an impending failure rather than merely predicting it. Established reference architectures couple predictive models with rule- or optimisation-based recommendation logic. Selecting a corrective action, however, requires an interventional quantity: how the line behaviour would change if the action were set. Manufacturing data is observational, so a model fitted to predict the outcome estimates an associational quantity and may misdirect the choice of action without the prediction error revealing it. Causal estimators target the interventional quantity but require an expert-led causal study per case, for which the bounded decision window of operation leaves no room. This dissertation analyses how causal reasoning can be embedded into prescriptive maintenance so that actions are ranked by their estimated interventional effect. The result is PriMa-Causa, built from three components: a causal reasoning layer that integrates the estimate into the PriMa reference model, a parametric simulator that supplies the interventional ground truth absent from manufacturing data, and a graph-conditioned tabular causal foundation model that, pre-trained once on this synthetic production-line prior, answers interventional queries in a single forward pass. PriMa-Causa attains a lower prescription error than associational baselines, with the largest margin under weak overlap and sparse context, and a partially disclosed causal graph reduces this error further. The causal inductive bias of the synthetic prior and the graph conditioning can thus replace per-case estimator fitting, a step toward automating causal inference for autonomous and self-healing maintenance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Automated manufacturing requires data-driven decisions under uncertainty and sparse observational records, and unplanned downtime is a dominant cost of getting them wrong.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Stability-Preserving Reinforcement Learning for Heterogeneity-Aware Composite Max-Pressure Traffic Signal Control</div>
+<div class="meta-line">Authors: Jichen Zhu, Chaopeng Tan</div>
+<div class="meta-line">First: 2026-10-22T10:16:16+00:00 · Latest: 2026-10-22T10:16:16+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.31037v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.31037v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Reinforcement learning (RL) provides a flexible mechanism for adapting traffic signal control to heterogeneous traffic and sensing conditions, but directly learned signal actions do not automatically inherit the analytical properties of structured traffic-control methods. This paper proposes Com-MP, a theory-guided RL framework that learns a context-dependent composition of multiple max-pressure (MP) control preferences while retaining decentralized MP phase selection. The learned policy adapts the relative influence of constituent MP formulations according to local traffic and sensing conditions, allowing data-driven adaptation to operate within a structured traffic-control framework. We show that such intersection-specific and time-varying composition preserves strong queue stability for every demand in the strictly stabilizable region under any admissible non-anticipative composition policy, thereby separating the performance-adaptation role of learning from the stability property of the underlying controller. In a representative implementation combining detector-supported queue-based MP and connected-vehicle-supported travel-time MP, experiments on a real-world 45-intersection network show that Com-MP reduces average delay by 15.6\% and 8.6\% relative to the two constituent controllers, respectively, and by about 7.0\% relative to the best fixed composition. The learned composition responds systematically to local traffic and sensing conditions, remains effective under heterogeneous and degraded sensing, and can be transferred without retraining to an unseen network with an average delay only 2.4\% higher than that of a policy trained directly on the target network. These results show how learning-based adaptation can be introduced within a stability-preserving traffic-control structure, providing a theory-guided pathway toward trustworthy learning-enabled traffic signal control.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Reinforcement learning (RL) provides a flexible mechanism for adapting traffic signal control to heterogeneous traffic and sensing conditions, but directly learned signal actions do not automatically inherit the analytical properties of structured traffic-control methods.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Archive coverage constrains abstaining retrieval for transient stability screening more than conditional accuracy</div>
+<div class="meta-line">Authors: Gregor Cerar, Denis Sodin, Matjaž Škrlec, Urban Rudež, Mihael Mohorčič, Miha Smolnikar</div>
+<div class="meta-line">First: 2026-10-22T09:38:43+00:00 · Latest: 2026-10-22T09:38:43+00:00</div>
+<div class="meta-line">Comments: 34 pages, 4 figures, 9 tables, including Supplementary Information. Submitted to Scientific Reports. Code and BUS39 data: https://github.com/sensorlab/AI-ASSIST</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30996v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30996v1">PDF</a> · <a href="https://github.com/sensorlab/AI-ASSIST">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Power-grid transient stability is assessed by simulating credible faults, but repeating simulations as operating conditions change is costly, motivating faster critical clearing time estimators. Within the AI-ASSIST project, we developed a retrieval-based estimator around three adopted requirements: estimates retain their supporting states, retrieval abstains without compatible support, and support statistics are tested against observed error. Abstention turns estimator uncertainty into a demand on the archive. Exact switching-configuration equality is used. The dense synthetic BUS39 archive covers 99.9996% of 1,044,797 records; the operational ELES archive covers 73.47% of 322,823 records. At query time, 59.37% of ELES states have an earlier same-topology candidate. Under causal availability, retrieval covers 56.34% of records; on records covered under both protocols, mean absolute error increases by 10.0%. No tested support diagnostic ranks first on both grids. Most tested supervised regressors have lower error than retrieval on BUS39, all higher on the matched retrieval-covered ELES population. On ELES, gradient boosting becomes more accurate than retrieval when temporally adjacent states are excluded, so the accuracy trade depends on the archive. Under the adopted compatibility key, archive availability constrains deployment more than conditional accuracy on ELES. Compatible coverage and chronological availability are auditable before an estimator is fitted.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Power-grid transient stability is assessed by simulating credible faults, but repeating simulations as operating conditions change is costly, motivating faster critical clearing time estimators.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Robustness Verification of an Autonomous Underwater Vehicle-based Plankton Classifier</div>
+<div class="meta-line">Authors: Abdelrahman Sayed Sayed, Pierre-Jean Meyer, Asgeir J. Sørensen, Mohamed Ghazel</div>
+<div class="meta-line">First: 2026-07-05T18:32:59+00:00 · Latest: 2026-10-22T07:52:44+00:00</div>
+<div class="meta-line">Comments: 6 pages, 2 figures, Accepted in IEEE OES AUV Symposium 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.04453v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.04453v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The assessment of planktonic standing stocks and microorganism structures is critical for understanding upper ocean biological processes. Currently, autonomous underwater vehicles (AUVs) equipped with in-situ optical imaging and artificial intelligence (AI) methods offer a promising solution for persistent surveillance, mapping and monitoring of planktonic life. However, current AI methods often lack robustness in dynamic, unstructured environments, where environmental noise and non-biological artifacts lead to frequent misclassifications. Standard convolutional neural network (CNN) classifiers often struggle with such conditions, leading to misclassifications that require time-consuming manual validation by marine biologists. To address this issue, we propose a novel robustness verification framework for in-situ plankton classifiers based on reachability analysis. We also introduce a continuous-time neural ordinary differential equation (neural ODE) classification model leveraging the high-resolution imaging capabilities of the SilCam particle imager. In this paper, we demonstrate the effectiveness of the proposed framework by formally verifying the robustness of the neural ODE model against environmental perturbations. We demonstrate that our verification framework acts as an automated filter providing formal guarantees of model stability against ambiguous data, thereby improving the reliability of autonomous sampling and reducing the post-processing workload.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The assessment of planktonic standing stocks and microorganism structures is critical for understanding upper ocean biological processes.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Anomaly Score Preserving Data Poisoning Attacks on Data-Driven Controller Design</div>
+<div class="meta-line">Authors: Motoharu Tsuboi, Hampei Sasahara, Iori Takaki, Hideaki Ishii</div>
+<div class="meta-line">First: 2026-10-22T06:02:54+00:00 · Latest: 2026-10-22T06:02:54+00:00</div>
+<div class="meta-line">Comments: 8 pages, 3 figures, 2 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30782v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30782v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper investigates stealthy data poisoning attacks against data-driven controller synthesis and develops an attack generation method. During data collection, an attacker can sequentially manipulate state measurements, while the defender attempts to detect such manipulation using a residual-based anomaly score based on the Mahalanobis distance. Under suitable assumptions on the defender&#x27;s prior knowledge, we characterize the class of time-varying affine transformations that preserve the anomaly score for arbitrary data and parameterize this class by the orthogonal group. Based on this characterization, we formulate attack design under the stealthiness condition as an optimization problem over the orthogonal group and propose a Riemannian gradient method. Numerical experiments demonstrate that the proposed attack can degrade closed-loop performance while remaining stealthy.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper investigates stealthy data poisoning attacks against data-driven controller synthesis and develops an attack generation method.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Incentive Mechanisms for Welfare Maximization Under Individual Rationality in Noncooperative Dynamical Systems</div>
+<div class="meta-line">Authors: Yuyue Yan, Maojiao Ye, Hideaki Ishii, Tomohisa Hayakawa</div>
+<div class="meta-line">First: 2026-10-22T04:35:34+00:00 · Latest: 2026-10-22T04:35:34+00:00</div>
+<div class="meta-line">Comments: 16 pages, 10 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30718v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30718v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Human societies are shaped by strategic interactions among self-interested decision-makers, where conflicts between individual and social interests naturally arise. This paper investigates the design of incentive mechanism for multi-agent game systems to reconcile social welfare maximization with individual benefits under economic constraints. We develop a linear-quadratic incentive framework to reshape Nash equilibria while reconciling the constraints of Pareto efficiency, individual rationality, and budget balance. The optimal target state is identified as the solution of a constrained optimization problem associated with the social welfare and aggregated payoff functions. Our theoretical analysis characterizes the conditions of incentive functions that steer self-interested agents towards the optimal target state as a Pareto-efficient Nash equilibrium for achieving the maximum attainable social welfare. We further characterize how the choice of social welfare function constrains achievable individual outcomes, revealing a structural paradox associated with priority weighting under individual rationality. Several numerical examples are presented to demonstrate the efficacy of our results.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Human societies are shaped by strategic interactions among self-interested decision-makers, where conflicts between individual and social interests naturally arise.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Machine Learning-Enabled Wireless Power Transfer: A Task-Oriented Review of Structural Optimization, State and Parameter Estimation, and Adaptive Control</div>
+<div class="meta-line">Authors: Denghao Luo, Yiheng Jiang, Jiaqi Zhao, Yuan Gao, Changsong Cai, Weiyi Huang, Yun Zhang</div>
+<div class="meta-line">First: 2026-10-21T17:48:23+00:00 · Latest: 2026-10-21T17:48:23+00:00</div>
+<div class="meta-line">Comments: 42 pages, 7 figures; review article</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30101v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30101v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Wireless power transfer (WPT) systems must maintain efficient and safe energy delivery under variations in geometry, coupling, load, alignment, and operating conditions. Machine-learning methods are increasingly applied to accelerate structural design, estimate operating parameters and states, and support adaptive control and scheduling. This review develops a task-oriented framework organized around three interconnected domains: structural design and optimization, parameter and state estimation, and control and optimization. Supervised learning, reinforcement learning, and hybrid or physics-informed methods are compared in terms of data requirements, dependence on physical models, information sources, computational requirements, accuracy, online response, application scope, and optimization objectives. Supervised learning provides rapid surrogate modeling, regression, and classification when representative labeled data are available. Reinforcement learning addresses sequential control and scheduling but introduces challenges in reward design, safe exploration, and simulation-to-reality transfer. Hybrid methods integrate physical knowledge with data-driven models to improve data efficiency and physical consistency. The principal barriers to engineering deployment include limited and biased datasets, weak out-of-distribution generalization, insufficient physical consistency, unsafe online adaptation, embedded-resource constraints, and the absence of standardized benchmarks. Future research should prioritize uncertainty-aware and physics-informed learning, safe simulation-to-reality transfer, lightweight edge deployment, distributed coordination, reproducible evaluation, and digital-twin-assisted development.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Wireless power transfer (WPT) systems must maintain efficient and safe energy delivery under variations in geometry, coupling, load, alignment, and operating conditions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Why the Swing Parameters Are Sloppy</div>
+<div class="meta-line">Authors: M Parimi, Shashank Varma, Sunny Kumar, S R Wagh, Navdeep Singh</div>
+<div class="meta-line">First: 2026-10-21T17:33:25+00:00 · Latest: 2026-10-21T17:33:25+00:00</div>
+<div class="meta-line">Comments: 23 pages, 7 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.30084v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.30084v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Evangelou, Stanković, Kevrekidis and Transtrum compared analytic and data-driven assessments of parameter identifiability for the infinite-bus synchronous generator. Fisher information with the manifold boundary approximation method (MBAM), and output diffusion maps with geometric harmonics, report the same six identifiable parameters on the late window $t \in [3, 5]\text{ s}$, and both place the inertia $H$ and the damping $D$ among the unidentifiable ones. We explain this result from the geometry of the dynamics rather than from that of the parameter-to-data map. The rotor swing is a fast fibre that has collapsed onto a two-dimensional normally attracting invariant manifold (NAIM) of the transient fluxes before the window opens. The zeroth-order NAIM is exactly independent of $H$, $D$, $T_{d0}&#x27;&#x27;$ and $T_{q0}&#x27;&#x27;$, four of the five MBAM limits. We prove, under stated smoothness and rank conditions, that each of the four limits is a boundary of the model manifold at a distance equal, to first order in the parameter, to its current profiled speed. The same analysis predicts how identifiability changes with the experiment: neither a larger initial speed deviation nor a load change restores $H$ or $D$ in the late window, whereas the early window $[0, 2]\text{ s}$ makes $H$ the best-determined parameter. Evaluated in a physical metric fixed by synchrophasor accuracy limits, the late window identifies five parameters rather than six and the early window nine. The spiked-covariance structure of the linearised trajectory map explains why the principal components of whitened, sampled trajectories reproduce the prior-scaled Fisher spectrum, and regression on those components attains the Fisher-predicted recovery error in 113 of 114 parameter--scenario pairs.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Evangelou, Stanković, Kevrekidis and Transtrum compared analytic and data-driven assessments of parameter identifiability for the infinite-bus synchronous generator.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261025_0520.html">20261025_0520</a>
+<a href="archive/20261024_0552.html">20261024_0552</a>
+<a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0511.html">20261019_0511</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0550.html">20261017_0550</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
