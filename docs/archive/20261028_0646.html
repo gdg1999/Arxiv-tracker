@@ -1,0 +1,426 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-28 06:46</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261028_0646</div>
+    <div class="row"><div class="card">
+<div class="title">Repeated Binary Direct Collinear Impacts Under Incremental Contact Laws With Residual Indentation: A Hybrid Systems Formulation</div>
+<div class="meta-line">Authors: Mihails Milehins, Dan B. Marghitu</div>
+<div class="meta-line">First: 2026-09-05T15:21:46+00:00 · Latest: 2026-10-26T17:40:56+00:00</div>
+<div class="meta-line">Comments: 30 pages, 6 figures; v1-v5: a variety of amendments and corrections; v6: additional analytical properties of the contact laws used in examples</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.06138v6">Abs</a> · <a href="https://arxiv.org/pdf/2609.06138v6">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Incremental contact laws specify the normal contact force through a differential relation, possibly carrying an internal state, driven by the indentation and its rate. In some, the force is extinguished at a nonzero indentation, whether by plastic deformation or by an elastic aftereffect, so that a residual deformation remains at separation. Such laws sit uneasily within rigid body dynamics, which admits no deformation. The tension is tolerable when the indentation is small relative to the bodies, so that it may be carried constitutively rather than geometrically. Even then, the contact law alone does not determine the interaction of the bodies. Because force and indentation no longer vanish together, conditions for the commencement and termination of contact must be supplied separately. So must the fate of the deformation and internal state at separation, neither of which the equations of motion contain. This article formulates the repeated direct collinear impact of two convex bodies under external forces as a hybrid dynamical system. The contact interface is modeled as a massless element carrying the contact law and its state, coupled to the bodies through relative velocity and an interaction force dictated by the contact state. Consequently, all switching and resets are confined to the interface, leaving the geometry and the equations of motion of the bodies unaltered. The principal analytical properties of the resulting formulations are established, among them passivity and completeness; the branching of solutions at the onset and termination of contact is also examined. The framework is demonstrated through numerical simulations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Incremental contact laws specify the normal contact force through a differential relation, possibly carrying an internal state, driven by the indentation and its rate.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">FedAvgIm: Federated Learning for Multi-Site Impedance Identification of Inverter-Based Resources</div>
+<div class="meta-line">Authors: Quang Manh Hoang, Guilherme Vieira Hollweg, Akhtar Hussain, Wencong Su, Van-Hai Bui</div>
+<div class="meta-line">Venue: IEEE Transactions on Smart Grid, vol. 17, no. 6, pp. 5911-5924, Nov. 2026</div>
+<div class="meta-line">First: 2026-10-26T15:50:11+00:00 · Latest: 2026-10-26T15:50:11+00:00</div>
+<div class="meta-line">Comments: Author-accepted manuscript (not the IEEE version of record)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35640v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35640v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">With the increasing integration of inverter-based resources (IBRs) into power systems, assessing small-signal interaction stability has become essential. Impedance/admittance models enable frequency-domain characterization of IBR dynamics without requiring access to proprietary internal control details, but measurement-based identification is time-consuming and must be repeated across operating points. This paper proposes FedAvgIm, a privacy-aware federated-learning framework for multi-site dq-admittance identification under severe local data scarcity and raw-data-locality constraints. Each IBR site trains a local feed-forward neural network using a small set of operating-point-frequency samples, while only model parameters are shared with a cloud aggregator that performs sample-size-weighted FedAvg to update a global model and broadcast it back to all sites. To demonstrate effectiveness, EMT measurement-based admittance datasets are constructed for nine grid-following IBRs with different parameters, architectures, measurement-noise levels, and non-IID settings, where each client has only 40-390 training samples. Results show that FedAvgIm achieves performance close to centralized training and consistently outperforms local-only learning and raw-data-locality-preserving transfer-learning baselines. Additional studies show that FedAvgIm maintains stable learning behavior under measurement noise and remains beneficial under moderate non-IID conditions. The estimated dq-admittance models are further applied to generalized Nyquist stability analysis and validated against EMT time-domain simulations under multiple operating points and grid-strength conditions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">With the increasing integration of inverter-based resources (IBRs) into power systems, assessing small-signal interaction stability has become essential.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Uncertainty-Aware Parameter Estimation for Condition Monitoring of Power Converters</div>
+<div class="meta-line">Authors: Tomas Monopoli, Jiahong Liu, Shuai Zhao</div>
+<div class="meta-line">First: 2026-08-31T18:29:45+00:00 · Latest: 2026-10-26T15:28:31+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.00218v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.00218v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Changes in circuit parameters can indicate component degradation in power converters, but measurement noise and limited parameter observability can make these changes difficult to detect reliably. This paper proposes an uncertainty-aware parameter estimation framework to distinguish genuine parameter changes from variations caused by estimation uncertainty. Using a differentiable switched converter model, the method requires only one or two samples per switching period. Model-derived residual whitening and a Bayesian posterior approximation quantify estimation uncertainty and reveal poorly identifiable parameters. Simulations demonstrate improved estimation accuracy over least-squares and physics-informed neural-network benchmarks, with uncertainty estimates consistent with repeated noise realizations. Experiments on a laboratory buck converter validate the estimated parameters against independently derived references and demonstrate the detection of a controlled output-capacitance reduction. The proposed framework provides a basis for reliable parameter-change detection in power converter condition monitoring.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Changes in circuit parameters can indicate component degradation in power converters, but measurement noise and limited parameter observability can make these changes difficult to detect reliably.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">ADACT: PDE-Constrained Thermal Hardware/Software Co-Design Adjoint-Driven Optimal Control via Finite Difference Discretization</div>
+<div class="meta-line">Authors: Don Li</div>
+<div class="meta-line">First: 2026-10-26T15:07:09+00:00 · Latest: 2026-10-26T15:07:09+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35569v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35569v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">By virtue of the sheer compute demands of large-scale artificial intelligence (AI) and high-performance computing (HPC), modern multi-core microprocessors suffer from severe power density limits and thermal throttling, entailing an urgent need for principled methods for predictive, physics-informed dynamical thermal management (DTM). Here, we introduce a hardware/software co-design physics-informed PDE-constrained DTM throttling optimal control algorithm, ADACT (Adjoint-Driven Adaptive Co-Design Thermal Control), that minimizes thermal risk and cooling energy overhead while maximizing core execution throughput. The underlying physical temperature field is governed by a two-dimensional nonhomogeneous parabolic reaction-diffusion equation with spatially localized, time-varying power source terms and variable convective cooling subject to nonhomogeneous Dirichlet boundary conditions. We employ a discretization of the continuous state PDE via a Crank-Nicolson finite difference scheme with a 5-point discrete Laplacian operator on a uniform spatial mesh, which preserves unconditional numerical stability and $O(Δx^2 + Δy^2 + Δt^2)$ second-order temporal and spatial accuracy. To efficiently compute exact gradients, we construct and implement a continuous backward-in-time adjoint state method with L-BFGS as our optimization algorithm of choice. The accuracy and second-order convergence rates of both forward state and backward adjoint solvers are quantitatively verified via the Method of Manufactured Solutions (MMS), and gradient accuracy is validated using directional derivative Taylor tests. Numerical experiments demonstrate that ADACT dynamically throttles software power workloads and modulates hardware cooling efforts to strictly uphold physical thermal thresholds while maintaining operational throughput.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">By virtue of the sheer compute demands of large-scale artificial intelligence (AI) and high-performance computing (HPC), modern multi-core microprocessors suffer from severe power density limits and thermal throttling, entailing an urgent need for principled methods for predictive, physics-informed dynamical thermal management (DTM).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Crazyflow: An Accurate, GPU-Accelerated, Differentiable Drone Simulator in JAX</div>
+<div class="meta-line">Authors: Martin Schuck, Marcel P. Rath, Yufei Hua, Abhishek Goudar, SiQi Zhou, Angela P. Schoellig</div>
+<div class="meta-line">First: 2026-05-31T22:38:46+00:00 · Latest: 2026-10-26T11:15:45+00:00</div>
+<div class="meta-line">Comments: Revision</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2606.01478v3">Abs</a> · <a href="https://arxiv.org/pdf/2606.01478v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">High-quality, large-scale synthetic data from simulations is becoming a cornerstone for pushing robots&#x27; capabilities. While aerial robotics simulators have evolved to support specialized needs such as fidelity, differentiability, and swarms independently, a unified platform that synthesizes data across all these domains is missing. In this work, we propose Crazyflow, a simulator designed to push the frontier of aerial robotics algorithm development, supporting model-based and data-driven methods, gradient-based and sampling-based approaches, single- and multi-agent systems, and state- and vision-based policy learning. Crazyflow combines high-fidelity dynamics with JAX for speed and differentiability, scaling to millions of environments or thousands of swarms with thousands of drones on single CPUs and GPUs, and beyond on clusters. Real-world experiments show Crazyflow supports both analytical-gradient-based policy learning, achieving high-accuracy tracking without domain randomization, and sampling-based obstacle avoidance at speeds exceeding half a billion steps per second. Breaking the traditional train-then-deploy paradigm, Crazyflow&#x27;s performance enables in-flight reinforcement learning; we demonstrate this by throwing a physical drone into the air and training a recovery policy from scratch in 0.37 seconds, catching it before it hits the ground. By pushing accuracy, speed, and differentiability simultaneously, Crazyflow serves as an open-source resource for synthetic data generation, with emerging capabilities for large-scale parallelization for online, in-execution learning and optimization, opening the door to novel algorithm development.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">High-quality, large-scale synthetic data from simulations is becoming a cornerstone for pushing robots&#x27; capabilities.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Moving bits instead of watts: Accelerating global AI data-centre deployment at the energy-digital-water-land nexus</div>
+<div class="meta-line">Authors: Jiawei Qu, Xiaoying Shi, Kai Hou, Hongjie Jia, Jinyue Yan</div>
+<div class="meta-line">First: 2026-10-26T09:30:16+00:00 · Latest: 2026-10-26T09:30:16+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.35088v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.35088v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Artificial intelligence is driving an unprecedented expansion of data centres. However, this growth is increasingly stalled by grid transmission constraints that trap new data centres in years-long connection queues. Unlike electricity, computation can be moved across the globe through fibre-optic networks, but whether this spatial transfer can bypass constrained grids and accelerate global AI data-centre deployment remains unknown. Here we develop a global framework that places future data-centre capacity in energy-abundant regions and routes computational workloads through fibre-optic networks rather than transmitting electricity. We evaluate the framework through more than 11 million hourly operation simulations at subnational resolution, integrating constraints on energy systems, water, digital connectivity, land and financing risk. Results show that across multiple data-centre development and climate-policy scenarios, leveraging global data transfer allows new data centres to be sited where these conditions are favourable, lowering construction costs by 44-47% and carbon emissions by 38%. By treating the global fibre-optic network as an energy-system asset, it avoids 34-67 GW of high-voltage transmission capacity, comparable in magnitude to Italy&#x27;s national peak electricity demand. Crucially, this methodology could bring more than 95% of connection-delayed data centres online in 2030, with Canada, the Nordic countries and the Arabian Peninsula emerging as preferred locations for data-centre development. Our findings establish computational mobility as an alternative to energy-system expansion, informing the coordinated global development of energy and artificial-intelligence infrastructure.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Artificial intelligence is driving an unprecedented expansion of data centres.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Physics-Informed and Data-Driven Composite Disturbance Separation and Predictive Control for Airborne Electro-Optical Gimbals with Multiple Constraints</div>
+<div class="meta-line">Authors: Yaokun Lu, Yifan Li, Zhixuan Zhang, Enmei Wang, Hao Teng, Jianzhong Qiao</div>
+<div class="meta-line">First: 2026-10-26T05:06:52+00:00 · Latest: 2026-10-26T05:06:52+00:00</div>
+<div class="meta-line">Comments: 20 pages, 8 figures. Includes supplementary derivations and proofs. Demonstration video included as an ancillary file</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.34849v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.34849v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper studies the constrained pointing control problem of airborne electro-optical gimbals subjected to composite periodic and aperiodic disturbances. Under carrier vibration, input delay, and actuator constraints, achieving line-of-sight stabilization and tracking is challenging. A disturbance-separated model predictive control (MPC) scheme is proposed to compensate these heterogeneous disturbances according to their physical characteristics. An adaptive periodic observer predicts multi-harmonic vibrations over the MPC horizon using linear-regression frequency estimation. A linear observer estimates the aperiodic disturbance, and a bounded long short-term memory (LSTM) network predicts its change over the input delay. Embedding periodic predictions into the MPC model while applying aperiodic compensation outside the optimizer limits amplification of aperiodic estimation errors and improves pointing accuracy under frequency changes and parameter mismatch. On the stated headroom envelope, input-set tightening provides feasible commands within the prescribed limits, and a regional practical tracking bound is established under explicit input-sequence and predicted-state margin conditions. A UAV-mounted two-axis gimbal platform is assembled for comparative indoor hovering experiments, complemented by simulations under frequency changes and parameter mismatch. In the reported trials, the proposed method achieves yaw and pitch relative-angle root-mean-square errors (RMSEs) of 0.770 degrees and 0.350 degrees, reducing tracking errors by 25.1% and 45.9% compared with linear active disturbance rejection control.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper studies the constrained pointing control problem of airborne electro-optical gimbals subjected to composite periodic and aperiodic disturbances.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-Driven LQR with Uncertainty Refinement and Domain Randomization---Part~II: Fisher-Majorized Certified Policy Iteration</div>
+<div class="meta-line">Authors: Hamidreza Modares</div>
+<div class="meta-line">First: 2026-10-24T16:54:32+00:00 · Latest: 2026-10-24T16:54:32+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.33795v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.33795v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Building on the uncertainty description developed in Part~I, this paper introduces a Fisher-majorized domain-randomized generalized policy iteration framework for data-driven linear quadratic regulator (LQR) synthesis. At each iteration, partial Bellman evaluation over a fixed batch of uncertainty realizations produces a structured Sylvester policy-improvement step. A residual-weighted Fisher curvature controls the policy-induced variation in the stationary covariance and converts the Sylvester model into a certified upper bound on the cost change, thereby guaranteeing descent for every accepted step. A check-and-correct mechanism then certifies stability over the entire uncertainty support, rather than only over the sampled realizations. Consequently, every iterate is robustly stabilizing and monotonically decreases the fixed-batch objective. The Fisher truncation and stability correction become inactive after finitely many times. The objective gap then contracts linearly to a floor determined by the dispersion of the realization-wise Riccati targets and by measurement noise. In the absence of measurement noise, this floor vanishes when the realization-wise targets coincide.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Building on the uncertainty description developed in Part~I, this paper introduces a Fisher-majorized domain-randomized generalized policy iteration framework for data-driven linear quadratic regulator (LQR) synthesis.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-Driven LQR with Uncertainty Refinement and Domain Randomization---Part~I: Certified Uncertainty Refinement</div>
+<div class="meta-line">Authors: Hamidreza Modares</div>
+<div class="meta-line">First: 2026-10-24T16:49:10+00:00 · Latest: 2026-10-24T16:49:10+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.33790v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.33790v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Learning controllers from trajectories corrupted by process and measurement noise is difficult when the system matrices and the noise covariances are unknown: noisy regressors bias least squares, and model uncertainty cannot be quantified without the noise covariance, which can only be estimated from residuals of the uncertain model. This paper, Part~I of a two-part study, resolves both obstacles with a finite-sample framework that certifies, and iteratively refines, uncertainty sets for the model, the noise in the collected data, and the noise covariance. A closed-loop parametrization based on delayed instrumental variables (IVs) removes the bias and assigns to every candidate model exactly one noise sequence that reproduces the data. Learning this noise breaks the circular dependence: the noise sequences give the covariance estimate directly, models whose noise violates the prior or the statistical certificates are discarded, and the surviving models yield a tighter covariance certificate. Several delayed instruments further tighten the model set and give a certified test of data consistency. We prove finite-sample containment of the true model, noise, and covariance, recursive nesting, and convergence at the IV rate. Part~II uses these certificates for domain-randomized linear quadratic regulator synthesis.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Learning controllers from trajectories corrupted by process and measurement noise is difficult when the system matrices and the noise covariances are unknown: noisy regressors bias least squares, and model uncertainty cannot be quantified without the noise covariance, which can only be estimated from residuals of the uncertain model.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-based Low-conservative Nonlinear Safe Control Learning</div>
+<div class="meta-line">Authors: Amir Modares, Bahare Kiumarsi, Hamidreza Modares</div>
+<div class="meta-line">First: 2026-04-01T17:10:41+00:00 · Latest: 2026-10-24T16:43:04+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.01156v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.01156v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper develops a data-driven safe control framework for nonlinear discrete-time systems with parametric uncertainty and additive disturbances. The proposed approach constructs a data-consistent closed-loop representation that enables controller synthesis and safety certification directly from data. Unlike existing methods that treat unmodeled nonlinearities as global worst-case uncertainties using Lipschitz bounds, the proposed approach embeds nonlinear terms directly into the invariance conditions via a geometry-aware difference-of-convex formulation. This enables facet- and direction-specific convexification, avoiding both nonlinearity cancellation and the excessive conservatism induced by uniform global bounds. We further propose a vertex-dependent controller construction that enforces convexity and contractivity conditions locally on the active facets associated with each vertex, thereby enlarging the class of certifiable invariant sets. For systems subject to additive disturbances, disturbance effects are embedded directly into the verification conditions through optimized, geometry-dependent bounds, rather than via uniform margin inflation, yielding less conservative robust safety guarantees. As a result, the proposed methods can certify substantially larger safe sets, naturally accommodate joint state and input constraints, and provide data-driven safety guarantees. The simulation results show a significant improvement in both nonlinearity tolerance and the size of the certified safe set.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper develops a data-driven safe control framework for nonlinear discrete-time systems with parametric uncertainty and additive disturbances.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261027_0701.html">20261027_0701</a>
+<a href="archive/20261026_0519.html">20261026_0519</a>
+<a href="archive/20261025_0520.html">20261025_0520</a>
+<a href="archive/20261024_0552.html">20261024_0552</a>
+<a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0511.html">20261019_0511</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0550.html">20261017_0550</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
