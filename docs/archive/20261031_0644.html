@@ -1,0 +1,428 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-10-31 06:44</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261031_0644</div>
+    <div class="row"><div class="card">
+<div class="title">Adaptive Scenario Generation for KL-DRO Around a Learned Density Model</div>
+<div class="meta-line">Authors: Aron Brenner, Saurabh Amin</div>
+<div class="meta-line">First: 2026-10-29T17:59:01+00:00 · Latest: 2026-10-29T17:59:01+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40644v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40644v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Distributionally robust optimization (DRO) hedges data-driven two-stage stochastic programs against error in the distribution estimated from a finite record, and standard ambiguity sets differ in how they treat realizations absent from that record. A divergence ball around the empirical distribution contains only reweightings of the record, whereas a transport ball also contains distributions supported off the record, including on realizations the data-generating process cannot produce, against which the decision is then hedged as well. We instead propose a Kullback-Leibler (KL) ball centered at a density model fitted to the record, the learned nominal, which lets the adversary up-weight costly unobserved realizations in proportion to the probability the model assigns them. Solving the resulting problem poses a second difficulty, because it can accommodate only a few scenarios, and an independent sample of that size is likely to omit the rare realizations on which the worst case concentrates. We therefore build the scenario set adaptively, alternating between solving the finite problem and drawing new realizations from the learned nominal, steered toward the worst case at the current decision, with importance weights that correct the draws back to the model. On a multi-item newsvendor problem and a capacity expansion problem on realistic grid data, centering the ball at the learned nominal rather than at the record lowers cost under distribution shift, at comparable in-distribution cost, when the record is scarce and the model class captures structure that lets it extrapolate beyond the record. The advantage fades as the record grows or as the shift departs from the structure the model has learned.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Distributionally robust optimization (DRO) hedges data-driven two-stage stochastic programs against error in the distribution estimated from a finite record, and standard ambiguity sets differ in how they treat realizations absent from that record.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Tutorial on Shape Servoing of Deformable Objects-Part I: Fundamentals</div>
+<div class="meta-line">Authors: Ignacio Cuiral-Zueco, Alessio Caporali, Miguel Aranda, Gianluca Palli, Gonzalo López-Nicolás, Youcef Mezouar</div>
+<div class="meta-line">First: 2026-10-29T17:40:56+00:00 · Latest: 2026-10-29T17:40:56+00:00</div>
+<div class="meta-line">Comments: Part I of a two-part tutorial. 9 pages, 5 figures. Code: https://github.com/nachocz/tutorial_on_shape_servoing_of_deformable_objects. Interactive demos: https://nachocz.github.io/tutorial_on_shape_servoing_of_deformable_objects/</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40559v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40559v1">PDF</a> · <a href="https://github.com/nachocz/tutorial_on_shape_servoing_of_deformable_objects">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a> · <a href="https://nachocz.github.io/tutorial_on_shape_servoing_of_deformable_objects/">Project1</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In robotics, shape control (or shape servoing) refers to the automatic manipulation of a deformable object to achieve a desired shape. It involves a feedback loop that exploits the relation between robot motion and changes in the measured shape. This relation, known as the interaction Jacobian or, in this context, the deformation Jacobian, depends on the object&#x27;s mechanical properties, geometry, and boundary conditions (e.g., where the object is grasped). Because these factors are often difficult to model accurately, the deformation Jacobian can be estimated locally from observed shape changes produced by commanded robot motions, without requiring a fine-tuned mechanical model. This article is the first of a two-part tutorial on data-driven Jacobian-based shape control of deformable objects. It introduces the central elements of the approach: the formulation of the shape-control problem, shape representation, estimation and online update of the deformation Jacobian, and a standard control law from the literature. It then assembles these elements into a complete shape-servoing loop, derives a local stability condition for this loop, and illustrates why some target shapes cannot be reached. Part II covers more advanced topics. Throughout both parts, a simulated planar example in which two robot arms manipulate an elastic rod observed by a camera illustrates the concepts.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In robotics, shape control (or shape servoing) refers to the automatic manipulation of a deformable object to achieve a desired shape.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Behavioral approach to Constrained Linear Quadratic Control: Feasibility and Optimality</div>
+<div class="meta-line">Authors: Soutrik Bandyopadhyay, Debasattam Pal, Shubhendu Bhasin</div>
+<div class="meta-line">First: 2026-10-29T17:36:13+00:00 · Latest: 2026-10-29T17:36:13+00:00</div>
+<div class="meta-line">Comments: Accepted for publication at IEEE Indian Control Conference 2027</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.40542v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.40542v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper develops a constrained linear-quadratic (LQ) optimal control framework within the behavioral approach. Unlike classical formulations that rely on state-input representations, our method treats both the system dynamics and the constraints as trajectory-level objects. The system is modeled through a kernel representation, while inequality constraints are captured using behavioral inequalities defined over infinite-dimensional convex cones. Using quadratic differential forms (QDFs) to encode performance indices, we formulate the constrained LQ problem as a convex variational optimization over trajectories. By employing Gateaux differentials, we derive the stationarity and complementarity conditions and show that they admit a representation as an augmented behavioral system whose unique decomposition into autonomous and controllable sub-behaviors yields a complete parameterization of all optimal constrained trajectories. The resulting conditions constitute a behavioral analogue of the Karush-Kuhn-Tucker (KKT) framework. A numerical example illustrates the effect of inequality constraints on the optimal behavior. The framework provides a general, trajectory-level representation for constrained optimal control and opens avenues for closed-loop and data-driven extensions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper develops a constrained linear-quadratic (LQ) optimal control framework within the behavioral approach.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Executor-Side Progressive Risk-Gated Actuation for Agentic AI in Wireless Supervisory Control</div>
+<div class="meta-line">Authors: Zhenyu Liu, Yi Ma, Rahim Tafazolli</div>
+<div class="meta-line">First: 2026-05-04T15:09:41+00:00 · Latest: 2026-10-29T12:32:53+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.02697v2">Abs</a> · <a href="https://arxiv.org/pdf/2605.02697v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Agentic artificial intelligence built on large language models shows promise for automating Open Radio Access Network supervisory control. However, action-level safeguards alone may be insufficient: evidence acquisition consumes time and shared resources, and network changes can invalidate approvals before release. We propose Progressive Risk-Gated Actuation (PRGA), an executor-side model and contract governing intents from assessment to release or termination. PRGA combines local checks with selective retrieval of coordination evidence to reduce acquisition costs while preserving mandatory evidence requirements. Version and lease rechecks prevent release under invalidated approvals, while reevaluation requires recorded progress within each transaction&#x27;s retry budget. Building on this contract, we formulate evidence allocation to maximize the expected whole-period rate of timely valid releases under risk, quality-of-service, deadline, and shared byte-budget constraints. For energy-saving and slice-protection workloads with stable daily load cycles, thresholds are selected offline and interpolated using an online load-phase estimate. On average over modeled start phases and quota levels, the allocation policy improves timely valid release rates over arrival-order fetching and an offline-selected global threshold under identical quotas and release checks. In OpenAirInterface radio emulation, an immediate scripted resend after a version-mismatch refusal raises on-time receiver delivery from 77.3% to 89.9% at modest additional command cost.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Agentic artificial intelligence built on large language models shows promise for automating Open Radio Access Network supervisory control.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Modeling and Parametrization of Large-scale Hydrogen Electrolyzers for Transient and Frequency Stability Analysis</div>
+<div class="meta-line">Authors: Mahmoud K. Abdelhamid, Lukas Sigrist, Álvaro Ortega</div>
+<div class="meta-line">First: 2026-10-29T11:02:39+00:00 · Latest: 2026-10-29T11:02:39+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.39819v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.39819v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Hydrogen Electrolyzers (HEs), particularly Proton Exchange Membrane (PEM)-based systems, are flexible loads capable of providing grid ancillary services and enhancing the stability of renewable-dominated power systems due to their fast electrical response. However, the literature often lacks clear guidance on the structure, modeling, and parametrization of large-scale HEs for transient and frequency stability analyses. This paper presents a detailed configuration for utility-scale HE plants, using the stack as the fundamental unit, supported by a realistic parametrization based on commercial components. Furthermore, this work extends the Generalized ESS Model (GEM), a linearized state-space model previously utilized with other converter-interfaced energy storage systems, to PEM HEs for the first time. To facilitate plant scalability, a robust method for scaling GEM matrices across different capacities is proposed. Finally, a measurement-based methodology is developed to estimate the GEM parameters and subsequently extract the equivalent electrical circuit parameters. Comprehensive simulations on the WSCC system under various disturbances validate the accuracy of the derived GEM, the effectiveness of the scaling approach, and the robustness of the parameter identification methodology.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Hydrogen Electrolyzers (HEs), particularly Proton Exchange Membrane (PEM)-based systems, are flexible loads capable of providing grid ancillary services and enhancing the stability of renewable-dominated power systems due to their fast electrical response.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Multi-output LSTM soft sensors for industrial anaerobic co-digestion using LSTM-beta-VAE generative data augmentation</div>
+<div class="meta-line">Authors: Rohit Murali, Benaissa Dekhici, Tao Chen, Dongda Zhang, Michael Short</div>
+<div class="meta-line">First: 2026-10-29T10:18:56+00:00 · Latest: 2026-10-29T10:18:56+00:00</div>
+<div class="meta-line">Comments: 33 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.39768v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.39768v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Anaerobic digestion (AD) requires close monitoring of key process variables, including pH, the ratio of volatile organic acids to alkaline buffer capacity and biogas production, to maintain biological stability and prevent process failure. While mechanistic frameworks such as the Anaerobic Digestion Model No. 1 are highly parameterised, computationally expensive, and difficult to calibrate for real-time applications, data-driven Long Short-Term Memory (LSTM) networks offer a potentially more adaptable alternative. However, current data-driven approaches in AD are predominantly limited to single-output architectures that focus solely on production yields, as opposed to simultaneous prediction of vital stability indicators. Furthermore, industrial AD datasets are typically sparse and skewed toward steady-state operations. Baseline evaluations demonstrated this scarcity prevents standard algorithms (Random Forest, XGBoost) and unaugmented LSTMs from recognising the transition to unstable operations, resulting in poor estimation of stability indicators. To overcome these challenges, this study proposes a novel generative data augmentation framework using an LSTM-beta-Variational Autoencoder coupled with a multi-output LSTM (MO-LSTM) soft sensor. By synthesising physically valid sequences of these transitions to unstable operations from one year of full-scale plant data, the method safely populates sparse regions of the feature space. Trained on this augmented dataset, the MO-LSTM achieved robust simultaneous estimation across all targets. This approach mitigates data sparsity, providing a basis for hybrid mechanistic-data-driven modelling and early-warning soft sensors in industrial bioprocesses.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Anaerobic digestion (AD) requires close monitoring of key process variables, including pH, the ratio of volatile organic acids to alkaline buffer capacity and biogas production, to maintain biological stability and prevent process failure.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Computing with Coupled Oscillator Networks: Optimization, Memory, and Modern AI Primitives</div>
+<div class="meta-line">Authors: Ahmed Allibhoy, Fabio Pasqualetti</div>
+<div class="meta-line">First: 2026-10-29T09:37:37+00:00 · Latest: 2026-10-29T09:37:37+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.39703v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.39703v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We explore how synchronization in coupled oscillator networks may be employed to perform a variety of computing tasks. These systems are becoming more attractive as an alternative to conventional digital computers due to the increasing energy demands of the latter, particularly for large-scale problems in machine learning and artificial intelligence. The ubiquity of coupled oscillator networks means that oscillator-based computing can be thought of as a universal computing paradigm encompassing systems with a diversity of physical realizations, e.g. as analog circuits, neurological systems, spintronic systems. The bridge between the dynamics of coupled oscillator networks and computational primitives they implement is the Ising model, which originates in statistical physics, and when applied to oscillator networks, explains the emergence of globally complex and disordered synchronization patterns from local interactions in the network. We discuss the application of coupled oscillator networks to three fundamental computing operations. First, oscillator networks as specialized hardware solvers of NP-hard combinatorial optimization problems, with the solution encoded in the synchrony patterns. Second, oscillator networks as associative memory systems, enabling storage and retrieval of data represented through phases of oscillations. Finally, oscillator networks as a dynamical implementation of attention, with synchronization providing the mechanism for the alignment of keys to queries. The ability of oscillator networks to implement these computational primitives paves the way for novel realizations of intelligent systems through a variety of physical substrates.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We explore how synchronization in coupled oscillator networks may be employed to perform a variety of computing tasks.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Minimum-Energy Control for Stochastic Linear Systems: A Data-Driven Approach with Finite-Sample Guarantees</div>
+<div class="meta-line">Authors: Vaishnavi Sharma, Vaibhav Katewa</div>
+<div class="meta-line">First: 2026-10-20T04:06:45+00:00 · Latest: 2026-10-29T04:59:58+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.27599v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.27599v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The open-loop minimum-energy control (MEC) problem asks for control inputs that minimize the control energy while ensuring the terminal state reaches a desired value. In this paper, we study the open-loop MEC problem for stochastic linear time-invariant systems. We consider a variety of stochastic constraints that enforce the terminal error to be small, and show that Stochastic MEC (SMEC) problem can be formulated as a QCQP. We obtain the optimal solution for SMEC and show that it generalizes the well-known Deterministic MEC problem by introducing novel stochastic variants of controllability and Gramian matrices. When the system dynamics is unknown, we obtain a direct data-driven solution to the SMEC problem using maximum-likelihood estimation and conformal calibration approaches. Finally, we quantify the sub-optimality and constraint violation of our data-driven solutions via finite-sample high-probability upper bounds, and highlight their dependence on the number of experiments, system dimension, and noise-to-signal ratio. We present numerical simulations to validate the theoretical results.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The open-loop minimum-energy control (MEC) problem asks for control inputs that minimize the control energy while ensuring the terminal state reaches a desired value.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">From Local to Global: Sheaf-Theoretic Control Barrier Functions on Manifolds</div>
+<div class="meta-line">Authors: Keith A. Currier, Wilmer Leal, Brandon C. Fallin, James Fairbanks, Warren E. Dixon</div>
+<div class="meta-line">First: 2026-10-28T19:53:02+00:00 · Latest: 2026-10-28T19:53:02+00:00</div>
+<div class="meta-line">Comments: 8 pages, 2 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.38781v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.38781v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Control barrier functions (CBFs) provide formal safety guarantees for dynamical systems by rendering a safe set forward-invariant via pointwise-optimal feedback control. While the CBF framework is well established for dynamical systems in Euclidean space, there exist gaps for systems evolving on non-Euclidean manifolds. For systems modeled as constrained control differential inclusions, we introduce the Sheaf-CBF: a sheaf-theoretic framework for CBFs on smooth manifolds and vector bundles. The differential inclusions are formulated intrinsically on the control bundle, and analogous regularity properties in the Euclidean case are established fiberwise under local trivializations. Regularity conditions are given under which a pointwise-optimal feedback law is single-valued and continuous over local charts. Framed as a local-to-global optimization problem, sheaf-theoretic restriction and gluing compatibility conditions on overlapping charts are shown to uniquely determine a continuous global section of the control bundle, thereby guaranteeing forward invariance of the safe set. Numerical simulations on a nontrivial M{ö}bius strip demonstrate that failure of sheaf compatibility results in violations of safety, whereas the Sheaf-CBF maintains forward invariance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Control barrier functions (CBFs) provide formal safety guarantees for dynamical systems by rendering a safe set forward-invariant via pointwise-optimal feedback control.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Phase-Compensated Frequency-Scan Measurement of Harmonic Transfer Function Impedance</div>
+<div class="meta-line">Authors: Yiyang Liao, Yitong Li, Jinjun Liu</div>
+<div class="meta-line">First: 2026-10-28T08:32:01+00:00 · Latest: 2026-10-28T08:32:01+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.38453v1">Abs</a> · <a href="https://arxiv.org/pdf/2610.38453v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Impedance models obtained through frequency scanning provides terminal characterization for small-signal stability analysis without requiring detailed knowledge of internal converter parameters. When unbalanced steady-state components introduce cross-frequency coupling, conventional $2\times2$ impedance scan methods must be extended to identify harmonic transfer function (HTF) impedance. However, the measured phases of frequency-coupling terms depend on the starting time of the fast Fourier transform (FFT) window, potentially introducing phase errors when different time references are used. This paper presents a $dq$-domain measurement method of HTF impedance that explicitly accounts for this time dependence. Phase compensation aligns the measured Fourier coefficients to a common electrical phase reference, correcting the resulting phase discrepancies and enabling consistent impedance reconstruction. Comparisons with analytical models under balanced and unbalanced conditions verify the measurement method, recovering the conventional $2\times2$ impedance and the dominant coupling blocks of a $6\times6$ HTF representation, respectively.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Impedance models obtained through frequency scanning provides terminal characterization for small-signal stability analysis without requiring detailed knowledge of internal converter parameters.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261030_0703.html">20261030_0703</a>
+<a href="archive/20261029_0655.html">20261029_0655</a>
+<a href="archive/20261028_0646.html">20261028_0646</a>
+<a href="archive/20261027_0701.html">20261027_0701</a>
+<a href="archive/20261026_0519.html">20261026_0519</a>
+<a href="archive/20261025_0520.html">20261025_0520</a>
+<a href="archive/20261024_0552.html">20261024_0552</a>
+<a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0511.html">20261019_0511</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0550.html">20261017_0550</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
