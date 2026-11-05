@@ -1,0 +1,435 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-06 07:53</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261106_0753</div>
+    <div class="row"><div class="card">
+<div class="title">ConDR: Conservative Reachability through Neural Hamilton-Jacobi Subsolutions</div>
+<div class="meta-line">Authors: Kendra Givens, Taylor T. Johnson, Bryan C. Ward, Thomas Beckers</div>
+<div class="meta-line">First: 2026-11-04T17:18:50+00:00 · Latest: 2026-11-04T17:18:50+00:00</div>
+<div class="meta-line">Comments: 8 pages, 4 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.06802v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.06802v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Hamilton-Jacobi (HJ) Reachability identifies the unsafe states of a dynamical system from which it can be forced into failure under worst-case disturbance. However, classical grid-based solvers scale exponentially with state dimension. DeepReach improves scalability by replacing the grid with a neural value function trained on the HJ-Isaacs (HJI) variational inequality (VI), but penalizes both sides of the residual equally. This allows the learned value to lie above the true one and unsafe states to be misclassified as safe. We propose Conservative DeepReach (ConDR) which aims to learn a subsolution of the HJI VI such that the learned unsafe set contains the true one. ConDR enforces the obstacle branch and terminal condition by construction, pushes the HJI residual to a safety margin $ε$ below zero with a one-sided loss, and prevents the degenerate solution of classifying everything as unsafe. We prove that the exact solution of the margin-shifted VI that ConDR trains toward is a subsolution of the original VI so its unsafe set contains the true one and its value lies within $ετ$ of the true value function. We compare against DeepReach and MADR in the established systems of Air3D, Air6D, a 9D multi-vehicle system, and a 13D quadrotor. ConDR reports the lowest rate of unsafe state misclassified and the lowest closed-loop collision rates with at most a small increase in intervention. On Air3D and Air6D, ConDR tolerates model mismatch that scales with $ε$. At matched false-negative rates, ConDR&#x27;s unsafe sets are smaller than the baselines showing the safety is not obtained by trivial over-approximation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Hamilton-Jacobi (HJ) Reachability identifies the unsafe states of a dynamical system from which it can be forced into failure under worst-case disturbance.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">System-Theoretic Analysis of Extended Cellular Potts Models for Tumor Invasion</div>
+<div class="meta-line">Authors: Andrea Tramaloni, Simone Baroncini, Sofia Avnet, Nicola Baldini, Giuseppe Notarstefano</div>
+<div class="meta-line">First: 2026-11-04T15:55:57+00:00 · Latest: 2026-11-04T15:55:57+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.06690v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.06690v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The Cellular Potts Model has emerged as a standard framework for modeling multicellular systems and metastatic progression. Yet, computational extensions incorporating cell movement within spatial gradients of Extracellular Matrix (ECM), an important element of the tissue microenvironment, lack theoretical foundations. This work provides a system-theoretic formulation and analysis of Extended Cellular Potts Models (ECPMs) that explicitly couple tumor dynamics with ECM degradation. We reformulate the ECPM as an interconnected dynamical system: a stochastic process describing a network of locally interacting tumor cells coupled to a jump-linear system describing ECM evolution. By exploiting the sparse energy structure of the model, we characterize asymptotic ECM behavior, transition probabilities with uniform bounds, and global system convergence. In one-dimensional settings, we derive closed-form expressions for invasion time probabilities, revealing how mean invasion time depends on local ECM gradients, number of cells and their tendency to maintain a target volume. Numerical simulations validate theoretical predictions, establishing a principled foundation for analyzing haptotaxis-driven invasion in Potts-based models.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The Cellular Potts Model has emerged as a standard framework for modeling multicellular systems and metastatic progression.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Spatial Differences Analysis of Nodal Frequency Considering Frequency-Voltage Coupling</div>
+<div class="meta-line">Authors: Xiaodan Li, Donghai Zhu, Zining Liu, Zhu Guo, Jiabing Hu, Hong Rao</div>
+<div class="meta-line">First: 2026-11-04T11:49:30+00:00 · Latest: 2026-11-04T11:49:30+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.06385v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.06385v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The rising penetration of inverter-based resources (IBRs) brings rich control dynamics that can amplify spatial differences in nodal frequency through frequency-voltage (F-V) coupling. Existing analyses often neglect voltage dynamics or only examine the aggregate frequency, leading to overoptimistic evaluation of frequency security. To address these drawbacks, this paper develops a unified model of synchronous generators (SGs), grid-following (GFL)-IBRs, and grid-forming (GFM)-IBRs based on the magnitude and phase dynamics of equivalent internal electromotive force (EMF). Integrating these source models with network equations yields a sparse implicit closed-loop model, which fully captures the device-network F-V coupling without transfer-matrix inversion. Then, the obtained nodal responses are decomposed into common and differential modes. Using this decomposition, coupling indices and pole-residue analysis reveal how F-V coupling can amplify spatial differences in nodal frequency and how source configuration and parameters modify this effect. Finally, case studies on the modified IEEE 39-bus and 118-bus test systems validate the proposed model and demonstrate its computational efficiency.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The rising penetration of inverter-based resources (IBRs) brings rich control dynamics that can amplify spatial differences in nodal frequency through frequency-voltage (F-V) coupling.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Critical Review of Grid Integration Challenges and Flexibility Opportunities for Large-Scale Data Centers</div>
+<div class="meta-line">Authors: Bibek Dhakal, Manohar Chamana, Biswambhar Gayen, Jatendar Kumar, S M Shams Rahman, Aaqib Peerzada, Ki Yeob Lee, Olatunji M. Adeyanju, Bhaskar Mitra, Stephen Bayne</div>
+<div class="meta-line">First: 2026-10-14T01:17:31+00:00 · Latest: 2026-11-04T05:44:02+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.19374v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.19374v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The rapid proliferation of cloud computing and artificial intelligence workloads is fundamentally reshaping the magnitude, spatial concentration, and electrical characteristics of data center power demand. Data centers differ from conventional commercial loads because they combine high rack densities, converter-dominated interfaces, thermally coupled cooling, uninterruptible power supplies, programmable workloads, and increasingly complex behind-the-meter generation and storage within a single facility. This review examines their grid integration from utility and sustainable-energy perspectives across resource planning, large-load interconnection, distribution feeders, market operation, real-time dynamics, power quality, and asset management. Particular attention is given to distribution-level issues that receive limited treatment in broader energy reviews: bidirectional operation on renewable-rich feeders, harmonic propagation and resonance, ride-through and reconnection, transformer derating, cable ampacity, neutral-conductor heating, protection, and measurement. Static, composite, physics-based dynamic, calibrated, impedance, electromagnetic transient, and hybrid load models are compared according to study purpose and data requirements, and utility coordination platforms, uninterruptible power supply and battery control, workload flexibility, renewable co-location, cogeneration, fuel cells, thermal storage, and clean firm supply are assessed. The central finding is that requested peak demand and annual energy matching alone cannot establish reliable or sustainable integration. Credible assessment must consider hourly and locational supply, network deliverability, marginal emissions, lifecycle and water impacts, backup obligations, rebound, asset health, and verified operating capability.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The rapid proliferation of cloud computing and artificial intelligence workloads is fundamentally reshaping the magnitude, spatial concentration, and electrical characteristics of data center power demand.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Continuous-Discrete Dual-Domain Co-Design for Optimized Digital Control of Power Converters</div>
+<div class="meta-line">Authors: Shen Chen, Jinjun Liu, Xuancai Zhu, Yanlong Li, Jisong Wang, Shuaipo Guo, Zhipeng Song, Lijun Hang, Zeng Liu</div>
+<div class="meta-line">First: 2026-11-04T04:01:53+00:00 · Latest: 2026-11-04T04:01:53+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05910v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05910v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Optimizing digital control for power converters typically involves designing continuous-time controllers and discretizing them via Euler, Tustin, or Generalized Bilinear Transform (GBT) methods. However, the intrinsic coupling between continuous-domain control parameters and discrete-domain implementation parameters remains underexplored, often leading to suboptimal performance. To bridge this gap, this paper first establishes a Non-Uniqueness Theorem, elucidating the coupling mechanism between dual-domain parameters. Based on this, two co-design methodologies are proposed to derive optimized parameter sets: the Explicit Frequency-Domain Analytical Method (EFDAM) and the Implicit Computer-Aided Search Method (ICASM). The EFDAM derives closed-form solutions by maximizing the crossover frequency and resonant magnitude via logarithmic frequency stability criteria, while minimizing discretization errors using Taylor-series bounds. The ICASM formulates the search for optimized parameters as a constrained multi-objective optimization problem, balancing bandwidth, resonant magnitude, and fundamental magnitude. To solve ICASM efficiently, two algorithms are introduced: the Multi-Start COBYLA (MS-COBYLA), which employs Latin Hypercube Sampling for physics-informed initialization to escape local optima, and the PSO-COBYLA hybrid algorithm, which couples global particle swarm exploration with local refinement. Experimental results on a 5-kW single-phase inverter with a Proportional-Integral-Resonant (PIR) regulator validate that the proposed methods outperform the conventional benchmark, achieving a 43.3\% reduction in the peak-to-peak current ripple measured at the zero-active-power operating point and an 11.7\%--35.9\% decrease in THDi across various harmonic profiles.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Optimizing digital control for power converters typically involves designing continuous-time controllers and discretizing them via Euler, Tustin, or Generalized Bilinear Transform (GBT) methods.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Discovering Phase Space Structure in Learned Hamiltonian Systems</div>
+<div class="meta-line">Authors: Yulong Yang, Jiayin Liu, Vineet Bansal, Christine Allen-Blanchette</div>
+<div class="meta-line">Venue: NeurIPS 2026</div>
+<div class="meta-line">First: 2025-09-26T23:46:55+00:00 · Latest: 2026-11-04T03:21:18+00:00</div>
+<div class="meta-line">Comments: Accept to the 40th Annual Conference on Neural Information Processing Systems (NeurIPS 2026)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2509.23003v4">Abs</a> · <a href="https://arxiv.org/pdf/2509.23003v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Mechanics-inspired neural networks provide physically structured models of dynamical systems, but typically assume access to the coordinates in which the underlying dynamics are expressed. While recent generative approaches relax this assumption, they remain limited in their ability to jointly model different dynamical regimes and discover interpretable latent structure. We introduce Structured Phase Space GAN (SPS-GAN), a conditional generative framework that learns mechanical dynamics and discovers latent phase-space structure from Cartesian trajectories or video observations. We achieve this by combining adversarial generation with port-Hamiltonian latent dynamics and extending cyclic-coordinate regularization to account for dissipation and forcing. This formulation supports conservative, dissipative, and forced systems while encouraging compact latent representations from which active degrees of freedom can be identified. Experiments on simulated and real-world systems demonstrate improved trajectory accuracy and video generation quality over competitive baselines, while identifying active latent dimensions consistent with the expected effective degrees of freedom and recovering physically interpretable coordinates across observation modalities and dynamical regimes.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Mechanics-inspired neural networks provide physically structured models of dynamical systems, but typically assume access to the coordinates in which the underlying dynamics are expressed.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-Driven Stochastic LQR Control with Probabilistic Guarantees and Uncertainty Refinement</div>
+<div class="meta-line">Authors: Amir Modares, Charalambous Themistoklis, Hamidreza Modares</div>
+<div class="meta-line">First: 2026-11-03T19:28:41+00:00 · Latest: 2026-11-03T19:28:41+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.05533v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.05533v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper presents a probabilistic framework for the direct, data-driven synthesis of the stochastic linear- quadratic output-feedback control for linear systems sub- ject to process and measurement noise. Using delayed input-output measurements, we derive a lifted parameter- ization together with an equivalent lifted linear quadratic cost, enabling controller synthesis without explicitly identi- fying the lifted dynamics. Two complementary closed-loop formulations, based on trajectory and covariance represen- tations, are then developed, whose uncertainties depend only on the realized but unknown lifted noise. We char- acterize the relative performance of the two formulations in finite-data regimes. High-probability uncertainty bounds are developed for realized noises, leading to a convex optimization solution to the problem, whose feasibility cer- tifies probabilistic mean-square stability (p-MSS) and per- formance guarantees. To reduce conservatism, Gaussian zonotopes are used to refine uncertainty sets by elimi- nating noise realizations inconsistent with measured data, and a novel intersection rule enables the consistent fusion of data-driven and physics-informed information. These components are integrated into an adaptive framework that unifies indirect (identification-based) and direct (control- oriented) data-driven linear-quadratic output-feedback con- trol. Unlike existing direct data-driven LQR methods that verify stability a posteriori, our by-construction approach achieves robust stability alongside reduced conservatism and superior performance. Simulation results show that the proposed controller approaches the ideal optimal solution while outperforming existing data-driven methods under noisy measurements.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper presents a probabilistic framework for the direct, data-driven synthesis of the stochastic linear- quadratic output-feedback control for linear systems sub- ject to process and measurement noise.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A research world model of power engineering learns its dynamics and reveals what-ifs</div>
+<div class="meta-line">Authors: Fanping Sui, Ying Zhang, Liwei Lin</div>
+<div class="meta-line">First: 2026-11-03T09:29:05+00:00 · Latest: 2026-11-03T09:29:05+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.04566v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.04566v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Decisions about the direction of research in power engineering determine which technologies mature and, through them, shape infrastructure that lasts decades, yet their consequences cannot be observed before they are taken, and existing forecasts of research fields extrapolate a single trajectory. Here we introduce research world models, which treat a research field as a dynamical system that can be acted upon, and establish one for power engineering from 1.1 million papers. A distilled language model reads each paper into role-typed concepts, two sophisticated, high-fidelity graph-temporal neural network cores learn how the resulting concept network evolves, and operators learned from natural experiments in the publication record estimate the effects of interventions. In temporally held-out tests, the model forecast years ahead which concepts would grow and which method-target pairs would be joined for the first time, outperforming tuned machine-learning baselines in most settings, and its estimated intervention effects tracked those realized in natural experiments it had not seen. Its training scheme and three of its operators replicated in two fields withheld from development. Questions posed in natural language are compiled by a domain-specialized 27-billion-parameter language model into executable actions and answered as paired simulations with and without the intervention. The answers were rated 4.1 of 5 for faithfulness by an independent language-model judge. By revealing the latent dynamics of a research field and its response to interventions, research world models offer a new way to simulate and test research decisions before they are made.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Decisions about the direction of research in power engineering determine which technologies mature and, through them, shape infrastructure that lasts decades, yet their consequences cannot be observed before they are taken, and existing forecasts of research fields extrapolate a single trajectory.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Review of Max-Pressure Traffic Signal Control Algorithms: State of the Art and Research Opportunities</div>
+<div class="meta-line">Authors: Abdullah Al Asif, Chaopeng Tan, Vikash V. Gayah, Hao Liu</div>
+<div class="meta-line">First: 2026-11-02T22:20:23+00:00 · Latest: 2026-11-02T22:20:23+00:00</div>
+<div class="meta-line">Comments: 49 pages, 7 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.04029v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.04029v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Max-Pressure (MP) has emerged as a widely studied decentralized traffic signal control framework, thanks to its desirable theoretical properties and strong control performance. Early research on MP focused on improving control performance by exploring different variables of the traffic state for the definition of pressure. Subsequent studies expanded MP to incorporate the complexity of real-world transportation systems and emerging technologies. This paper provides a comprehensive review of these developments. The review first introduces the theoretical foundations of MP and examines early developments in movement weight definition. It then synthesizes major extensions for multimodal and multiscale network control, followed by recent developments in connected and automated vehicle (CAV) environments and the integration of MP with artificial intelligence (AI) and data-driven methods. Beyond summarizing existing approaches, this review examines their underlying assumptions, data requirements, implementation considerations, and practical limitations. Based on this comprehensive review, key research gaps and future directions are identified, including remaining limitations in the theoretical foundations of MP and the underexplored integration of autonomous vehicle control with the MP framework. Overall, this review provides a structured perspective on the evolution and current state of MP control and highlights opportunities for developing more proactive, robust, and practically deployable MP-based traffic control methods.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Max-Pressure (MP) has emerged as a widely studied decentralized traffic signal control framework, thanks to its desirable theoretical properties and strong control performance.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Contingency-Aware Planning via Certified Neural Hamilton-Jacobi Reachability</div>
+<div class="meta-line">Authors: Kasidit Muenprasitivej, Derya Aksaray</div>
+<div class="meta-line">First: 2026-03-17T18:04:20+00:00 · Latest: 2026-11-02T21:17:33+00:00</div>
+<div class="meta-line">Comments: 9 pages, 4 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.17022v2">Abs</a> · <a href="https://arxiv.org/pdf/2603.17022v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Hamilton-Jacobi (HJ) reachability provides formal safety guarantees for dynamical systems, but repeatedly solving the HJ partial differential equation in changing environments limits its use in real-time planning. This paper introduces learning-based reachability and an online safety certification that together enable real-time contingency-aware planning in unknown environments with probabilistic safety guarantees. We use Fourier Neural Operator (FNO) to approximate the HJ solution operator under varying obstacle configurations. To certify the learned reach-avoid set, we recast robust scenario optimization as multiple hypothesis testings over its sublevel sets, which yields a simultaneous guarantee across candidate levels and recovers the largest certifiable volume at the prescribed safety level. Within this certified set, the induced recovery policy is guaranteed to return the system to a safe region in finite time under any admissible disturbance. Numerical results show that the learning and certification pipeline updates reach-avoid sets at real-time rates and is demonstrated on youBot simulation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Hamilton-Jacobi (HJ) reachability provides formal safety guarantees for dynamical systems, but repeatedly solving the HJ partial differential equation in changing environments limits its use in real-time planning.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261105_0804.html">20261105_0804</a>
+<a href="archive/20261104_0748.html">20261104_0748</a>
+<a href="archive/20261103_0925.html">20261103_0925</a>
+<a href="archive/20261102_0632.html">20261102_0632</a>
+<a href="archive/20261101_0604.html">20261101_0604</a>
+<a href="archive/20261031_0644.html">20261031_0644</a>
+<a href="archive/20261030_0703.html">20261030_0703</a>
+<a href="archive/20261029_0655.html">20261029_0655</a>
+<a href="archive/20261028_0646.html">20261028_0646</a>
+<a href="archive/20261027_0701.html">20261027_0701</a>
+<a href="archive/20261026_0519.html">20261026_0519</a>
+<a href="archive/20261025_0520.html">20261025_0520</a>
+<a href="archive/20261024_0552.html">20261024_0552</a>
+<a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0511.html">20261019_0511</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0550.html">20261017_0550</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
