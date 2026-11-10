@@ -1,0 +1,442 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-10 09:48</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261110_0948</div>
+    <div class="row"><div class="card">
+<div class="title">Generalized H matrix stability for power systems</div>
+<div class="meta-line">Authors: Elinor Ginzburg-Ganz, Yoash Levron, Juri Belikov, George Weiss</div>
+<div class="meta-line">Venue: IEEE Access, vol. 14, pp. 75960-75974, 2026</div>
+<div class="meta-line">First: 2026-11-06T17:50:54+00:00 · Latest: 2026-11-06T17:50:54+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.09796v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.09796v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The small-signal stability of a power system model with arbitrary loads is investigated, with a focus on locally constant power loads in lossless networks. A central element of the proposed analysis is the matrix H, which represents the partial derivatives of generator powers with respect to their relative angles. The local stability of any equilibrium point is determined by the properties of H if the loads consume locally constant power. Specifically, an equilibrium point is asymptotically stable if H is positive definite and unstable if H is full-rank and not positive definite, while several quantitative relationships between the eigenvalues of H and the system Jacobian matrix are also established. The main contribution is that loads are allowed to be arbitrarily located within the transmission network, thereby generalizing the existing H matrix stability criterion which is valid only if loads are located at the same buses as the generators. The advantage of the proposed criterion is demonstrated through case studies involving systems with up to 2869 buses. Accurate stability assessments are maintained, where alternative methods, such as the NRPS model, are found to be overly conservative. Additionally, a computational acceleration by a factor of 340 relative to Jacobian-based methods is achieved.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The small-signal stability of a power system model with arbitrary loads is investigated, with a focus on locally constant power loads in lossless networks.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-driven representation of continuous-time linear time-invariant behaviors via Hankel integral operators</div>
+<div class="meta-line">Authors: Fritz A. Engeln, Marta Zagórowska, Jan-Willem van Wingerden</div>
+<div class="meta-line">First: 2026-11-06T14:40:14+00:00 · Latest: 2026-11-06T14:40:14+00:00</div>
+<div class="meta-line">Comments: 9 pages, 1 figure</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.09530v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.09530v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We present a data-driven representation of the finite-horizon behavior of deterministic controllable continuous-time LTI systems. We first introduce a notion of persistency of excitation for continuous-time signals that does not require the signal to be differentiable. We then show that, when the input is persistently exciting in this sense, the closure of the range of a Hankel integral operator built from a single input-output trajectory equals the behavior of the system over a finite time horizon. This result provides a nonparametric representation of system trajectories directly in terms of measured data, without requiring an explicit parametric model of the system.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We present a data-driven representation of the finite-horizon behavior of deterministic controllable continuous-time LTI systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-Driven Continuous-Time LQR: Linking Reinforcement Learning and Behavioral System Theory</div>
+<div class="meta-line">Authors: Armin Gießler, Felix Thömmes, Sören Hohmann</div>
+<div class="meta-line">First: 2026-04-30T14:26:38+00:00 · Latest: 2026-11-06T13:18:37+00:00</div>
+<div class="meta-line">Comments: Submitted to IEEE TAC</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.27922v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.27922v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Behavioral system theory and reinforcement learning (RL) have independently developed data-driven approaches to the continuous-time LQR problem, yet their respective methods have largely evolved in separation. We connect these two adjacent lines of work by studying their data-driven parameterizations, namely a closed-loop (CL) parameterization from behavioral system theory and an integral RL (IRL) parameterization. The CL parameterization characterizes the closed-loop system via a matrix that satisfies equality constraints. While this parameterization has been extensively studied for discrete-time systems, we adapt key results to the continuous-time setting and develop a policy iteration (PI) scheme, derive an algebraic Riccati equation, and introduce an alternative convex program. The IRL parameterization utilizes off-policy data to perform policy evaluation, which is used for PI or value iteration. Within the IRL framework, we derive a policy gradient flow and propose convex programs for the LQR problem. Finally, we provide a unified treatment of these parameterizations that enables a systematic understanding of existing approaches, and clarifies their structural relationships.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Behavioral system theory and reinforcement learning (RL) have independently developed data-driven approaches to the continuous-time LQR problem, yet their respective methods have largely evolved in separation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Probabilistic Sequential Safety for Stochastic Dynamical Systems</div>
+<div class="meta-line">Authors: Abhijit Mazumdar, Manuela L. Bujorianu, Rafal Wisniewski</div>
+<div class="meta-line">First: 2026-10-27T14:28:42+00:00 · Latest: 2026-11-06T09:31:17+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.37311v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.37311v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">In this letter, we investigate a notion of probabilistic safety for a stochastic dynamical system. Standard safety notions are based on the idea that an unsafe region of the state-space must be avoided at each instant. In contrast, we study a sequential safety notion which is based on avoiding a tuple of target regions of the state-space. The proposed safety notion is inspired by many practical systems, ranging from modeling jailbreak attacks in large language models (LLMs) to predicting hazardous chemical reactions. In solving the sequential safety problem, we solve a sequential reachability problem for a stochastic dynamical system.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">In this letter, we investigate a notion of probabilistic safety for a stochastic dynamical system.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Circuit Theory-Informed AI for Condition Monitoring in Power Electronics</div>
+<div class="meta-line">Authors: Yubo Song, Pascal A. Schirmer, Subham Sahoo</div>
+<div class="meta-line">First: 2026-11-06T08:16:23+00:00 · Latest: 2026-11-06T08:16:23+00:00</div>
+<div class="meta-line">Comments: The manuscript has been accepted for publication in the Proceedings of 2026 IEEE Design Methodologies Conference (DMC 2026)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.09141v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.09141v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Artificial intelligence for power electronics is evolving toward a deeper comprehension of system intrinsic behaviors and dynamics. As a novel integration of neural computation and electric circuits, spike-based neuromorphic computing offers promising potential in high energy efficiency and adaptability for data-driven applications. Building on the latency-coding principles, this article proposes a framework for data-light condition monitoring that relies solely on three-phase AC current measurements. The AC current signals are encoded as membrane potentials of RC-based spiking neurons, which are inherently compatible with spiking neural networks that can effectively facilitate the estimation of device parameters. Case studies are presented to validate the performances, while constraints and further optimizations are also evaluated and discussed, and future extensions of the methodology are provided.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Artificial intelligence for power electronics is evolving toward a deeper comprehension of system intrinsic behaviors and dynamics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Defense Filters for Robust Learning of Partially Observed Dynamical Systems</div>
+<div class="meta-line">Authors: Jihun Kim, Javad Lavaei</div>
+<div class="meta-line">First: 2026-10-15T14:11:55+00:00 · Latest: 2026-11-06T03:18:18+00:00</div>
+<div class="meta-line">Comments: 8 pages, 1 figure</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.21935v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.21935v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Robust estimation of unknown system dynamics from partial observations under attack is a core challenge in learning for control, increasingly critical in multi-agent networks subject to adversarial data poisoning. Existing methods either require highly restrictive assumptions on the adversary or yield weak error bounds. In this paper, we consider identifying partially observed linear dynamical systems subject to adversarial attacks with an attack probability $p &lt; 0.5$ at each time. We propose a defense-filtering framework leveraging knowledge of the observation matrix to construct a defense filter satisfying full column rank and subspace separability conditions, which enables the evaluation of a single-attack scenario against observed data. Using this framework, we analyze the constrained $\ell_2$-norm estimator and establish finite-sample error bounds for recovering the Markov parameter matrix up to a linear transformation. This is the first approach to provide provable system identification guarantees via a defense filter for partially observed systems subject to harsh environments where the attack probability approaches $0.5$.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Robust estimation of unknown system dynamics from partial observations under attack is a core challenge in learning for control, increasingly critical in multi-agent networks subject to adversarial data poisoning.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Measure-Theoretic Formulation of Behavioral Systems</div>
+<div class="meta-line">Authors: Victor M. Preciado</div>
+<div class="meta-line">First: 2026-05-02T18:00:27+00:00 · Latest: 2026-11-06T02:17:07+00:00</div>
+<div class="meta-line">Comments: 44 pages, 4 figures. Single-column manuscript</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2605.01558v3">Abs</a> · <a href="https://arxiv.org/pdf/2605.01558v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Ensemble control specifies probability laws on admissible trajectories, including their temporal dependence. Starting from an arbitrary closed behavior, we organize its laws into a framework that connects standard probability-measure geometry, occupation-measure control, and data-driven trajectory parametrization. Classical convexity and extreme-point properties describe the feasible laws, while classical Bellman duality governs additive control objectives. On compact state and input spaces, full-path constrained duality for continuous trajectory functions gives primal attainment and zero gap whenever feasible. For controllable linear time-invariant systems, the noise-free Fundamental Lemma yields an equivalent law-level Hankel factorization, with a canonical pseudoinverse lift. The factorization transfers trajectory-law constraints exactly to coefficient space and connects them to covariance control. Explicit noisy-Hankel bounds quantify subspace approximation for second-moment-bounded laws under known rank and Gaussian output measurement noise. Numerical studies include a nonlinear reset problem whose nonadjacent correlation constraint requires temporal memory, covariance-constrained optimization, and noisy-data policy evaluation. Known transition kernels provide a further structural perspective through history-conditional consistency.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Ensemble control specifies probability laws on admissible trajectories, including their temporal dependence.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Memory Efficient Unified Algorithm for Online Learning of Linear Dynamical Systems</div>
+<div class="meta-line">Authors: Yuval Ran-Milo, Angelos Assos, Elad Hazan</div>
+<div class="meta-line">First: 2026-07-02T11:24:08+00:00 · Latest: 2026-11-05T19:27:17+00:00</div>
+<div class="meta-line">Comments: 34 pages, 1 figure</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.02050v3">Abs</a> · <a href="https://arxiv.org/pdf/2607.02050v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Motivated by the challenge of stabilizing a general unknown linear dynamical system (LDS) from observations, we study the natural prerequisite of online prediction. Our goal is to achieve sublinear regret with a memory footprint that adapts to the intrinsic complexity of the dynamics rather than the full hidden-state dimension. We focus on the practically central regime of systems with low instability complexity -- eigenvalues outside the real stable interval that do not decay rapidly, together with non-semisimple modes -- potentially embedded in an otherwise stable real spectrum of much higher dimension; we write $k$ for this count. This regime is the primary setting in which stabilization is plausible: we show that many systems with high instability complexity cannot be stabilized without exponentially large controls. Thus, prediction is meaningful for stabilization precisely when the instability complexity is small. Within this regime, we introduce a unified online algorithm that handles every LDS (including non-diagonalizable systems with complex or exploding modes) with a learnable parameter count of $\widetilde{O}(k)$. Finally, we prove a lower bound showing that $k$ is a valid complexity measure: any filter-based predictor needs at least $k$ filters. Experiments corroborate our theory: on a high-dimensional system, our predictor sharply outperforms prior methods at an equal parameter budget.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Motivated by the challenge of stabilizing a general unknown linear dynamical system (LDS) from observations, we study the natural prerequisite of online prediction.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Dynamics Aware Past-Future Information Bottleneck</div>
+<div class="meta-line">Authors: Wooyoung Chung, Stas Tiomkin</div>
+<div class="meta-line">First: 2026-11-05T18:21:29+00:00 · Latest: 2026-11-05T18:21:29+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08426v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08426v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The simplification of complex dynamical systems is essential for efficient estimation and control. A principled approach to this task is through the lens of information-theoretic compression. The Past-Future Information Bottleneck (PF-IB) provides a theoretical framework for compressing linear dynamical systems. However, the standard formulation often lacks structural consistency, yielding representations that are not realizable as dynamical systems. By constraining the objective to a specific manifold of block Hankel matrices, which we prove is a Lie group, we bridge the gap between PF-IB and realization theory. Our approach ensures that the resulting compressed dynamics are realizable, thereby enabling its direct application to estimation and control. We demonstrate our approach in numerical simulations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The simplification of complex dynamical systems is essential for efficient estimation and control.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Output-Feedback Integral Sliding-Mode Extremum Seeking with Super-Twisting Differentiation</div>
+<div class="meta-line">Authors: Hyuntae Kim</div>
+<div class="meta-line">First: 2026-11-05T17:30:52+00:00 · Latest: 2026-11-05T17:30:52+00:00</div>
+<div class="meta-line">Comments: 14 pages, 3 figures, 6 tables. Submitted to Automatica. Substantially extended from a paper presented at the 23rd IFAC World Congress, 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.08345v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.08345v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper develops a dither-free output-feedback extremum-seeking controller for pre-stabilized nonlinear dynamic systems with unknown steady-state performance maps. The controller uses only the measured performance, the applied parameter, and internal states. Within a local state--parameter domain, integral sliding mode enforces equality between the applied parameter rate and a prescribed nonzero search velocity after finite-time capture under bounded matched rate-channel perturbations. This motion lets a super-twisting differentiator and rate normalization recover a gradient-sign surrogate without demodulation or averaging. A ramp-corrected moving-equilibrium coordinate cancels the first-order ramp-induced plant term and yields explicit flow, reversal, recovery, and dynamic-remainder bounds. The resulting local state--parameter tube supplies the regularity needed for finite-time exact differentiation. Combined with a deadbanded hybrid relay, these results establish local practical convergence to an explicit neighborhood of the unknown optimum. An 80-state tubular-reactor benchmark and paired held-out Monte Carlo tests compare a causal sampled realization with perturbation ESC and a rate-informed super-twisting comparator. The proposed realization succeeds in all 200 held-out cases and attains the smallest upper-tail objective gap under the stated tuning protocol. A matched-rate sweep connects performance degradation to applied-rate mismatch, near-stall motion, reversal, and regularization attenuation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper develops a dither-free output-feedback extremum-seeking controller for pre-stabilized nonlinear dynamic systems with unknown steady-state performance maps.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261109_0636.html">20261109_0636</a>
+<a href="archive/20261108_0626.html">20261108_0626</a>
+<a href="archive/20261107_0735.html">20261107_0735</a>
+<a href="archive/20261106_0753.html">20261106_0753</a>
+<a href="archive/20261105_0804.html">20261105_0804</a>
+<a href="archive/20261104_0748.html">20261104_0748</a>
+<a href="archive/20261103_0925.html">20261103_0925</a>
+<a href="archive/20261102_0632.html">20261102_0632</a>
+<a href="archive/20261101_0604.html">20261101_0604</a>
+<a href="archive/20261031_0644.html">20261031_0644</a>
+<a href="archive/20261030_0703.html">20261030_0703</a>
+<a href="archive/20261029_0655.html">20261029_0655</a>
+<a href="archive/20261028_0646.html">20261028_0646</a>
+<a href="archive/20261027_0701.html">20261027_0701</a>
+<a href="archive/20261026_0519.html">20261026_0519</a>
+<a href="archive/20261025_0520.html">20261025_0520</a>
+<a href="archive/20261024_0552.html">20261024_0552</a>
+<a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0511.html">20261019_0511</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0550.html">20261017_0550</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
