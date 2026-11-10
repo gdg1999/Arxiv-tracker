@@ -1,0 +1,441 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-11 07:50</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261111_0750</div>
+    <div class="row"><div class="card">
+<div class="title">Offset-Free Data-Driven Predictive Control: Implicit and Explicit Disturbance Formulations</div>
+<div class="meta-line">Authors: Lucca Heinze Faro, Yuanbo Nie, Paul Trodden</div>
+<div class="meta-line">First: 2026-11-09T16:36:27+00:00 · Latest: 2026-11-09T16:36:27+00:00</div>
+<div class="meta-line">Comments: 6 pages, 3 figures. Submitted to ECC 2027</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12666v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12666v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Offset-free tracking is a key objective of any control algorithm. For predictive controllers with linear models, it is well understood that rejecting asymptotically-constant disturbances necessitates augmenting the prediction model with $p$ integrating states, where $p$ is the number of measured outputs. This can be achieved in model predictive control (MPC) by using a velocity form or a combination of disturbance model and observer. In data-driven predictive control (DPC), implicit incorporation of integrating states using the velocity form has been successfully adopted to obtain offset-free tracking; however, formulations based on an explicit disturbance model and observer have not yet been explored. In this paper, we first study how the integrating states are incorporated into the data-based representation used in DPC, translating the requirements of $p$ integrating states into the required modifications of the DPC formulation. We then propose a novel offset-free DPC formulation that incorporates an explicit constant output-disturbance model and an output disturbance observer. Numerical examples show that this formulation has similar disturbance-rejection capabilities to the velocity-form DPC, but using a smaller optimisation problem.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Offset-free tracking is a key objective of any control algorithm.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Towards Passivity-informed Data-driven Predictive Control</div>
+<div class="meta-line">Authors: Guanru Pan, Oleksii Molodchyk, Mohammad Itani, Timm Faulwasser</div>
+<div class="meta-line">First: 2026-11-09T15:05:34+00:00 · Latest: 2026-11-09T15:05:34+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12531v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12531v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We propose a passivity-informed data-driven predictive control framework based on passivity-preserving sampling of unknown continuous-time linear systems. We incorporate the passive supply rate into the objective functional alongside an output-regulation cost, thereby explicitly accounting for energy extraction. Despite being practically motivated, the resulting objective is not always convex; its convexity depends on the collected input-output training data. We exploit passivity-induced positive semidefiniteness to derive an equivalent reformulation that remains a convex quadratic program independently of the data. Furthermore, we establish recursive feasibility and asymptotic output convergence using passivity and a terminal equality constraint. Numerical simulations illustrate the closed-loop performance and computational benefits of the proposed approach.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We propose a passivity-informed data-driven predictive control framework based on passivity-preserving sampling of unknown continuous-time linear systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">A Tutorial on Learning-Based Radio Map Construction: Data, Paradigms, and Physics-Awareness</div>
+<div class="meta-line">Authors: Xiucheng Wang, Yuhao Pan, Nan Cheng, Çağkan Yapar, Ruijin Sun, Zhisheng Yin, Conghao Zhou, Wenchao Xu, Yuxiang Zhang, Jianhua Zhang, Shuguang Cui, Xuemin Shen</div>
+<div class="meta-line">First: 2026-03-18T09:00:25+00:00 · Latest: 2026-11-09T13:03:17+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2603.17499v9">Abs</a> · <a href="https://arxiv.org/pdf/2603.17499v9">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Radio maps (RMs) provide the digital representation of the wireless propagation environment, mapping complex geographical and topological boundary conditions to critical spatial-spectral metrics that range from received signal strength to full channel state information matrices. The integration of artificial intelligence into next generation wireless networks further necessitates the accurate construction of RMs as a foundational prerequisite for electromagnetic digital twins. This paper presents a comprehensive survey of learning-based RM construction, systematically addressing three intertwined dimensions: data, paradigms, and physics-awareness. From the data perspective, we review physical measurement campaigns, ray tracing simulation engines, and publicly available benchmark datasets, identifying their respective strengths and fundamental limitations. From the paradigm perspective, we establish a core taxonomy that categorizes RM construction into source-aware forward prediction and \added{source-agnostic} inverse reconstruction, and examine five principal neural architecture families spanning convolutional neural networks, vision transformers, graph neural networks, generative adversarial networks, and diffusion models. We further survey optics-inspired methods adapted from neural radiance fields and 3D Gaussian splatting for continuous wireless radiation field modeling. From the physics-awareness perspective, we introduce a three-level integration framework encompassing data-level feature engineering, loss-level partial differential equation regularization, and \added{architecture-level} structural isomorphism. Open challenges including foundation model development, physical hallucination detection, and amortized inference for real-time deployment are discussed to outline future research directions.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Radio maps (RMs) provide the digital representation of the wireless propagation environment, mapping complex geographical and topological boundary conditions to critical spatial-spectral metrics that range from received signal strength to full channel state information matrices.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">DC Voltage Control Dominated Oscillations in Electromechanical Frequency Range - Insights from Synchronous Coefficient Reduction Effect of IBR Plants and Network Interactions</div>
+<div class="meta-line">Authors: Qiang Fu, Siqi Bu</div>
+<div class="meta-line">Venue: IEEE TRANS.POWER SYSTEMS, 2026</div>
+<div class="meta-line">First: 2026-11-09T10:48:39+00:00 · Latest: 2026-11-09T10:48:39+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.12192v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.12192v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Large-scale integration of inverter-based resources (IBRs) is widely known to cause subsynchronous oscillations. This paper investigates a distinct class of oscillations that occur in the electromechanical frequency range (EFR), referred to as EFOs, and are dominated by the DC voltage control (DVC) loops of grid-following IBRs rather than synchronous generator-like controls or phase-locked loops (PLLs). Although open-loop oscillation modes of DVC loops are subsynchronous, the corresponding closed-loop dominant oscillation mode related to DVC can shift downward into the EFR without retuning the control parameters. This frequency shift is caused by network-mediated interactions among the IBRs, which introduce a negative synchronous coefficient into the DVC oscillation loop. This synchronous coefficient reduction effect (SCRE) becomes stronger as the IBR plant scale increases and/or as the minimum eigenvalue of the network admittance matrix decreases. Furthermore, a complex vector-based stability analysis method is proposed, and a stability criterion for DVC-EFOs is derived. Finally, the analytical conclusions are validated using a practical power system configuration implemented in Simulink. The SCRE differs from traditional explanations, in which the open-loop oscillation modes are already located in the EFR, and provides new insight into DVC-dominated oscillations in the EFR for integration of IBR plants.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Large-scale integration of inverter-based resources (IBRs) is widely known to cause subsynchronous oscillations.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Repeated Binary Direct Collinear Impacts Under Incremental Contact Laws With Residual Indentation: A Hybrid Systems Formulation</div>
+<div class="meta-line">Authors: Mihails Milehins, Dan B. Marghitu</div>
+<div class="meta-line">First: 2026-09-05T15:21:46+00:00 · Latest: 2026-11-09T08:56:16+00:00</div>
+<div class="meta-line">Comments: 34 pages, 6 figures; v1-v7: a variety of amendments and corrections; v6-v7: further analytical properties</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.06138v7">Abs</a> · <a href="https://arxiv.org/pdf/2609.06138v7">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Incremental contact laws specify the normal contact force through a differential relation, possibly carrying an internal state, driven by the indentation and its rate. The force may vanish at a nonzero indentation, through plasticity, an elastic aftereffect, or, under some laws with a viscous component, a load drawing the bodies apart rapidly, leaving a residual deformation at separation. Such a deformation sits uneasily within rigid body dynamics, which admits none. The tension is tolerable when the indentation is small relative to the bodies, so that it may be carried constitutively rather than geometrically. Even then, the law alone does not determine the interaction: because force and indentation no longer vanish together, conditions for the commencement and termination of contact must be supplied separately, as must the fate of the deformation and internal state at separation, both absent from the equations of motion. This article formulates the repeated direct collinear impact of two convex bodies under external forces as a hybrid dynamical system. The contact interface is modeled as a massless element carrying the contact law and its state, coupled to the bodies through relative velocity and an interaction force dictated by the contact state. Consequently, all switching and resets are confined to the interface, leaving the geometry and equations of motion of the bodies unaltered. The principal analytical properties of the formulations are established, among them passivity and completeness; the branching of solutions at the onset and termination of contact is examined. The framework is demonstrated through numerical simulations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Incremental contact laws specify the normal contact force through a differential relation, possibly carrying an internal state, driven by the indentation and its rate.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">The Smart Buildings Control Suite: A Diverse Open Source Benchmark to Evaluate and Scale HVAC Control Policies for Sustainability</div>
+<div class="meta-line">Authors: Judah Goldfeder, Victoria Dean, Zixin Jiang, Xuezheng Wang, Bing dong, Hod Lipson, John Sipple</div>
+<div class="meta-line">Venue: Neurips 2026</div>
+<div class="meta-line">First: 2024-10-02T06:30:07+00:00 · Latest: 2026-11-09T01:18:00+00:00</div>
+<div class="meta-line">Comments: Accepted to Neurips 2026</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2410.03756v3">Abs</a> · <a href="https://arxiv.org/pdf/2410.03756v3">PDF</a> · <a href="https://github.com/google/sbsim">Code1</a> · <a href="https://huggingface.co/huggingface">Code2</a> · <a href="https://huggingface.co/docs/hub/spaces">Code3</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Commercial buildings account for 17\% of U.S. carbon emissions, with roughly half of that from Heating, Ventilation, and Air Conditioning (HVAC). HVAC devices form a complex thermodynamic system, and while model predictive control and reinforcement learning have been used to optimize control policies, scaling to thousands of buildings remains a significant unsolved challenge. Most current approaches are over-optimized for specific buildings and rely on proprietary data or hard-to-configure simulators. We present the Smart Buildings Control Suite, the first open source interactive HVAC control benchmark with a focus on solutions that generalize across building. It has 3 components: real-world data from 11 buildings over 6 years, a lightweight data-driven simulator, and a modular Physically Informed Neural Network (PINN) building model. The buildings span multiple climates, management systems, and sizes, and both the simulator and PINN easily transfer to new buildings, ensuring solutions using this benchmark are robust to these factors and only reliant on fully scalable building models. This represents a major step towards scaling HVAC optimization from the lab to buildings everywhere. To facilitate use, our benchmark is compatible with the Gym standard, and our data is available at our webpage. Code at https://github.com/google/sbsim</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Commercial buildings account for 17\% of U.S.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Digital Twin Networks for 6G Wireless Systems: Architecture, Enabling Technologies, AI-Driven Control, and Open Challenges</div>
+<div class="meta-line">Authors: Charalampos Oikonomidis, Emmanouel T. Michailidis, Demosthenes Vouyioukas, Nikolaos I. Miridakis</div>
+<div class="meta-line">First: 2026-08-12T17:07:42+00:00 · Latest: 2026-11-08T20:01:47+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2608.12267v2">Abs</a> · <a href="https://arxiv.org/pdf/2608.12267v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The transition to the Sixth Generation (6G) of mobile networks requires proactive and deterministic orchestration to satisfy the stringent key performance indicators of future services, including ultra-reliable low-latency communications, enhanced mobile broadband, and massive machine-type communications. Digital Twin Networks (DTNs) have emerged as a foundational technology to meet these demands, offering real-time and high-fidelity virtual replicas of the physical network. Although the literature explores DTNs conceptually, a gap exists in the coverage of technical classification and computational feasibility evaluations. This survey addresses this gap by formally categorizing state-of-the-art DTN architectures into passive monitoring twins and active control twins. We evaluate their enabling technologies, namely ray-tracing, reconfigurable intelligent surfaces, artificial intelligence, and multi-access edge computing. Importantly, we analyze the complexity of ten state-of-the-art frameworks, five reporting complexity expressions, four derived in this survey, and one not derivable, to assess hardware scalability and inference bottlenecks. These architectures are then linked to forthcoming 6G use cases, including smart cities, Industry 5.0, healthcare, and smart grids. Finally, we synthesize crucial unresolved challenges, highlighting graphics processing unit hardware limitations, cyber-physical actuation latency, and the need for a zero-trust security paradigm, offering research directions toward the unified Internet of Everything.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The transition to the Sixth Generation (6G) of mobile networks requires proactive and deterministic orchestration to satisfy the stringent key performance indicators of future services, including ultra-reliable low-latency communications, enhanced mobile broadband, and massive machine-type communications.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Finite-Sample Probabilistic Safety Certification for AI-Based Grid-Edge Coordination</div>
+<div class="meta-line">Authors: Yihong Zhou, Hanbin Yang, Thomas Morstyn</div>
+<div class="meta-line">First: 2026-09-23T14:24:46+00:00 · Latest: 2026-11-08T14:10:09+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.28182v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.28182v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Coordinating a large population of flexible grid-edge devices can alleviate the need for time-consuming and capital-intensive network upgrades. Artificial intelligence (AI)-based control methods such as multi-agent reinforcement learning or imitation learning are promising to this coordination due to their real-time decision scalability. However, system operators still need an independent and rigorous way to decide whether a given AI system is safe enough for deployment. This paper develops a \emph{finite-sample} probabilistic safety certification framework for AI-based grid-edge coordination. The central idea is to reduce the complete input--AI--decision--evaluation workflow to a binary unsafe outcome under an operator-defined safety specification, and then use exact binomial inference to certify the corresponding unsafe operation probability. Given a set of held-out calibration scenarios, the framework returns the tightest one-sided upper certificate and an accept/reject deployment criterion that controls the probability of false safety certification. Because the certification is for the calibration distribution that may \emph{deviate} from the future operation, we further combine the nominal certificate with physically interpretable sample-space adversarial attacks, a concept widely used in AI models to investigate their fragility. Case studies on grid-edge flexibility coordination with 1{,}000-agent AI models (independent parameters) verify the safety guarantee and the value of integrating adversarial attacks into a rolling-window training-certification-deployment flow.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Coordinating a large population of flexible grid-edge devices can alleviate the need for time-consuming and capital-intensive network upgrades.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Scalable Neural Safety Certification via Monotonicity</div>
+<div class="meta-line">Authors: Amirreza Alavi, Majid Zamani, Saber Jafarpour</div>
+<div class="meta-line">First: 2026-11-08T04:11:14+00:00 · Latest: 2026-11-08T04:11:14+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.11119v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.11119v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Learning-based safety certification offers a promising route for verifying complex dynamical systems when explicit models are unavailable, but existing data-driven methods often scale poorly: they treat the system as a black box, rely on dense discretizations or Lipschitz bounds, and consequently suffer from sample complexity that grows exponentially with dimension. This paper shows that a common structural property of dynamical systems--monotonicity--can be used to break this curse of dimensionality. We develop a data-driven framework for robust safety verification and safe controller synthesis for unknown monotone systems using only simulator queries. Our main theoretical result proves that, for monotone systems with upper-closed unsafe sets, safety is completely characterized by the existence of monotone inductive barrier certificates. This structure reduces certificate verification over continuous state spaces to localized boundary checks over finitely many cells. To learn such certificates, we introduce Max-Monotone Networks, a monotone neural architecture with universal approximation guarantees for monotone functions. We then propose a training and refinement algorithm that, upon successful termination, returns formally valid neural barrier certificates and, under mild partition assumptions, requires only $O(n)$ simulator queries. Across high-dimensional benchmarks, including oscillator networks with up to $13{,}659$ states and traffic networks with $1{,}000$ states, our method certifies safety in regimes where prior approaches either do not converge or exceed memory limits. These results demonstrate that exploiting order structure can make neural safety certification both scalable and formally sound.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Learning-based safety certification offers a promising route for verifying complex dynamical systems when explicit models are unavailable, but existing data-driven methods often scale poorly: they treat the system as a black box, rely on dense discretizations or Lipschitz bounds, and consequently suffer from sample complexity that grows exponentially with dimension.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Floquet-Parameterized Koopman-MPC for Tracking Periodic Orbits</div>
+<div class="meta-line">Authors: Kartik A. Pant, Vishnu Vijay, Yufei Zhu, Xintong Deng, Taewoo Nam, Inseok Hwang</div>
+<div class="meta-line">First: 2026-11-08T01:07:36+00:00 · Latest: 2026-11-08T01:07:36+00:00</div>
+<div class="meta-line">Comments: 6 pages, 2 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.11050v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.11050v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Designing real-time control for nonlinear systems to track periodic orbits can be challenging, especially for complex and coupled dynamical systems (e.g., tethered kites), where the true model parameters are hard to obtain. To address this, we propose a physics-informed Koopman learning approach that incorporates periodic-orbit stability directly into the learned linear predictor. The approach combines the underlying periodic structure of the dynamics along with periodic state-input trajectory data to learn physically consistent linear predictors (in lifted/observable space). We leverage Floquet theory, which studies the stability of periodic orbits in nonlinear systems, to obtain the periodic stability information of a given orbit via a monodromy matrix (i.e., the state transition matrix over an entire period). Subsequently, we impose open-loop monodromy constraints to learn Floquet-parameterized linear predictors using a least-squares Extended Dynamic Mode Decomposition (EDMD) formulation, thereby constraining the search space and aiding in Koopman learning. We then utilize these linear predictors to design a model predictive control (MPC) law for tracking periodic references. Finally, we evaluate the designed framework on a cartpole system under periodic forcing and compare it against a purely data-driven baseline.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Designing real-time control for nonlinear systems to track periodic orbits can be challenging, especially for complex and coupled dynamical systems (e.g., tethered kites), where the true model parameters are hard to obtain.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261110_0948.html">20261110_0948</a>
+<a href="archive/20261109_0636.html">20261109_0636</a>
+<a href="archive/20261108_0626.html">20261108_0626</a>
+<a href="archive/20261107_0735.html">20261107_0735</a>
+<a href="archive/20261106_0753.html">20261106_0753</a>
+<a href="archive/20261105_0804.html">20261105_0804</a>
+<a href="archive/20261104_0748.html">20261104_0748</a>
+<a href="archive/20261103_0925.html">20261103_0925</a>
+<a href="archive/20261102_0632.html">20261102_0632</a>
+<a href="archive/20261101_0604.html">20261101_0604</a>
+<a href="archive/20261031_0644.html">20261031_0644</a>
+<a href="archive/20261030_0703.html">20261030_0703</a>
+<a href="archive/20261029_0655.html">20261029_0655</a>
+<a href="archive/20261028_0646.html">20261028_0646</a>
+<a href="archive/20261027_0701.html">20261027_0701</a>
+<a href="archive/20261026_0519.html">20261026_0519</a>
+<a href="archive/20261025_0520.html">20261025_0520</a>
+<a href="archive/20261024_0552.html">20261024_0552</a>
+<a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0511.html">20261019_0511</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0550.html">20261017_0550</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
