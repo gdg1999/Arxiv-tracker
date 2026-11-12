@@ -1,0 +1,443 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-13 07:56</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261113_0756</div>
+    <div class="row"><div class="card">
+<div class="title">Information-Theoretic Threshold Design for Sparse Event Encoding in Learning Systems</div>
+<div class="meta-line">Authors: Pratishtha Shukla, Maksudul Alam, Srikanth B. Yoginath, Ali R. Ekti</div>
+<div class="meta-line">First: 2026-11-10T15:59:59+00:00 · Latest: 2026-11-10T15:59:59+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14249v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14249v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">One approach to event-driven learning is to encode continuous signals as sparse events generated when signal changes exceed a prescribed threshold. However, this threshold is typically selected empirically, with limited theoretical guidance. This paper establishes a connection between threshold-based event encoding and discretized learning systems and identifies a dimensionless ratio governing information retention. From this connection, we derive an information-sufficiency boundary using normal-condition data and formulate a data-driven criterion that selects the sparsest threshold retaining a prescribed fraction of peak discriminative information. The framework is illustrated using event cameras and evaluated on power-system fault classification. Results show that the proposed design identifies sparse operating thresholds while exposing the tradeoff between information retention, event activity, and classification performance.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">One approach to event-driven learning is to encode continuous signals as sparse events generated when signal changes exceed a prescribed threshold.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Beyond Accuracy: Physics-Informed Evaluation of ANN-based Power Flow Solvers under System Shift</div>
+<div class="meta-line">Authors: Dong Liu, Jochen Stiasny, Jochen Cremer, Pedro P. Vergara</div>
+<div class="meta-line">First: 2026-11-10T15:51:53+00:00 · Latest: 2026-11-10T15:51:53+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.14240v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.14240v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Recent advances in artificial deep learning-based power flow (PF) solvers have primarily focused on improving estimation accuracy, while their physical feasibility and operational reliability under realistic system variations remain insufficiently evaluated. This paper proposes a physics-informed evaluation framework for deep learning-based PF solvers under topology and load distribution shifts. Beyond conventional voltage-domain errors, the framework incorporates KCL gaps, branch-flow gaps, KVL residuals, continuous feasibility scores, and strict, practical, and relaxed PF feasibility rates. Four case studies are designed to investigate topology shifts, mixed topology training, load distribution shifts, and combined topology distribution shifts. Eight ANN architectures, including graph input models, load-only baselines, and physics-informed neural networks, are evaluated under consistent settings. The results demonstrate that low estimation errors do not necessarily correspond to physically feasible or operationally reliable PF solutions, particularly under combined system shifts. The proposed framework establishes an initial foundation and analysis for the development and verification of trustworthy deep learning-based PF solvers, providing support for their reliable deployment in future AI-enabled power system analysis.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Recent advances in artificial deep learning-based power flow (PF) solvers have primarily focused on improving estimation accuracy, while their physical feasibility and operational reliability under realistic system variations remain insufficiently evaluated.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-driven Linear Quadratic Integral Control: A Convex Formulation and Policy Gradient Approach</div>
+<div class="meta-line">Authors: Armin Gießler, Pol Jané-Soneira, Sören Hohmann</div>
+<div class="meta-line">First: 2026-04-16T11:47:54+00:00 · Latest: 2026-11-10T15:02:14+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.14905v2">Abs</a> · <a href="https://arxiv.org/pdf/2604.14905v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper studies the data-driven synthesis of linear quadratic integral (LQI) controllers for continuous-time systems. The objective is to achieve optimal state-feedback control with integral action for reference tracking using only measured data. To this end, we derive a data-driven closed-loop parameterization of the augmented dynamics that incorporates the integral state while relying solely on input-state-output measurements of the underlying system. Based on this parameterization, a data-driven convex optimization problem is formulated whose solution yields the optimal linear quadratic regulator (LQR) feedback gain for the augmented system without explicit knowledge of the system matrices. In addition, a projected policy gradient flow, which is a preconditioned version of the model-based policy gradient flow, is derived to compute the optimal controller within the space of stabilizing gains. The proposed approach enables data-driven optimal tracking control while avoiding explicit state augmentation in the data collection phase. For time-varying gains, as they arise in an online implementation, the direct, incremental, and feedforward realizations of the LQI controller are compared, and the equilibrium required for feedforward is obtained from the same data. The method is illustrated on a distributed generation unit (DGU) in a DC microgrid, including an online implementation with closed-loop data under load changes, and by a Monte Carlo study on random systems with noisy data.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper studies the data-driven synthesis of linear quadratic integral (LQI) controllers for continuous-time systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Stability of DC Microgrids with Nested Nonlinear Control Frameworks: The Fast Communication Scenario</div>
+<div class="meta-line">Authors: Cornelia Skaga, Mahdieh S. Sadabadi, Gilbert Bergna-Diaz</div>
+<div class="meta-line">First: 2025-11-13T15:20:59+00:00 · Latest: 2026-11-10T13:54:58+00:00</div>
+<div class="meta-line">Comments: 15 pages, 6 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2511.10401v3">Abs</a> · <a href="https://arxiv.org/pdf/2511.10401v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">As modern power systems continue to evolve into multi-agent, converter-dominated systems that demand reliable, stable, and optimal control architectures within an expandable framework, this paper investigates scalable stability guarantees of a promising nonlinear communication-reliant control framework for DC microgrids. Particularly, relying on nested control loops, inner decentralized (primary) and outer distributed (secondary), the control configurations are designed to simultaneously achieve proportional current sharing and voltage containment within pre-specified limits, at the converged steady state. By enforcing sufficient time-scale separation at the border between the control loops, the system admits a singular perturbation formulation, allowing global exponential stability (G.E.S.) to be established via Lyapunov arguments. Although the theoretical G.E.S. certificate is structurally scalable, the stability guarantees depend on a sufficiently large permanent leakage, introduced in the primary controller. Thus, this paper emphasizes the importance of appropriate practical tuning guidelines for establishing suitable system configurations under which the DC microgrid is practically scalable and its equilibrium is G.E.S.. The effectiveness of the proposed method is validated through case studies on a low-voltage DC microgrid under load variations and topological changes, followed by a small-signal stability analysis</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">As modern power systems continue to evolve into multi-agent, converter-dominated systems that demand reliable, stable, and optimal control architectures within an expandable framework, this paper investigates scalable stability guarantees of a promising nonlinear communication-reliant control framework for DC microgrids.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">An extended Perron-Frobenius operator filter for nonlinear state estimation</div>
+<div class="meta-line">Authors: Yuta Miwa, Yoshihiko Susuki, Shunji Kotsuki</div>
+<div class="meta-line">First: 2026-07-29T08:57:42+00:00 · Latest: 2026-11-10T11:29:25+00:00</div>
+<div class="meta-line">Comments: Submitted to Nonlinear Theory and Its Applications, IEICE (NOLTA), 9 pages, 5 figures, 2 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2607.26632v2">Abs</a> · <a href="https://arxiv.org/pdf/2607.26632v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We propose an extended Perron--Frobenius Operator Filter (PFOF) for nonlinear state estimation. The method learns the Perron--Frobenius operator, an infinite-dimensional linear operator fully preserving properties of a nonlinear dynamical system, using the extended Dynamic Mode Decomposition (eDMD). This enables us to explicitly account for non-Gaussian distributions exhibited by the nonlinear system within a linear-operator representation, while retaining the freedom to choose basis functions in eDMD. Through two numerical examples, we show that the extended PFOF achieves high computational efficiency and high estimation accuracy by exploiting the flexibility in the choice of basis functions in eDMD.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We propose an extended Perron--Frobenius Operator Filter (PFOF) for nonlinear state estimation.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Formal Synthesis of Robust Koopman-Model Predictive Control: A Case Study in AC-DC Power Conversion</div>
+<div class="meta-line">Authors: Shun Hirose, Shiu Mochiyama, Yoshihiko Susuki</div>
+<div class="meta-line">First: 2026-09-14T08:17:49+00:00 · Latest: 2026-11-10T08:22:46+00:00</div>
+<div class="meta-line">Comments: 6 pages, 3 figures, 1 table</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2609.15197v2">Abs</a> · <a href="https://arxiv.org/pdf/2609.15197v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This letter proposes a formal synthesis of Robust Koopman-Model Predictive Control (RK-MPC), a novel data-driven approach to formal synthesis of systems with nonlinear dynamics. We formulate a novel optimization problem for RK-MPC by incorporating specifications described by Signal Temporal Logic and prove its closed-loop performance. Effectiveness of the proposed RK-MPC is evaluated by applying it to the reliable design of an AC-DC power converter.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This letter proposes a formal synthesis of Robust Koopman-Model Predictive Control (RK-MPC), a novel data-driven approach to formal synthesis of systems with nonlinear dynamics.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Continuous-Time Modeling of Destination-Constrained Dynamic Systems via Doob&#x27;s $h$-Transform</div>
+<div class="meta-line">Authors: Sanfeng Hu, Liping Guo, Mengjiao Tang, Yao Rong, X. Rong Li</div>
+<div class="meta-line">First: 2026-11-10T08:12:57+00:00 · Latest: 2026-11-10T08:12:57+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13719v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13719v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Existing work on modeling destination-constrained dynamic systems has mainly focused on discrete-time formulations with linear destination constraints or Gaussian destination distributions. Since practical systems are more naturally modeled in continuous time and often subject to nonlinear/non-Gaussian constraints/distributions, this paper proposes a unified measure-transformation framework for continuous-time modeling of systems subject to deterministic or distributional constraints on a nonlinear function of the terminal state. The framework starts from an unconstrained Itô stochastic differential equation, typically derived from physical laws to describe the system&#x27;s forward evolution without destination information, and takes its induced path measure as unconstrained measure. Doob&#x27;s $h$-transform is employed to transform this measure into a constrained path measure incorporating destination information through an injected drift. The resulting system is proved to satisfy the constraints while preserving the laws of the unconstrained state process conditioned on the destination information. The transition density is derived, and the path measure of the distributionally constrained system is proved to uniquely minimize Kullback--Leibler divergence from the unconstrained path measure among those satisfying the same distributional constraint. Its injected drift is further shown to converge pointwise to that of the deterministically constrained system as the destination distribution shrinks to the prespecified value. For linear time-varying unconstrained systems, a simplified form of the constrained systems is derived in terms of the conditional expectation of the terminal state, leading to the development of trajectory-generation algorithms. Numerical simulations evaluate the proposed framework under both types of destination constraints.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Existing work on modeling destination-constrained dynamic systems has mainly focused on discrete-time formulations with linear destination constraints or Gaussian destination distributions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Data-Driven Robust Dynamic Wireless Charging Lane Planning with Tunable Profit--Risk Trade-off and Modified User Equilibrium</div>
+<div class="meta-line">Authors: Xin Cui, Yujun Lin, Ziang Liu, Francis Yunhe Hou, Wei Liu</div>
+<div class="meta-line">First: 2026-11-10T04:02:05+00:00 · Latest: 2026-11-10T04:02:05+00:00</div>
+<div class="meta-line">Comments: 10 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13538v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13538v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Dynamic wireless charging (DWC) has attracted increasing attention as a complement to conventional plug-in charging for electric vehicles (EVs). However, existing planning methods for dynamic wireless charging lanes (DWCLs) overlook realistic EV routing and charging behavior and lack explicit out-of-sample risk control under traffic-demand and renewable-energy uncertainties. To address these limitations, this paper proposes a data-driven two-stage robust planning framework that coordinates DWCL deployment with the operation of coupled traffic--power networks (CTPNs). A data-driven uncertainty set is constructed from joint historical scenarios to preserve spatio-temporal correlations without imposing parametric distributional assumptions. A modified user-equilibrium (MUE) model is proposed to capture realistic EV routing and charging behavior by incorporating state-of-charge (SoC) dynamics and endogenous charging decisions. The resulting two-stage robust model with mixed-integer recourse is reformulated as an equivalent single-stage scenario-approach problem and solved using a customized nested column-and-constraint generation algorithm. An \textit{a posteriori} feasibility guarantee is established to quantify out-of-sample risk. Based on this guarantee, the scenario set is iteratively enriched to meet a prescribed risk tolerance. Case studies on a 69-node power distribution network and a 24-node traffic network demonstrate that the proposed MUE model prevents overinvestment in DWCLs, while the proposed risk-quantification procedure enables a tunable profit--risk trade-off.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Dynamic wireless charging (DWC) has attracted increasing attention as a complement to conventional plug-in charging for electric vehicles (EVs).</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Impact of Reduced-Order Modelling on Sum-of-Squares Region-of-Attraction Certification for Grid-Forming and Grid-Following Converters</div>
+<div class="meta-line">Authors: Chenxi Yuan, Jeremy D. Watson, Neville R. Watson</div>
+<div class="meta-line">First: 2026-11-10T03:08:37+00:00 · Latest: 2026-11-10T03:08:37+00:00</div>
+<div class="meta-line">Comments: 13 pages, 5 figures, 3 tables</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13497v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13497v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">With the increasing penetration of power-electronic equipment, the transient stability of grid-forming (GFM) and grid-following (GFL) converters is increasingly characterized through the region of attraction (ROA) of the post-fault equilibrium. Sum-of-squares (SOS) programming yields certified inner approximations of the ROA, yet its computational cost grows rapidly with system order. Reduced-order models are therefore widely used to reduce computational cost and, more importantly, to enable analytical investigation. However, ROA analyses based on these models often assume that reproducing the converter&#x27;s transient response, or retaining more dynamics in the correct time-frame, is sufficient to preserve the ROA of the full-order system. Using time-domain ODE simulations as a reference, the SOS-based ROA of each reduced-order GFM and GFL model is assessed against both its own simulated ROA and that of the corresponding full-order model, thereby separating SOS-induced conservativeness from model-order-induced ROA distortion. The results indicate that increasing reduced-order model complexity does not necessarily improve SOS-based ROA fidelity. In the cases examined, more complex reduced-order models yield lower SOS coverage of the full-order reference ROA, despite closer ODE-boundary agreement in some regions. Model selection should therefore consider both full-order ROA fidelity and certified coverage of the practical operating range, rather than model complexity alone.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">With the increasing penetration of power-electronic equipment, the transient stability of grid-forming (GFM) and grid-following (GFL) converters is increasingly characterized through the region of attraction (ROA) of the post-fault equilibrium.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Residual-Corrected Physics-Informed Neural Network KKL Observers with Input-to-State Stability Guarantees</div>
+<div class="meta-line">Authors: Hannah Berin-Costain, Jun Liu, Kirsten Morris</div>
+<div class="meta-line">First: 2026-11-10T00:46:14+00:00 · Latest: 2026-11-10T00:46:14+00:00</div>
+<div class="meta-line">Comments: 7 pages, 1 figure, ACC 2027 conference submission</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.13411v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.13411v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Physics-informed neural network (PINN) Kazantzis--Kravaris--Luenberger (KKL) observers require an approximate solution to a KKL partial differential equation (PDE) and an approximate inverse of this solution. Either approximation can leave a nonzero estimation bias even without measurement noise. In this paper, we remove both errors from the implemented observer by construction. We build an encoder containing an explicitly invertible neural map. Its closed-form inverse provides the internal state reconstruction used to evaluate the learned KKL residual and correct the latent dynamics. This construction makes the synchronization manifold exactly invariant for every value of the network weights. Based on contraction of the residual-corrected observer dynamics, we prove an input-to-state stability (ISS) result for the implemented error dynamics with respect to measurement noise. A direct consequence is that the estimation error converges exponentially to zero in the noise-free setting. We provide two numerical examples, the Van der Pol oscillator and the chaotic Lorenz system, in which the residual-corrected observers achieve exact noise-free convergence and improved error responses compared with released PINN--KKL baselines.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Physics-informed neural network (PINN) Kazantzis--Kravaris--Luenberger (KKL) observers require an approximate solution to a KKL partial differential equation (PDE) and an approximate inverse of this solution.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261112_0912.html">20261112_0912</a>
+<a href="archive/20261111_0750.html">20261111_0750</a>
+<a href="archive/20261110_0948.html">20261110_0948</a>
+<a href="archive/20261109_0636.html">20261109_0636</a>
+<a href="archive/20261108_0626.html">20261108_0626</a>
+<a href="archive/20261107_0735.html">20261107_0735</a>
+<a href="archive/20261106_0753.html">20261106_0753</a>
+<a href="archive/20261105_0804.html">20261105_0804</a>
+<a href="archive/20261104_0748.html">20261104_0748</a>
+<a href="archive/20261103_0925.html">20261103_0925</a>
+<a href="archive/20261102_0632.html">20261102_0632</a>
+<a href="archive/20261101_0604.html">20261101_0604</a>
+<a href="archive/20261031_0644.html">20261031_0644</a>
+<a href="archive/20261030_0703.html">20261030_0703</a>
+<a href="archive/20261029_0655.html">20261029_0655</a>
+<a href="archive/20261028_0646.html">20261028_0646</a>
+<a href="archive/20261027_0701.html">20261027_0701</a>
+<a href="archive/20261026_0519.html">20261026_0519</a>
+<a href="archive/20261025_0520.html">20261025_0520</a>
+<a href="archive/20261024_0552.html">20261024_0552</a>
+<a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0511.html">20261019_0511</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0550.html">20261017_0550</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
