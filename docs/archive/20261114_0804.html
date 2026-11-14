@@ -1,0 +1,444 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arXiv 论文速递</title><style>
+:root {
+  --bg:#f8fafc; --card:#ffffff; --text:#0f172a; --muted:#667085; --border:#e5e7eb; --acc:#2563eb;
+}
+:root[data-theme="dark"] {
+  --bg:#0b0f17; --card:#111827; --text:#e5e7eb; --muted:#9ca3af; --border:#1f2937; --acc:#2563eb;
+}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);
+  font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;}
+.container{max-width:900px;margin:0 auto;padding:18px;}
+.header{display:flex;gap:10px;justify-content:space-between;align-items:center;margin:8px 0 16px;flex-wrap:wrap}
+h1{font-size:22px;margin:0}
+.badge{font-size:12px;color:#111827;background:var(--acc);padding:2px 8px;border-radius:999px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px 18px;margin:14px 0;box-shadow:0 1px 2px rgba(0,0,0,.04)}
+.title{font-weight:700;margin:0 0 6px 0;font-size:18px}
+.meta-line{color:var(--muted);font-size:13px;margin:2px 0}
+.links a{color:var(--acc);text-decoration:none;margin-right:12px}
+.detail{margin-top:10px;background:rgba(2,6,23,.03);border:1px solid var(--border);border-radius:10px;padding:8px 10px}
+summary{cursor:pointer;color:var(--acc)}
+.mono{white-space:pre-wrap;background:rgba(2,6,23,.03);border:1px solid var(--border);padding:10px;border-radius:10px}
+.row{display:grid;grid-template-columns:1fr;gap:12px}
+@media (min-width: 860px) {
+  .row-2{grid-template-columns:1fr 1fr}
+}
+.footer{color:var(--muted);font-size:13px;margin:20px 0 10px}
+.hr{height:1px;background:var(--border);margin:14px 0}
+.history-list a{display:block;color:var(--acc);text-decoration:none;margin:4px 0}
+.controls{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--border);background:var(--card);padding:6px 10px;border-radius:10px;cursor:pointer;color:var(--text)}
+.btn:hover{border-color:var(--acc)}
+</style>
+<script>
+(function() {
+  const root = document.documentElement;
+  function apply(t) {
+    if (t==='dark') root.setAttribute('data-theme','dark');
+    else if (t==='light') root.removeAttribute('data-theme');
+    else {
+      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        root.setAttribute('data-theme','dark');
+      else root.removeAttribute('data-theme');
+    }
+  }
+  let t = localStorage.getItem('theme') || 'light';
+  if (!['light','dark','auto'].includes(t)) t='light';
+  apply(t);
+  window.__toggleTheme = function() {
+    let cur = localStorage.getItem('theme') || 'light';
+    if (cur==='light') cur='dark';
+    else if (cur==='dark') cur='auto';
+    else cur='light';
+    localStorage.setItem('theme', cur);
+    apply(cur);
+    const el=document.getElementById('theme-label');
+    if(el) el.textContent = cur.toUpperCase();
+  }
+  window.__expandAll = function(open) {
+    document.querySelectorAll('details').forEach(d => d.open = !!open);
+  }
+})();
+</script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>arXiv 论文速递</h1>
+      <div style="display:flex;gap:10px;align-items:center">
+        
+<div class="controls">
+  <button class="btn" onclick="__toggleTheme()">Theme: <span id="theme-label" style="margin-left:6px">AUTO</span></button>
+  <button class="btn" onclick="__expandAll(true)">Expand All</button>
+  <button class="btn" onclick="__expandAll(false)">Collapse All</button>
+</div>
+
+        <span class="badge">2026-11-14 08:04</span>
+      </div>
+    </div>
+    <div class="hr"></div>
+    <div>Snapshot: 20261114_0804</div>
+    <div class="row"><div class="card">
+<div class="title">DiSKO: Distribution Steering for Nonlinear Systems using the Koopman Operator</div>
+<div class="meta-line">Authors: Dimitrios Moustroufis, Panagiotis Tsiotras</div>
+<div class="meta-line">First: 2026-11-12T18:55:31+00:00 · Latest: 2026-11-12T18:55:31+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.17301v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.17301v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">This paper studies the problem of data-driven covariance steering for stochastic, nonlinear dynamical systems. We utilize Koopman operator theory to learn, directly from data, an approximate linear representation of the nonlinear dynamics in a lifted space of observable functions of the state. By exploiting this linear model, we design controllers for the mean and covariance of the underlying nonlinear system by utilizing linear distribution steering algorithms. To account for approximation errors in the learned dynamics and the ambiguity in the disturbance distribution induced in the lifted space, we formulate the problem as a distributionally robust covariance steering problem. Furthermore, we leverage a deep neural network (DNN) to simultaneously learn the Koopman observables and the linear model parameters, thus eliminating the need for manual observables basis selection while also reducing the dimensionality of the lifted representation. Additionally, we can promote desirable model properties, such as stability, during DNN training. We demonstrate the effectiveness of the proposed framework via numerical simulations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">This paper studies the problem of data-driven covariance steering for stochastic, nonlinear dynamical systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Stability Despite Misalignment: Model Predictive Game Controllers with Objective Misspecifications</div>
+<div class="meta-line">Authors: Ada Yildirim, Brandon Collins, Bryce L. Ferguson</div>
+<div class="meta-line">First: 2026-04-09T14:35:44+00:00 · Latest: 2026-11-12T18:21:10+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2604.08303v4">Abs</a> · <a href="https://arxiv.org/pdf/2604.08303v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Predictive control requires the controller to possess an embedded prediction model. In multi-agent control, this prediction model must consider the behavior that emerges from other agents&#x27; strategic decisions. Game theory offers a natural model for the emergent collective behavior of self-interested agents. Model predictive games (MPGs) are a class of controllers in which an agent iteratively solves a finite-horizon game to predict the behavior of a multi-agent system and synthesize their own control action. When all agents use the same game model to select their control action, conditions have been found that guarantee the closed-loop stability of the multi-agent system. However, when multiple agents implement their own MPG controllers, their respective game models may be misspecified due to inaccurate estimates or conjectures about other agents&#x27; objectives. This paper analyzes the consequences of these prediction misalignments on the system&#x27;s behavior. We show that existing stability conditions for homogeneous MPG controllers do not extend to the heterogeneous setting, even when they hold for each agent&#x27;s individual game. We provide sufficient conditions for the stability of multi-agent dynamical systems with heterogeneous MPG controllers adopting linear-quadratic (LQ) games. We also show that misaligned game models can destabilize a system that reaches stability when all agents share the same game model, using a financial duopoly simulation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Predictive control requires the controller to possess an embedded prediction model.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Respiratory Mask Testing: Airway Inertance and System Dynamics</div>
+<div class="meta-line">Authors: Mark M. Koeroghlian, Suraj Pawar, Raul G. Longoria</div>
+<div class="meta-line">First: 2026-10-03T02:23:15+00:00 · Latest: 2026-11-12T18:14:55+00:00</div>
+<div class="meta-line">Comments: v2: all simulation cases re-run on the current model; spurious flow through the seated exhalation valve removed; exhalation mean effective pressure calculation corrected, with breathing and valve flow-work measures both reported; Case 2 evaluated at P_bh = 0.1 iwc</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2610.04222v2">Abs</a> · <a href="https://arxiv.org/pdf/2610.04222v2">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Life support equipment coupled to the human lungs forms a complex, nonlinear dynamic system. Current respiratory mask test standards rely on sinusoidal breathing machines and surrogate trachea geometries that substantially reduce physiologically relevant airway inertance. This paper shows that the ISO 16900-5 trachea does not generate physiologically meaningful exhalation momentum, limiting the ability of standard test configurations to reveal valve dynamics relevant to human use. A physiologically motivated &quot;lip-nozzle&quot; surrogate is introduced as a diagnostic tool to restore representative momentum transfer, enabling observation of exhalation behavior that is not observable under existing test conditions. Nonlinear dynamic simulations incorporating this surrogate identify a force-balanced operating regime in which exhalation-jet momentum can offset flow-induced valve resistance. In one representative case, the exhalation mean effective pressure imposed on the wearer falls by approximately 85% and the flow work across the exhalation valve by approximately 92%. Because people do not exhale through a fully open mouth, this momentum is available in normal use. A valve aligned with the exhaled jet can recover part of the energy the wearer has already spent, rather than requiring additional effort. The magnitude of this effect depends on valve characteristics such as efficiency and the relationship between restoring force and lift, making it a design consideration for future valve development. Implications for mask design, valve placement, and future test methods are discussed. This work does not propose new performance limits or acceptance criteria; rather, it demonstrates how current test fixtures suppress inertance- and momentum-driven effects that can materially influence exhalation valve dynamics.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Life support equipment coupled to the human lungs forms a complex, nonlinear dynamic system.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Speed-to-Power Dominates Energy Costs for AI Data Centers: Technoeconomic Analysis of Powering AI in the Continental United States</div>
+<div class="meta-line">Authors: Alex C. Newkirk, Daniel L. Gerber, Erica R. H. Fuchs, Alex Hubbard, M. Granger Morgan, Arman Shehabi, Sarah J. Smith, Constantine Samaras</div>
+<div class="meta-line">First: 2026-11-12T16:58:53+00:00 · Latest: 2026-11-12T16:58:53+00:00</div>
+<div class="meta-line">Comments: 80 pages incl. SI</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.17098v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.17098v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The rapid growth of artificial intelligence is driving demand for new data centers at large scale and on short deployment timelines. To power them, firms connect to the commercial grid or contract generation directly, but interconnection and gas-turbine delays now incentivize on-site generation. We compare grid-connected and off-grid data center energy infrastructure (AC- and DC-coupled solar-plus-storage, islanded natural gas, and grid interconnection) across the continental U.S. Using an open-source technoeconomic framework built on empirically calibrated AI training loads, climate-driven cooling, stage-by-stage power conversion, and physics-based battery degradation, we model designs providing equivalent energy services. Our central contribution is a speed-adjusted cost of energy that values the compute unlocked by faster construction, making options with different deployment timelines directly comparable on one physically consistent basis. We find DC coupling reduces lifetime energy costs by 18% ($0.09/ kWh) on average versus AC counterparts by eliminating inverters and improving efficiency. Though rarely cheapest on unadjusted energy cost, DC-coupled microgrids&#x27; faster deployment makes them the lowest-cost modeled option in 85% of U.S. locations once foregone compute is valued, or 55% under accelerated natural gas timelines. For AI infrastructure, deployment speed rather than unit energy cost determines the economically preferred path to power.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The rapid growth of artificial intelligence is driving demand for new data centers at large scale and on short deployment timelines.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">GRID-MRI: Resilience Assessment of Power Systems under Coordinated Cyber-Physical Attacks</div>
+<div class="meta-line">Authors: Isaac Ortega Romero, Ioannis Zografopoulos</div>
+<div class="meta-line">First: 2026-11-12T16:55:50+00:00 · Latest: 2026-11-12T16:55:50+00:00</div>
+<div class="meta-line">Comments: IEEE PESGM 2027, 5 pages</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.17094v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.17094v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">The increasing penetration of inverter-based resources and growing cyber-physical interdependencies expose electrical power systems to disturbances that challenge conventional resilience assessments. Existing approaches often evaluate resilience dimensions independently, overlooking the non-additive effects of coordinated disruptions and the influence of exogenous stressors. To address this gap, this paper proposes a Grid Multidimensional Resilience Index (GRID-MRI) that integrates endogenous disruption severity, coordination effects, and climatic and economic-regulatory conditions. The framework quantifies physical, cyber, and operational degradation, identifies interaction effects through counterfactual (i.e., what-if), simulations of individual and coordinated attacks, and incorporates exogenous stressors as scenario-dependent scaling factors. Its application to a modified IEEE 39-bus system under three escalating cyber-physical attack scenarios, informed by the December 2025 Polish cyberattack incident, reveals that coordinated attacks induce system collapse despite stable individual and additive responses. The corresponding resilience losses are 3.72 and 4.09 times their additive estimates, while GRID-MRI increases from 0.062 to 1.188 and reaches 6.081 under additional exogenous stress. These findings demonstrate the limitations of additive assessments and establish a quantitative basis for distinguishing the dominant mechanisms of multidimensional resilience degradation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">The increasing penetration of inverter-based resources and growing cyber-physical interdependencies expose electrical power systems to disturbances that challenge conventional resilience assessments.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">An Integrated Architecture for Data-Efficient Real-Time Neural Imitation of Nonlinear Time-Optimal Model Predictive Control</div>
+<div class="meta-line">Authors: Maarten De Baecke, Flavia Sofia Acerbo, Andrea Giusti, Wilm Decré</div>
+<div class="meta-line">First: 2026-11-12T16:04:44+00:00 · Latest: 2026-11-12T16:04:44+00:00</div>
+<div class="meta-line">Comments: Submitted to European Control Conference 2027 (Brussels)</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.17005v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.17005v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Nonlinear time-optimal model predictive control (TOMPC) enables highly performant control of constrained systems, but its computational cost prohibits real-time use on fast dynamical systems. Neural network imitation of the TOMPC control law can reduce online computational costs, yet existing work mostly targets quadratic cost formulations in simulation and addresses the challenges of neural controllers in isolation. This work imitates a long-horizon nonconvex TOMPC with hard terminal constraints, whose high computational cost limits training-data generation. We present (i) \emph{self-informed sampling (SIFS)}, a data-efficient expert-sampling strategy that uses a learned time-to-go to query the expert only where the policy deviates from time-optimal behavior, (ii) a complete training and control architecture that jointly addresses dataset correlation, suboptimal expert labels, covariate shift, constraint satisfaction and model mismatch, and (iii) real-world validation on a Furuta pendulum. SIFS matches standard dataset aggregation performance in roughly one-third of the training time and with less than half the training data. The resulting controller matches the region of attraction of the expert TOMPC while raising the control frequency from 1.4~Hz to 1~kHz. On hardware, the controller swings up and stabilizes the pendulum along trajectories closely matching the expert TOMPC solution.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Nonlinear time-optimal model predictive control (TOMPC) enables highly performant control of constrained systems, but its computational cost prohibits real-time use on fast dynamical systems.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">SAGAS: Semantic-Aware Graph-Assisted Stitching for Offline Temporal Logic Planning</div>
+<div class="meta-line">Authors: Ruijia Liu, Ancheng Hou, Xiang Yin</div>
+<div class="meta-line">First: 2025-11-30T08:13:35+00:00 · Latest: 2026-11-12T15:02:34+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2512.00775v3">Abs</a> · <a href="https://arxiv.org/pdf/2512.00775v3">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Linear Temporal Logic (LTL) provides a rigorous framework for specifying long-horizon robotic tasks, yet existing approaches face a trade-off: model-based synthesis relies on accurate labeled transition systems, whereas learning-based methods often require online interaction, task-specific rewards, or specification-conditioned training. We study LTL-specified robotic planning and execution in an offline, model-free setting, where the agent is given only fixed, task-agnostic trajectory fragments, with no dynamics model, task demonstrations, or online data collection. To address this setting, we propose SAGAS, a framework that combines the compositionality of symbolic synthesis with the data-driven reachability structure learned from offline trajectories. SAGAS first learns a reusable latent reachability graph and a frozen goal-conditioned executor from fragmented offline data. For each new LTL formula, it performs task-time semantic graph augmentation to ground state-defined propositions on the learned graph and applies Büchi product search to synthesize a cost-aware accepting prefix--suffix waypoint plan executed by the frozen executor. This separation of learning and planning enables zero-shot generalization to unseen LTL formulas and new predicates supported by the offline data, without task-specific rewards, additional data collection, or policy retraining. Experiments on LTL task suites constructed from OGBench locomotion domains show that SAGAS achieves higher success rates and lower execution costs than baselines on diverse unseen tasks, with further evaluation in OGBench Scene demonstrating its applicability to robotic manipulation.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Linear Temporal Logic (LTL) provides a rigorous framework for specifying long-horizon robotic tasks, yet existing approaches face a trade-off: model-based synthesis relies on accurate labeled transition systems, whereas learning-based methods often require online interaction, task-specific rewards, or specification-conditioned training.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Structure-Preserving Learning for Nonlinear Nonholonomic Dynamics</div>
+<div class="meta-line">Authors: Thomas Beckers, Anthony Bloch, Leonardo Colombo</div>
+<div class="meta-line">First: 2026-11-12T13:39:17+00:00 · Latest: 2026-11-12T13:39:17+00:00</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.16796v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.16796v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Learning the dynamics of mechanical systems subject to nonlinear nonholonomic constraints is challenging, as data-driven models may violate the underlying physical constraints, leading to inconsistent predictions. To address this problem, we develop a constraint-preserving learning framework based on the Lagrange-d&#x27;Alembert-Chetaev equations and tangency to the constraint submanifold, which together define an affine space of admissible accelerations. Using the kinetic-energy metric and the Moore-Penrose pseudoinverse, we construct a metric projector and the corresponding Chetaev correction. Embedding this geometric structure directly into a Gaussian process prior ensures that both prior and posterior dynamics satisfy the acceleration constraints exactly. We characterize the resulting reproducing kernel Hilbert space (RKHS), derive an adapted-coordinate representation, and establish nonexpansiveness and consistency transfer. Numerical experiments on a three-dimensional directional flocking system with up to 50 agents demonstrate exact constraint preservation and robustness to constraint-incompatible observations.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Learning the dynamics of mechanical systems subject to nonlinear nonholonomic constraints is challenging, as data-driven models may violate the underlying physical constraints, leading to inconsistent predictions.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Can STATCOM and UPS-Based Voltage Support Mitigate Fault-Induced Reductions in AI Data Center Grid Power Draw?</div>
+<div class="meta-line">Authors: Ziang Liu, Yimeng Liu, Francis Yunhe Hou</div>
+<div class="meta-line">First: 2026-11-12T09:55:20+00:00 · Latest: 2026-11-12T09:55:20+00:00</div>
+<div class="meta-line">Comments: 10 pages, 5 figures</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2611.16569v1">Abs</a> · <a href="https://arxiv.org/pdf/2611.16569v1">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">Artificial intelligence data centers (AIDCs) are rapidly increasing in number and capacity. These large electronic loads are interfaced through power electronic devices and can sharply reduce grid power intake during fault-induced voltage sags. Disturbances exceeding equipment ride-through capabilities may also trigger protective disconnection, posing risks to power system security. Static synchronous compensators (STATCOMs) and appropriately controlled AIDC uninterruptible power supply (UPS) rectifiers can provide reactive power support during voltage sags. This paper compares the individual and combined effectiveness of STATCOM and UPS-based voltage support in mitigating fault-induced reductions in grid power intake through electromagnetic transient simulations of a 1 GW AIDC connected to an IEEE nine-bus system. Simulation results show that STATCOM support better preserves short-term intake in milder tested faults, whereas UPS coordination maintains rectifier operation under deeper sags by reducing active intake to reserve reactive current capacity. Combined support improves auxiliary load retention and recovery in selected cases. However, severe tested sags still cause substantial grid-demand reductions even with combined support.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">Artificial intelligence data centers (AIDCs) are rapidly increasing in number and capacity.</div>
+</details>
+</div>
+<div class="card">
+<div class="title">Mean--Variance Portfolio Selection by Continuous-Time Reinforcement Learning: Algorithms, Regret Analysis, and Empirical Study</div>
+<div class="meta-line">Authors: Yilie Huang, Yanwei Jia, Xun Yu Zhou</div>
+<div class="meta-line">First: 2024-12-08T15:31:10+00:00 · Latest: 2026-11-12T08:53:44+00:00</div>
+<div class="meta-line">Comments: 99 pages, includes appendix. Accepted for publication in Management Science</div>
+<div class="links" style="margin-top:8px"><a href="https://arxiv.org/abs/2412.16175v4">Abs</a> · <a href="https://arxiv.org/pdf/2412.16175v4">PDF</a> · <a href="https://huggingface.co/huggingface">Code1</a> · <a href="https://huggingface.co/docs/hub/spaces">Code2</a></div>
+<details class="detail"><summary>Abstract</summary>
+<div class="mono">We study continuous-time mean--variance portfolio selection in markets where stock prices are diffusion processes driven by observable factors that are also diffusion processes, yet the coefficients of these processes are unknown. Based on the recently developed reinforcement learning (RL) theory for diffusion processes, we present a general data-driven RL approach that learns the pre-committed investment strategy directly without attempting to learn or estimate the market coefficients. For multi-stock Black--Scholes markets without factors, we further devise an algorithm and prove its performance guarantee by deriving a sublinear regret bound in terms of the Sharpe ratio. We then carry out an extensive empirical study implementing this algorithm to compare its performance and trading characteristics, evaluated under a host of common metrics, with a large number of widely employed portfolio allocation strategies on S\&amp;P 500 constituents. The results demonstrate that the proposed continuous-time RL strategy is consistently among the best, especially in a volatile bear market, and decisively outperforms the model-based continuous-time counterparts by significant margins.</div></details>
+<details class="detail"><summary>Summary / 总结</summary>
+<div class="mono">We study continuous-time mean--variance portfolio selection in markets where stock prices are diffusion processes driven by observable factors that are also diffusion processes, yet the coefficients of these processes are unknown.</div>
+</details>
+</div></div>
+    <details style="margin-top:16px" class="detail"><summary>History</summary>
+      <div class="history-list"><a href="archive/20261113_0756.html">20261113_0756</a>
+<a href="archive/20261112_0912.html">20261112_0912</a>
+<a href="archive/20261111_0750.html">20261111_0750</a>
+<a href="archive/20261110_0948.html">20261110_0948</a>
+<a href="archive/20261109_0636.html">20261109_0636</a>
+<a href="archive/20261108_0626.html">20261108_0626</a>
+<a href="archive/20261107_0735.html">20261107_0735</a>
+<a href="archive/20261106_0753.html">20261106_0753</a>
+<a href="archive/20261105_0804.html">20261105_0804</a>
+<a href="archive/20261104_0748.html">20261104_0748</a>
+<a href="archive/20261103_0925.html">20261103_0925</a>
+<a href="archive/20261102_0632.html">20261102_0632</a>
+<a href="archive/20261101_0604.html">20261101_0604</a>
+<a href="archive/20261031_0644.html">20261031_0644</a>
+<a href="archive/20261030_0703.html">20261030_0703</a>
+<a href="archive/20261029_0655.html">20261029_0655</a>
+<a href="archive/20261028_0646.html">20261028_0646</a>
+<a href="archive/20261027_0701.html">20261027_0701</a>
+<a href="archive/20261026_0519.html">20261026_0519</a>
+<a href="archive/20261025_0520.html">20261025_0520</a>
+<a href="archive/20261024_0552.html">20261024_0552</a>
+<a href="archive/20261023_0600.html">20261023_0600</a>
+<a href="archive/20261022_0602.html">20261022_0602</a>
+<a href="archive/20261021_0600.html">20261021_0600</a>
+<a href="archive/20261020_0641.html">20261020_0641</a>
+<a href="archive/20261019_0511.html">20261019_0511</a>
+<a href="archive/20261018_0510.html">20261018_0510</a>
+<a href="archive/20261017_0550.html">20261017_0550</a>
+<a href="archive/20261016_0552.html">20261016_0552</a>
+<a href="archive/20261015_0559.html">20261015_0559</a>
+<a href="archive/20261014_0710.html">20261014_0710</a>
+<a href="archive/20261013_0904.html">20261013_0904</a>
+<a href="archive/20261012_0635.html">20261012_0635</a>
+<a href="archive/20261011_0607.html">20261011_0607</a>
+<a href="archive/20261010_0658.html">20261010_0658</a>
+<a href="archive/20261009_0736.html">20261009_0736</a>
+<a href="archive/20261008_0724.html">20261008_0724</a>
+<a href="archive/20261007_0651.html">20261007_0651</a>
+<a href="archive/20261006_0830.html">20261006_0830</a>
+<a href="archive/20261005_0607.html">20261005_0607</a>
+<a href="archive/20261004_0554.html">20261004_0554</a>
+<a href="archive/20261002_0657.html">20261002_0657</a>
+<a href="archive/20261001_0645.html">20261001_0645</a>
+<a href="archive/20260930_0646.html">20260930_0646</a>
+<a href="archive/20260929_0736.html">20260929_0736</a>
+<a href="archive/20260928_0544.html">20260928_0544</a>
+<a href="archive/20260927_0544.html">20260927_0544</a>
+<a href="archive/20260926_0554.html">20260926_0554</a>
+<a href="archive/20260925_0554.html">20260925_0554</a>
+<a href="archive/20260924_0554.html">20260924_0554</a>
+<a href="archive/20260923_0544.html">20260923_0544</a>
+<a href="archive/20260922_0622.html">20260922_0622</a>
+<a href="archive/20260921_0507.html">20260921_0507</a>
+<a href="archive/20260920_0512.html">20260920_0512</a>
+<a href="archive/20260919_0522.html">20260919_0522</a>
+<a href="archive/20260918_0551.html">20260918_0551</a>
+<a href="archive/20260916_0551.html">20260916_0551</a>
+<a href="archive/20260915_0621.html">20260915_0621</a>
+<a href="archive/20260913_0507.html">20260913_0507</a>
+<a href="archive/20260912_0527.html">20260912_0527</a>
+<a href="archive/20260911_0519.html">20260911_0519</a>
+<a href="archive/20260910_0525.html">20260910_0525</a>
+<a href="archive/20260909_0531.html">20260909_0531</a>
+<a href="archive/20260908_0551.html">20260908_0551</a>
+<a href="archive/20260907_0458.html">20260907_0458</a>
+<a href="archive/20260906_0450.html">20260906_0450</a>
+<a href="archive/20260905_0510.html">20260905_0510</a>
+<a href="archive/20260904_0531.html">20260904_0531</a>
+<a href="archive/20260903_0527.html">20260903_0527</a>
+<a href="archive/20260902_0531.html">20260902_0531</a>
+<a href="archive/20260901_0704.html">20260901_0704</a>
+<a href="archive/20260831_0545.html">20260831_0545</a>
+<a href="archive/20260830_0525.html">20260830_0525</a>
+<a href="archive/20260829_0957.html">20260829_0957</a>
+<a href="archive/20260828_1023.html">20260828_1023</a>
+<a href="archive/20260827_0530.html">20260827_0530</a>
+<a href="archive/20260826_0324.html">20260826_0324</a>
+<a href="archive/20260825_0322.html">20260825_0322</a>
+<a href="archive/20260824_0316.html">20260824_0316</a>
+<a href="archive/20260823_0316.html">20260823_0316</a>
+<a href="archive/20260822_0319.html">20260822_0319</a>
+<a href="archive/20260821_0324.html">20260821_0324</a>
+<a href="archive/20260820_0321.html">20260820_0321</a>
+<a href="archive/20260819_0325.html">20260819_0325</a>
+<a href="archive/20260818_0320.html">20260818_0320</a>
+<a href="archive/20260817_0314.html">20260817_0314</a>
+<a href="archive/20260816_0315.html">20260816_0315</a>
+<a href="archive/20260815_0342.html">20260815_0342</a>
+<a href="archive/20260814_0351.html">20260814_0351</a>
+<a href="archive/20260813_0357.html">20260813_0357</a>
+<a href="archive/20260812_0355.html">20260812_0355</a>
+<a href="archive/20260811_0348.html">20260811_0348</a>
+<a href="archive/20260810_0325.html">20260810_0325</a>
+<a href="archive/20260809_0322.html">20260809_0322</a>
+<a href="archive/20260808_0345.html">20260808_0345</a>
+<a href="archive/20260807_0836.html">20260807_0836</a>
+<a href="archive/20260806_0420.html">20260806_0420</a>
+<a href="archive/20260805_0418.html">20260805_0418</a>
+<a href="archive/20260804_0420.html">20260804_0420</a>
+<a href="archive/20260803_0406.html">20260803_0406</a>
+<a href="archive/20260802_0406.html">20260802_0406</a>
+<a href="archive/20260801_0415.html">20260801_0415</a>
+<a href="archive/20260731_0411.html">20260731_0411</a>
+<a href="archive/20260730_0408.html">20260730_0408</a>
+<a href="archive/20260729_0411.html">20260729_0411</a>
+<a href="archive/20260728_0414.html">20260728_0414</a>
+<a href="archive/20260727_0410.html">20260727_0410</a>
+<a href="archive/20260726_0407.html">20260726_0407</a>
+<a href="archive/20260725_0411.html">20260725_0411</a>
+<a href="archive/20260724_0407.html">20260724_0407</a>
+<a href="archive/20260723_0407.html">20260723_0407</a>
+<a href="archive/20260722_0414.html">20260722_0414</a>
+<a href="archive/20260721_0416.html">20260721_0416</a>
+<a href="archive/20260720_0403.html">20260720_0403</a>
+<a href="archive/20260719_0359.html">20260719_0359</a>
+<a href="archive/20260718_0359.html">20260718_0359</a>
+<a href="archive/20260717_0357.html">20260717_0357</a>
+<a href="archive/20260716_0403.html">20260716_0403</a>
+<a href="archive/20260715_0405.html">20260715_0405</a>
+<a href="archive/20260714_0406.html">20260714_0406</a>
+<a href="archive/20260713_0402.html">20260713_0402</a>
+<a href="archive/20260712_0400.html">20260712_0400</a>
+<a href="archive/20260711_0415.html">20260711_0415</a>
+<a href="archive/20260710_0442.html">20260710_0442</a>
+<a href="archive/20260709_0416.html">20260709_0416</a>
+<a href="archive/20260708_0446.html">20260708_0446</a>
+<a href="archive/20260707_0447.html">20260707_0447</a>
+<a href="archive/20260706_0406.html">20260706_0406</a>
+<a href="archive/20260705_0405.html">20260705_0405</a>
+<a href="archive/20260704_0413.html">20260704_0413</a>
+<a href="archive/20260703_0414.html">20260703_0414</a>
+<a href="archive/20260702_0445.html">20260702_0445</a>
+<a href="archive/20260701_0452.html">20260701_0452</a>
+<a href="archive/20260630_0446.html">20260630_0446</a>
+<a href="archive/20260629_0407.html">20260629_0407</a>
+<a href="archive/20260627_0427.html">20260627_0427</a>
+<a href="archive/20260626_0452.html">20260626_0452</a>
+<a href="archive/20260625_0428.html">20260625_0428</a>
+<a href="archive/20260624_0458.html">20260624_0458</a>
+<a href="archive/20260623_0529.html">20260623_0529</a>
+<a href="archive/20260622_0420.html">20260622_0420</a>
+<a href="archive/20260621_0411.html">20260621_0411</a>
+<a href="archive/20260620_0423.html">20260620_0423</a>
+<a href="archive/20260619_0517.html">20260619_0517</a>
+<a href="archive/20260618_0500.html">20260618_0500</a>
+<a href="archive/20260617_0538.html">20260617_0538</a>
+<a href="archive/20260616_0539.html">20260616_0539</a>
+<a href="archive/20260615_0415.html">20260615_0415</a>
+<a href="archive/20260614_0411.html">20260614_0411</a>
+<a href="archive/20260613_0500.html">20260613_0500</a>
+<a href="archive/20260612_0514.html">20260612_0514</a>
+<a href="archive/20260611_0522.html">20260611_0522</a>
+<a href="archive/20260610_0453.html">20260610_0453</a>
+<a href="archive/20260609_0510.html">20260609_0510</a>
+<a href="archive/20260608_0407.html">20260608_0407</a>
+<a href="archive/20260607_0405.html">20260607_0405</a>
+<a href="archive/20260606_0446.html">20260606_0446</a>
+<a href="archive/20260604_0542.html">20260604_0542</a>
+<a href="archive/20260603_0542.html">20260603_0542</a>
+<a href="archive/20260602_0557.html">20260602_0557</a>
+<a href="archive/20260601_0404.html">20260601_0404</a>
+<a href="archive/20260531_0403.html">20260531_0403</a>
+<a href="archive/20260530_0508.html">20260530_0508</a>
+<a href="archive/20260528_0458.html">20260528_0458</a>
+<a href="archive/20260527_0450.html">20260527_0450</a>
+<a href="archive/20260526_0420.html">20260526_0420</a>
+<a href="archive/20260525_0400.html">20260525_0400</a>
+<a href="archive/20260524_0402.html">20260524_0402</a>
+<a href="archive/20260523_0428.html">20260523_0428</a>
+<a href="archive/20260522_0447.html">20260522_0447</a>
+<a href="archive/20260521_0457.html">20260521_0457</a>
+<a href="archive/20260520_0425.html">20260520_0425</a>
+<a href="archive/20260519_0421.html">20260519_0421</a>
+<a href="archive/20260518_0401.html">20260518_0401</a>
+<a href="archive/20260517_0358.html">20260517_0358</a>
+<a href="archive/20260516_0410.html">20260516_0410</a>
+<a href="archive/20260515_0424.html">20260515_0424</a>
+<a href="archive/20260514_0427.html">20260514_0427</a>
+<a href="archive/20260513_0426.html">20260513_0426</a>
+<a href="archive/20260512_0428.html">20260512_0428</a>
+<a href="archive/20260511_0359.html">20260511_0359</a>
+<a href="archive/20260510_0352.html">20260510_0352</a>
+<a href="archive/20260509_0406.html">20260509_0406</a>
+<a href="archive/20260508_0408.html">20260508_0408</a>
+<a href="archive/20260507_0417.html">20260507_0417</a>
+<a href="archive/20260506_0402.html">20260506_0402</a>
+<a href="archive/20260505_0411.html">20260505_0411</a>
+<a href="archive/20260504_0348.html">20260504_0348</a>
+<a href="archive/20260503_0349.html">20260503_0349</a>
+<a href="archive/20260502_0401.html">20260502_0401</a>
+<a href="archive/20260501_0407.html">20260501_0407</a>
+<a href="archive/20260430_0407.html">20260430_0407</a>
+<a href="archive/20260429_0410.html">20260429_0410</a>
+<a href="archive/20260428_0404.html">20260428_0404</a>
+<a href="archive/20260427_0340.html">20260427_0340</a>
+<a href="archive/20260426_0339.html">20260426_0339</a>
+<a href="archive/20260425_0345.html">20260425_0345</a>
+<a href="archive/20260424_0403.html">20260424_0403</a>
+<a href="archive/20260423_0401.html">20260423_0401</a>
+<a href="archive/20260422_0359.html">20260422_0359</a>
+<a href="archive/20260421_0356.html">20260421_0356</a>
+<a href="archive/20260420_0336.html">20260420_0336</a>
+<a href="archive/20260419_0336.html">20260419_0336</a>
+<a href="archive/20260418_0353.html">20260418_0353</a>
+<a href="archive/20260417_0356.html">20260417_0356</a>
+<a href="archive/20260416_0359.html">20260416_0359</a>
+<a href="archive/20260415_0400.html">20260415_0400</a>
+<a href="archive/20260414_0400.html">20260414_0400</a>
+<a href="archive/20260413_0334.html">20260413_0334</a>
+<a href="archive/20260412_0330.html">20260412_0330</a>
+<a href="archive/20260411_0338.html">20260411_0338</a>
+<a href="archive/20260410_0359.html">20260410_0359</a>
+<a href="archive/20260409_0354.html">20260409_0354</a>
+<a href="archive/20260408_0352.html">20260408_0352</a>
+<a href="archive/20260407_0346.html">20260407_0346</a>
+<a href="archive/20260406_0328.html">20260406_0328</a>
+<a href="archive/20260405_0325.html">20260405_0325</a>
+<a href="archive/20260404_0333.html">20260404_0333</a>
+<a href="archive/20260403_0344.html">20260403_0344</a>
+<a href="archive/20260401_0350.html">20260401_0350</a>
+<a href="archive/20260331_0351.html">20260331_0351</a>
+<a href="archive/20260328_0337.html">20260328_0337</a>
+<a href="archive/20260327_0352.html">20260327_0352</a>
+<a href="archive/20260326_0341.html">20260326_0341</a>
+<a href="archive/20260325_0349.html">20260325_0349</a>
+<a href="archive/20260324_0343.html">20260324_0343</a>
+<a href="archive/20260323_0320.html">20260323_0320</a>
+<a href="archive/20260322_0318.html">20260322_0318</a>
+<a href="archive/20260321_0332.html">20260321_0332</a>
+<a href="archive/20260320_0341.html">20260320_0341</a>
+<a href="archive/20260319_0343.html">20260319_0343</a>
+<a href="archive/20260318_0350.html">20260318_0350</a>
+<a href="archive/20260317_0349.html">20260317_0349</a>
+<a href="archive/20260316_0322.html">20260316_0322</a>
+<a href="archive/20260315_0322.html">20260315_0322</a>
+<a href="archive/20260314_0326.html">20260314_0326</a>
+<a href="archive/20260313_0337.html">20260313_0337</a>
+<a href="archive/20260312_0337.html">20260312_0337</a>
+<a href="archive/20260311_0333.html">20260311_0333</a>
+<a href="archive/20260310_2343.html">20260310_2343</a>
+<a href="archive/20260310_2335.html">20260310_2335</a>
+<a href="archive/20260310_2310.html">20260310_2310</a></div>
+    </details>
+    <div class="footer">Generated by arxiv-tracker</div>
+  </div>
+</body></html>
